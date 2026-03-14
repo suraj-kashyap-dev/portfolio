@@ -11,16 +11,27 @@
 <div id="cur"></div><div id="cur2"></div>
 <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
 
+<!-- Mobile nav overlay -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#hero" onclick="closeMobileNav()">Home</a>
+  <a href="#about" onclick="closeMobileNav()">About</a>
+  <a href="#exp" onclick="closeMobileNav()">Experience</a>
+  <a href="#skills" onclick="closeMobileNav()">Skills</a>
+  <a href="#contact" onclick="closeMobileNav()">Contact</a>
+</div>
+
 <nav>
   <a href="#hero" class="logo">Suraj<em>.dev</em></a>
   <ul class="nav-links">
     <li><a href="#about">about</a></li>
     <li><a href="#exp">experience</a></li>
-    <li><a href="#projects">projects</a></li>
     <li><a href="#skills">skills</a></li>
     <li><a href="#contact">contact</a></li>
   </ul>
   <div class="hire-badge"><div class="ping"></div>Open to Opportunities</div>
+  <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <section id="hero">
@@ -39,13 +50,8 @@
         <div class="tp tp-a">&#10022; GenAI Developer</div>
         <div class="tp tp-r">&#9889; Reverb / WS</div>
       </div>
-      <div class="btns">
-        <a href="#projects" class="btn btn-p">View Projects &#8594;</a>
-        <a href="#contact" class="btn btn-g">Get In Touch</a>
-      </div>
     </div>
     <div class="hcard">
-      <div class="cd tl"></div><div class="cd tr"></div><div class="cd bl"></div><div class="cd br"></div>
       <div class="ch">
         <div class="cav">SK</div>
         <div><div class="cn">Suraj Kashyap</div><div class="cr">@suraj-kashyap-dev</div><div class="cl">&#128205; Ghaziabad, UP &middot; +91 93159 81404</div></div>
@@ -144,60 +150,9 @@
 </section>
 <div class="gd"></div>
 
-<section id="projects" class="sec">
-  <div class="si">
-    <div class="reveal"><div class="sn">03</div><h2 class="st">Featured <span>Projects</span></h2><div class="sl"></div></div>
-    <div class="pg">
-      <div class="pc feat reveal">
-        <div class="pl"><span class="lt">&#9733; Featured &middot; Java &middot; Next.js</span><span class="ly">2024</span></div>
-        <div class="ptit">Dev CRM &mdash; AI-Ready CRM Platform</div>
-        <p class="pd">Production-grade CRM built from the ground up &mdash; Java/Spring Boot layered backend (Controller&#8594;Service&#8594;Repository + DTOs) + Next.js frontend. JWT/RBAC via Spring Security. Dynamic Custom Field Builder for runtime schema extension without DB migrations. Kanban Deal Pipelines with stage transitions. Reusable headless DataGrid with server-side pagination, multi-column sort, and composable filters. Architected as a foundation for AI-powered deal scoring and win-probability prediction.</p>
-        <div class="ptags"><span class="ptag pt-j">Java</span><span class="ptag pt-s">Spring Boot</span><span class="ptag pt-s">Spring Security</span><span class="ptag pt-n">Next.js</span><span class="ptag">PostgreSQL</span><span class="ptag">JWT</span><span class="ptag">RBAC</span><span class="ptag pt-a">AI-Ready</span></div>
-        <div class="plinks"><a href="https://github.com/suraj-kashyap-dev" class="plnk" target="_blank">GitHub</a></div>
-      </div>
-      <div class="pc reveal" style="transition-delay:.08s">
-        <div class="pl"><span class="lt">&#9733; AI/ML &middot; ERP</span><span class="ly">2024</span></div>
-        <div class="ptit">Aureus ERP &mdash; AI-First Enterprise System</div>
-        <p class="pd">Open-source, AI-first ERP: finance, HR, inventory, CRM &amp; manufacturing. ML demand forecasting, financial anomaly detection, AI document pipeline (OCR + NLP for invoice/contract ingestion), predictive maintenance via time-series models, and intelligent procurement with supplier scoring.</p>
-        <div class="ptags"><span class="ptag pt-l">Laravel</span><span class="ptag pt-v">FilamentPHP</span><span class="ptag">Alpine.js</span><span class="ptag">MySQL</span><span class="ptag">Redis</span><span class="ptag pt-a">OCR/NLP</span><span class="ptag pt-a">ML Forecasting</span></div>
-        <div class="plinks"><a href="https://github.com/suraj-kashyap-dev" class="plnk" target="_blank">GitHub</a></div>
-      </div>
-      <div class="pc reveal" style="transition-delay:.13s">
-        <div class="pl"><span class="lt">Laravel &middot; Realtime</span><span class="ly">2023</span></div>
-        <div class="ptit">Law Tribe &mdash; Legal Social Network</div>
-        <p class="pd">Niche professional network for lawyers, law students, and legal firms. Real-time messaging &amp; notifications via Laravel Reverb + WebSockets. Sub-100ms API via Laravel Octane. Full admin panel (FilamentPHP), layered RBAC.</p>
-        <div class="ptags"><span class="ptag pt-l">Laravel</span><span class="ptag">Reverb/WS</span><span class="ptag pt-v">Vue.js</span><span class="ptag pt-v">FilamentPHP</span><span class="ptag">Redis</span><span class="ptag">Octane</span></div>
-        <div class="plinks"><a href="https://github.com/suraj-kashyap-dev" class="plnk" target="_blank">GitHub</a></div>
-      </div>
-      <div class="pc reveal" style="transition-delay:.18s">
-        <div class="pl"><span class="lt">Open Source &middot; AI</span><span class="ly">2023&ndash;24</span></div>
-        <div class="ptit">Bagisto &mdash; Laravel E-Commerce OS</div>
-        <p class="pd">AI-first contributions to globally adopted open-source framework: collaborative filtering recommendations, NLP-powered semantic search, and DTDC Shipping API integration.</p>
-        <div class="ptags"><span class="ptag pt-l">Laravel</span><span class="ptag pt-v">Vue.js</span><span class="ptag">MySQL</span><span class="ptag pt-a">Collab Filtering</span><span class="ptag pt-a">NLP Search</span></div>
-        <div class="plinks"><a href="https://github.com/suraj-webkul" class="plnk" target="_blank">GitHub</a><a href="https://demo.bagisto.com/bagisto-common/" class="plnk" target="_blank"><span class="ldot"></span>Live</a></div>
-      </div>
-      <div class="pc reveal" style="transition-delay:.23s">
-        <div class="pl"><span class="lt">Open Source &middot; CRM</span><span class="ly">2023&ndash;24</span></div>
-        <div class="ptit">Krayin &mdash; AI-Augmented CRM</div>
-        <p class="pd">Open-source CRM with ML-based lead scoring &amp; prioritisation, AI sentiment analysis flagging at-risk accounts, and predictive sales forecasting from live pipeline data.</p>
-        <div class="ptags"><span class="ptag pt-l">Laravel</span><span class="ptag pt-v">Vue.js</span><span class="ptag">MySQL</span><span class="ptag">Docker</span><span class="ptag pt-a">ML Lead Scoring</span><span class="ptag pt-a">Sentiment AI</span></div>
-        <div class="plinks"><a href="https://github.com/suraj-webkul" class="plnk" target="_blank">GitHub</a><a href="https://krayincrm.com/" class="plnk" target="_blank"><span class="ldot"></span>Live</a></div>
-      </div>
-      <div class="pc reveal" style="transition-delay:.28s">
-        <div class="pl"><span class="lt">AI &middot; Analytics</span><span class="ly">2022</span></div>
-        <div class="ptit">Survey Smart &mdash; AI Insights Platform</div>
-        <p class="pd">Cross-platform survey app (iOS, Android, web). NLP pipeline for theme extraction, sentiment engine, and dashboard with NPS/CSAT/CES/churn risk indicators and real-time sync.</p>
-        <div class="ptags"><span class="ptag pt-l">Laravel</span><span class="ptag pt-r">React.js</span><span class="ptag">MySQL</span><span class="ptag pt-a">NLP</span><span class="ptag pt-a">Sentiment Analysis</span></div>
-        <div class="plinks"><a href="https://github.com/suraj-kashyap-dev" class="plnk" target="_blank">GitHub</a></div>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="gd"></div>
-
 <section id="skills" class="sec">
   <div class="si">
-    <div class="reveal"><div class="sn">04</div><h2 class="st">Tech <span>Stack</span></h2><div class="sl"></div></div>
+    <div class="reveal"><div class="sn">03</div><h2 class="st">Tech <span>Stack</span></h2><div class="sl"></div></div>
     <div class="skg">
       <div class="skcat reveal">
         <div class="sctit">Backend</div>
@@ -243,7 +198,7 @@
   <div class="si">
     <div class="cgrid">
       <div class="reveal">
-        <div class="sn">05</div><h2 class="st">Get In <span>Touch</span></h2><div class="sl"></div>
+        <div class="sn">04</div><h2 class="st">Get In <span>Touch</span></h2><div class="sl"></div>
         <div class="ct">
           <p>Open to full-time roles, freelance projects, and consulting &mdash; especially at the intersection of modern web development and AI. Java/Spring Boot, Laravel SaaS, Vue/Next frontend, or AI-powered product &mdash; let's talk.</p>
           <p>Based in <strong>Ghaziabad, Uttar Pradesh, India</strong>. Available for remote and on-site opportunities.</p>
@@ -251,8 +206,7 @@
         <a href="mailto:surajkashyap9911@gmail.com" class="cemail">surajkashyap9911@gmail.com</a>
       </div>
       <div class="clinks reveal" style="transition-delay:.15s">
-        <a href="https://github.com/suraj-kashyap-dev" target="_blank" class="clnk"><div class="clico">&#128025;</div><div><div class="cll">GitHub (Personal)</div><div class="clv">github.com/suraj-kashyap-dev</div></div></a>
-        <a href="https://github.com/suraj-webkul" target="_blank" class="clnk"><div class="clico">&#128025;</div><div><div class="cll">GitHub (Open Source)</div><div class="clv">github.com/suraj-webkul</div></div></a>
+        <a href="https://github.com/suraj-kashyap-dev" target="_blank" class="clnk"><div class="clico">&#128025;</div><div><div class="cll">GitHub</div><div class="clv">github.com/suraj-kashyap-dev</div></div></a>
         <a href="https://linkedin.com/in/kashyap-suraj" target="_blank" class="clnk"><div class="clico">&#128188;</div><div><div class="cll">LinkedIn</div><div class="clv">linkedin.com/in/kashyap-suraj</div></div></a>
         <a href="tel:+919315981404" class="clnk"><div class="clico">&#128222;</div><div><div class="cll">Phone</div><div class="clv">+91 93159 81404</div></div></a>
         <a href="mailto:surajkashyap9911@gmail.com" class="clnk"><div class="clico">&#9993;&#65039;</div><div><div class="cll">Email</div><div class="clv">surajkashyap9911@gmail.com</div></div></a>
@@ -267,25 +221,6 @@
   <span>Ghaziabad, India &#127470;&#127475;</span>
 </footer>
 
-<script>
-const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
-let mx=0,my=0,tx=0,ty=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx-5+'px';cur.style.top=my-5+'px';});
-setInterval(()=>{tx+=(mx-tx)*.13;ty+=(my-ty)*.13;cur2.style.left=tx-19+'px';cur2.style.top=ty-19+'px';},16);
-document.querySelectorAll('a,button,.pc,.ecard,.clnk,.tp').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.transform='scale(2.5)';cur.style.opacity='.35';});
-  el.addEventListener('mouseleave',()=>{cur.style.transform='scale(1)';cur.style.opacity='1';});
-});
-const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.1});
-document.querySelectorAll('.reveal,.tli').forEach(el=>obs.observe(el));
-const sObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.querySelectorAll('.skf').forEach(b=>{b.style.width=b.dataset.w+'%';});});
-},{threshold:.2});
-document.querySelectorAll('.skcat').forEach(g=>sObs.observe(g));
-document.querySelectorAll('.mtc > div').forEach((line,i)=>{
-  line.style.opacity='0';
-  setTimeout(()=>{line.style.opacity='1';line.style.transition='opacity .3s';},1300+i*160);
-});
-</script>
+<script src="portfolio.js"></script>
 </body>
 </html>
