@@ -1005,19 +1005,6 @@ h1.ht .grad {
     color: var(--muted)
 }
 
-.tlcard {
-    background: var(--surface);
-    border: 1px solid var(--border2);
-    border-radius: 12px;
-    padding: 1.4rem 1.6rem;
-    margin-top: .9rem;
-    transition: border-color .3s
-}
-
-.tlcard:hover {
-    border-color: rgba(0, 229, 255, .3)
-}
-
 .tlb {
     list-style: none;
     display: flex;
@@ -1445,10 +1432,6 @@ footer span {
 
     .tld {
         left: -1.85rem
-    }
-
-    .tlcard {
-        padding: 1.1rem 1.1rem
     }
 
     h1.ht {
