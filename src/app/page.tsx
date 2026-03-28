@@ -216,6 +216,21 @@ export default function Home() {
   }, [mobileNavOpen]);
 
   useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 900) {
+        setMobileNavOpen(false);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
       const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -381,6 +396,18 @@ export default function Home() {
       <div aria-hidden="true" className="blob b3" />
 
       <div className={`mobile-nav ${mobileNavOpen ? "open" : ""}`} id="mobileNav">
+        <div className="mobile-nav-header">
+          <span className="mobile-nav-title">Menu</span>
+          <button
+            aria-label="Close menu"
+            className="mobile-nav-close"
+            onClick={closeMobileNav}
+            type="button"
+          >
+            <FiX />
+          </button>
+        </div>
+
         {navItems.map(({ icon: Icon, id, label }) => (
           <a
             className={`mobile-nav-link ${activeSection === id ? "active" : ""}`}
