@@ -1,10 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Suraj Kashyap - Full-Stack Engineer",
   description:
     "Personal portfolio of Suraj Kashyap, an Full-stack engineer working across Spring Boot, Laravel, Vue.js, Next.js, and Generative AI systems."
+};
+
+export const viewport: Viewport = {
+  colorScheme: "dark",
+  themeColor: "#130c1f"
 };
 
 export default function RootLayout({
