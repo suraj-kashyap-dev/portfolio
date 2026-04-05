@@ -233,18 +233,24 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
+      const viewportBottom = currentScroll + window.innerHeight;
       const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const probePoint = currentScroll + 220;
+      const pageBottom = document.documentElement.scrollHeight;
+      const probePoint = currentScroll + Math.min(window.innerHeight * 0.35, 220);
 
       let currentSection = "hero";
 
-      navItems.forEach((item) => {
-        const section = document.getElementById(item.id);
+      if (viewportBottom >= pageBottom - 2) {
+        currentSection = navItems[navItems.length - 1]?.id ?? currentSection;
+      } else {
+        navItems.forEach((item) => {
+          const section = document.getElementById(item.id);
 
-        if (section && probePoint >= section.offsetTop) {
-          currentSection = item.id;
-        }
-      });
+          if (section && probePoint >= section.offsetTop) {
+            currentSection = item.id;
+          }
+        });
+      }
 
       setActiveSection(currentSection);
       setScrolled(currentScroll > 18);
