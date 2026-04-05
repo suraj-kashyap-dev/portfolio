@@ -738,7 +738,6 @@ h1.ht .grad {
 }
 
 .hero-role {
-  font-family: "Syne", sans-serif;
   font-size: clamp(0.9rem, 2vw, 1.1rem);
   color: var(--orange);
   letter-spacing: 0.08em;
