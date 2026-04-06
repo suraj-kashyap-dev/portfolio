@@ -75,9 +75,9 @@ const navItems: NavItem[] = [
 
 const contactLinks: ContactLink[] = [
   {
-    href: "https://github.com/suraj-kashyap-dev",
+    href: "https://github.com/suraj-webkul",
     label: "GitHub",
-    value: "github.com/suraj-kashyap-dev",
+    value: "github.com/suraj-webkul",
     icon: FiGithub,
     external: true
   },
@@ -571,7 +571,7 @@ export default function Home() {
                 <div className="cav">SK</div>
                 <div>
                   <div className="cn">Suraj Kashyap</div>
-                  <div className="cr">@suraj-kashyap-dev</div>
+                  <div className="cr">@suraj-webkul</div>
                   <div className="cl">
                     <FiMapPin />
                     <span>Ghaziabad, UP</span>

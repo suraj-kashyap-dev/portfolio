@@ -97,5 +97,5 @@ If a `CNAME` file is present, the workflow and Next.js config treat the site as 
 ## Contact
 
 - Email: `surajkashyap9911@gmail.com`
-- GitHub: `https://github.com/suraj-kashyap-dev`
+- Phone: `9315981404`
 - LinkedIn: `https://linkedin.com/in/kashyap-suraj`

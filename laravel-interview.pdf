@@ -1,0 +1,3175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Laravel Senior Developer Interview Questions (5–6 Years)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --red: #e84040;
+    --orange: #f97316;
+    --dark: #0d0d0d;
+    --card: #141414;
+    --border: #2a2a2a;
+    --muted: #6b7280;
+    --text: #e5e5e5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    min-height: 100vh;
+  }
+  h1,h2,h3 { font-family: 'Syne', sans-serif; }
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82em;
+  }
+  .hero-grid {
+    background-image: radial-gradient(circle at 1px 1px, #2a2a2a 1px, transparent 0);
+    background-size: 32px 32px;
+  }
+  .badge {
+    background: linear-gradient(135deg, #e84040 0%, #f97316 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .category-pill {
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .category-pill.active {
+    background: linear-gradient(135deg, #e84040, #f97316);
+    color: white;
+    border-color: transparent;
+  }
+  .q-card {
+    border: 1px solid var(--border);
+    background: var(--card);
+    border-radius: 12px;
+    transition: all 0.25s ease;
+    overflow: hidden;
+  }
+  .q-card:hover { border-color: #e84040; transform: translateY(-2px); }
+  .q-header {
+    cursor: pointer;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    user-select: none;
+  }
+  .q-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--orange);
+    background: rgba(249,115,22,0.12);
+    border: 1px solid rgba(249,115,22,0.25);
+    border-radius: 6px;
+    padding: 2px 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .q-title { font-size: 0.97rem; font-weight: 500; color: #f0f0f0; flex: 1; line-height: 1.5; }
+  .q-chevron {
+    width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px;
+    color: var(--muted);
+    transition: transform 0.25s;
+  }
+  .q-card.open .q-chevron { transform: rotate(180deg); color: var(--orange); }
+  .q-body {
+    display: none;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1.25rem;
+  }
+  .q-card.open .q-body { display: block; }
+  .q-body p { color: #c9c9c9; font-size: 0.91rem; line-height: 1.75; margin-bottom: 0.75rem; }
+  .q-body ul { margin-left: 1.25rem; margin-bottom: 0.75rem; }
+  .q-body li { color: #c9c9c9; font-size: 0.91rem; line-height: 1.75; }
+  .q-body code {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #f97316;
+  }
+  .q-body pre {
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-x: auto;
+    margin: 0.75rem 0;
+    color: #d4d4d4;
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+  .diff-badge {
+    font-size: 0.68rem;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 2px 7px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: 3px;
+  }
+  .diff-basic { background: rgba(34,197,94,0.12); color: #4ade80; border: 1px solid rgba(74,222,128,0.25); }
+  .diff-mid   { background: rgba(234,179,8,0.12); color: #facc15; border: 1px solid rgba(250,204,21,0.25); }
+  .diff-adv   { background: rgba(232,64,64,0.12); color: #f87171; border: 1px solid rgba(248,113,113,0.25); }
+  .diff-dsa   { background: rgba(139,92,246,0.12); color: #a78bfa; border: 1px solid rgba(167,139,250,0.25); }
+  .progress-bar { height: 4px; background: linear-gradient(90deg,#e84040,#f97316); border-radius: 2px; transition: width 0.3s; }
+  .cat-section { scroll-margin-top: 100px; }
+  #search-input {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: #e5e5e5;
+    border-radius: 10px;
+    padding: 0.75rem 1rem 0.75rem 2.75rem;
+    width: 100%;
+    font-size: 0.93rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  #search-input:focus { border-color: #e84040; }
+  #search-input::placeholder { color: #555; }
+  .stat-card {
+    background: #141414;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+  }
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(13,13,13,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #2a2a2a;
+  }
+  .no-results { display: none; }
+  .tag-cat {
+    font-size: 0.68rem;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: rgba(232,64,64,0.1);
+    color: #f87171;
+    border: 1px solid rgba(232,64,64,0.2);
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero-grid border-b border-[#2a2a2a] py-16 px-4">
+  <div class="max-w-5xl mx-auto text-center">
+    <div class="inline-flex items-center gap-2 bg-[#1a1a1a] border border-[#333] rounded-full px-4 py-1.5 mb-6 text-sm">
+      <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+      <span class="text-gray-400 font-mono text-xs">v2026 • 5–6 Yrs Experience Level</span>
+    </div>
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
+      <span class="badge">Laravel</span>
+      <span class="text-white"> Interview Kit</span>
+    </h1>
+    <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-10">
+      110+ curated questions with expert answers — covering Core Laravel, Eloquent ORM, Architecture, Security, Performance, APIs, Testing, DevOps & DSA. Crafted from the perspective of a 15+ year interviewer.
+    </p>
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-3xl mx-auto">
+      <div class="stat-card"><div class="text-2xl font-bold text-[#e84040]">110+</div><div class="text-xs text-gray-500 mt-1">Questions</div></div>
+      <div class="stat-card"><div class="text-2xl font-bold text-[#f97316]">8</div><div class="text-xs text-gray-500 mt-1">Categories</div></div>
+      <div class="stat-card"><div class="text-2xl font-bold text-yellow-400">15+</div><div class="text-xs text-gray-500 mt-1">DSA Questions</div></div>
+      <div class="stat-card"><div class="text-2xl font-bold text-green-400">All</div><div class="text-xs text-gray-500 mt-1">With Answers</div></div>
+      <div class="stat-card"><div class="text-2xl font-bold text-purple-400">2026</div><div class="text-xs text-gray-500 mt-1">Updated</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY NAV -->
+<div class="sticky-nav px-4 py-3">
+  <div class="max-w-5xl mx-auto flex flex-col sm:flex-row gap-3 items-center">
+    <div class="relative w-full sm:w-80 flex-shrink-0">
+      <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+      <input id="search-input" type="text" placeholder="Search questions…" oninput="filterQuestions()"/>
+    </div>
+    <div class="flex flex-wrap gap-2 flex-1">
+      <button onclick="filterCat('all')" class="category-pill active text-xs px-3 py-1.5 border border-[#444] rounded-full font-mono" id="pill-all">All</button>
+      <button onclick="filterCat('core')" class="category-pill text-xs px-3 py-1.5 border border-[#444] rounded-full text-gray-300 font-mono" id="pill-core">Core</button>
+      <button onclick="filterCat('eloquent')" class="category-pill text-xs px-3 py-1.5 border border-[#444] rounded-full text-gray-300 font-mono" id="pill-eloquent">Eloquent</button>
+      <button onclick="filterCat('arch')" class="category-pill text-xs px-3 py-1.5 border border-[#444] rounded-full text-gray-300 font-mono" id="pill-arch">Architecture</button>
+      <button onclick="filterCat('security')" class="category-pill text-xs px-3 py-1.5 border border-[#444] rounded-full text-gray-300 font-mono" id="pill-security">Security</button>
+      <button onclick="filterCat('perf')" class="category-pill text-xs px-3 py-1.5 border border-[#444] rounded-full text-gray-300 font-mono" id="pill-perf">Performance</button>
+      <button onclick="filterCat('api')" class="category-pill text-xs px-3 py-1.5 border border-[#444] rounded-full text-gray-300 font-mono" id="pill-api">API & Auth</button>
+      <button onclick="filterCat('testing')" class="category-pill text-xs px-3 py-1.5 border border-[#444] rounded-full text-gray-300 font-mono" id="pill-testing">Testing</button>
+      <button onclick="filterCat('dsa')" class="category-pill text-xs px-3 py-1.5 border border-[#444] rounded-full text-gray-300 font-mono" id="pill-dsa">DSA</button>
+    </div>
+    <div class="text-xs text-gray-500 font-mono whitespace-nowrap" id="count-label">110 shown</div>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="max-w-5xl mx-auto px-4 py-3">
+  <div class="flex justify-between text-xs text-gray-500 font-mono mb-1">
+    <span>Progress</span><span id="progress-text">0 / 110 reviewed</span>
+  </div>
+  <div class="w-full bg-[#1a1a1a] rounded-full h-1 overflow-hidden">
+    <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- QUESTIONS CONTAINER -->
+<div class="max-w-5xl mx-auto px-4 pb-20" id="questions-container">
+
+<!-- ============================================================ -->
+<!-- SECTION 1: CORE LARAVEL -->
+<!-- ============================================================ -->
+<div class="cat-section mb-2" id="sec-core">
+  <div class="flex items-center gap-3 py-5">
+    <div class="w-1 h-8 bg-gradient-to-b from-[#e84040] to-[#f97316] rounded-full"></div>
+    <h2 class="text-xl font-bold text-white">Core Laravel Concepts</h2>
+    <span class="text-xs font-mono text-gray-500 bg-[#1a1a1a] border border-[#333] px-3 py-1 rounded-full">20 Questions</span>
+  </div>
+  <div class="space-y-3">
+
+    <!-- Q1 -->
+    <div class="q-card" data-cat="core" data-diff="basic">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#01</span>
+        <span class="diff-badge diff-basic">Basic</span>
+        <span class="q-title">Explain Laravel's Request Lifecycle from HTTP request to response.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Every request in Laravel flows through a well-defined pipeline. When a request enters the application:</p>
+        <ul>
+          <li><strong>1. public/index.php</strong> — the entry point. It loads Composer's autoloader and creates the Application instance.</li>
+          <li><strong>2. HTTP / Console Kernel</strong> — the request is sent to <code>App\Http\Kernel</code> which defines global and route middleware stacks.</li>
+          <li><strong>3. Service Providers Boot</strong> — all providers registered in <code>config/app.php</code> are booted (e.g., RouteServiceProvider, AuthServiceProvider).</li>
+          <li><strong>4. Router dispatches</strong> — the request matches a route. Route middleware runs. The controller method is called.</li>
+          <li><strong>5. Response sent</strong> — the controller returns a Response, which travels back through the middleware stack before being sent to the client.</li>
+        </ul>
+        <p><strong>Interviewer Tip:</strong> A 5-year developer must describe this precisely, including that <code>terminate()</code> middleware runs after the response is sent.</p>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="q-card" data-cat="core" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#02</span>
+        <span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">What is the Service Container and how does Dependency Injection work in Laravel?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>The Service Container (IoC Container) is a powerful tool for managing class dependencies and performing dependency injection. Think of it as a smart factory that knows how to build objects.</p>
+        <pre>// Binding in a ServiceProvider
+$this->app->bind(PaymentGatewayInterface::class, StripePaymentGateway::class);
+
+// Singleton - resolved only once
+$this->app->singleton(ReportGenerator::class, function ($app) {
+    return new ReportGenerator($app->make(Database::class));
+});
+
+// Auto-resolved via type-hinting
+class OrderController extends Controller {
+    public function __construct(private PaymentGatewayInterface $gateway) {}
+}</pre>
+        <p><strong>Key bindings:</strong> <code>bind()</code> creates new instance each time, <code>singleton()</code> shares the same instance, <code>instance()</code> registers an existing object, <code>scoped()</code> singleton per lifecycle (Octane-safe).</p>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="q-card" data-cat="core" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#03</span>
+        <span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">Difference between Service Container, Service Provider, and Facades.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p><strong>Service Container:</strong> The IoC registry — stores and resolves bindings. It's the engine.</p>
+        <p><strong>Service Provider:</strong> The bootstrap class that registers things INTO the container. <code>register()</code> binds, <code>boot()</code> runs after all providers are registered. Providers are the starting point of your application.</p>
+        <p><strong>Facade:</strong> A static proxy to the underlying class in the container. <code>Cache::get('key')</code> resolves to <code>app('cache')->get('key')</code>. Facades are testable because they can be faked with <code>Cache::fake()</code>.</p>
+        <pre>// Custom Facade
+class Report extends Facade {
+    protected static function getFacadeAccessor() { return 'report.generator'; }
+}</pre>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="q-card" data-cat="core" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#04</span>
+        <span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How does Middleware work? Difference between global, route, and terminable middleware.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Middleware is a filter mechanism for HTTP requests. They form a pipeline — each middleware wraps around the next.</p>
+        <ul>
+          <li><strong>Global Middleware:</strong> Runs on every request (e.g., TrimStrings, ConvertEmptyStringsToNull).</li>
+          <li><strong>Route Middleware:</strong> Assigned to specific routes/groups (e.g., <code>auth</code>, <code>throttle:60,1</code>).</li>
+          <li><strong>Terminable Middleware:</strong> Has a <code>terminate()</code> method that runs after the response is sent, useful for logging.</li>
+        </ul>
+        <pre>class LogRequest implements Middleware {
+    public function handle($request, Closure $next) {
+        $response = $next($request); // passes to next
+        // post-response logic here
+        return $response;
+    }
+    public function terminate($request, $response) {
+        Log::info('Request logged after response sent');
+    }
+}</pre>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="q-card" data-cat="core" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#05</span>
+        <span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">Explain Laravel Events and Listeners. When would you use them?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Events implement the Observer pattern — they decouple your application logic. When something happens (order placed), you fire an event, and one or more listeners react (send invoice, notify warehouse, update analytics).</p>
+        <pre>// Event class
+class OrderPlaced {
+    public function __construct(public Order $order) {}
+}
+
+// Listener
+class SendOrderConfirmation implements ShouldQueue {
+    public function handle(OrderPlaced $event) {
+        Mail::to($event->order->customer)->send(new OrderMail($event->order));
+    }
+}
+
+// Firing the event
+event(new OrderPlaced($order));</pre>
+        <p>Listeners implementing <code>ShouldQueue</code> are automatically pushed to a queue. Use <code>Event::fake()</code> in tests to assert events were fired.</p>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="q-card" data-cat="core" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#06</span>
+        <span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How do Laravel Queues work? Explain Job batching and chaining.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Queues let you defer time-consuming tasks. Jobs are pushed to a queue (Redis, SQS, database) and processed by a worker (<code>php artisan queue:work</code>).</p>
+        <pre>// Dispatch a job
+ProcessVideoUpload::dispatch($video)->onQueue('media');
+
+// Chaining — runs sequentially
+Bus::chain([
+    new ProcessVideo($video),
+    new GenerateThumbnail($video),
+    new NotifyUser($user),
+])->dispatch();
+
+// Batching — parallel with callback
+$batch = Bus::batch([
+    new ImportChunk($rows1),
+    new ImportChunk($rows2),
+])->then(function (Batch $batch) {
+    // All jobs succeeded
+})->catch(function (Batch $batch, Throwable $e) {
+    // First failure
+})->finally(function (Batch $batch) {
+    // Always runs
+})->dispatch();</pre>
+        <p><strong>Key config:</strong> <code>QUEUE_CONNECTION=redis</code>, <code>--tries</code>, <code>--timeout</code>, failed jobs in <code>failed_jobs</code> table, <code>queue:retry</code>.</p>
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="q-card" data-cat="core" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#07</span>
+        <span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">Explain Blade templating — components, directives, and stacks.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Blade is Laravel's compiled template engine. Templates compile to plain PHP and are cached — no performance overhead.</p>
+        <ul>
+          <li><strong>Components:</strong> <code>php artisan make:component Alert</code> creates a class + view. Used as <code>&lt;x-alert type="error" /&gt;</code>.</li>
+          <li><strong>Directives:</strong> <code>@if</code>, <code>@foreach</code>, <code>@auth</code>, <code>@can</code>, <code>@include</code>, <code>@yield</code>, <code>@section</code>, <code>@extends</code>.</li>
+          <li><strong>Stacks:</strong> Push scripts/styles from child views: <code>@push('scripts')…@endpush</code>, rendered with <code>@stack('scripts')</code>.</li>
+          <li><strong>Custom Directives:</strong> <code>Blade::directive('currency', fn($exp) => "&lt;?php echo money($exp); ?&gt;")</code></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="q-card" data-cat="core" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#08</span>
+        <span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">What are Laravel Contracts? Why use interfaces instead of concrete classes?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Contracts are a set of interfaces (<code>Illuminate\Contracts\*</code>) that define the core services Laravel provides — like <code>Queue</code>, <code>Cache</code>, <code>Filesystem</code>, <code>Mail</code>.</p>
+        <p><strong>Why use them:</strong> Programming to an interface promotes loose coupling. You can swap implementations (e.g., change cache driver from Redis to Memcached) without changing application code. They also provide explicit documentation of what a class needs.</p>
+        <pre>// Type-hint the contract, not the concrete class
+use Illuminate\Contracts\Cache\Repository;
+
+class ProductService {
+    public function __construct(private Repository $cache) {}
+}</pre>
+      </div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="q-card" data-cat="core" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#09</span>
+        <span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How does Laravel's Task Scheduling work? How would you schedule a complex job?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Laravel's scheduler replaces multiple cron entries with a single cron: <code>* * * * * php /path/to/artisan schedule:run</code>. Define tasks in <code>App\Console\Kernel::schedule()</code>.</p>
+        <pre>protected function schedule(Schedule $schedule) {
+    $schedule->command('reports:generate')->dailyAt('03:00')
+             ->withoutOverlapping()
+             ->onOneServer()    // prevents multiple servers running it
+             ->runInBackground();
+
+    $schedule->job(new SyncInventory)->everyFiveMinutes()
+             ->between('09:00','18:00')
+             ->weekdays();
+
+    $schedule->call(function () {
+        DB::table('temp_data')->truncate();
+    })->weekly()->sendOutputTo(storage_path('logs/cleanup.log'));
+}</pre>
+        <p><code>withoutOverlapping()</code> and <code>onOneServer()</code> are critical in multi-server environments using a shared cache/Redis.</p>
+      </div>
+    </div>
+
+    <!-- Q10 -->
+    <div class="q-card" data-cat="core" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#10</span>
+        <span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">What is Laravel Octane? How does it differ from traditional PHP-FPM?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Traditional PHP-FPM boots the entire Laravel application on every request (load framework, parse config, boot providers). Octane keeps the application booted in memory using Swoole or RoadRunner, serving requests at tremendous speed.</p>
+        <ul>
+          <li><strong>Performance gains:</strong> 5-10x faster for many use cases.</li>
+          <li><strong>Gotcha — State leakage:</strong> Since the app stays in memory, you MUST avoid storing state in singletons between requests. Use <code>app()->scoped()</code> for per-request bindings.</li>
+          <li><strong>Concurrency:</strong> <code>Octane::concurrently()</code> runs multiple closures simultaneously.</li>
+        </ul>
+        <pre>// Parallel execution in Octane
+[$users, $products] = Octane::concurrently([
+    fn() => User::count(),
+    fn() => Product::active()->count(),
+]);</pre>
+      </div>
+    </div>
+
+    <!-- Q11 -->
+    <div class="q-card" data-cat="core" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#11</span>
+        <span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">Explain Form Request validation — when and why to use it.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Form Requests are dedicated classes that encapsulate validation and authorization logic, keeping controllers thin.</p>
+        <pre>class StoreProductRequest extends FormRequest {
+    public function authorize() {
+        return $this->user()->can('create', Product::class);
+    }
+    public function rules() {
+        return [
+            'name'  => 'required|string|max:255|unique:products',
+            'price' => 'required|numeric|min:0',
+            'tags'  => 'array|max:5',
+            'tags.*'=> 'exists:tags,id',
+        ];
+    }
+    public function messages() {
+        return ['name.unique' => 'This product name is already taken.'];
+    }
+}
+// Controller
+public function store(StoreProductRequest $request) {
+    $validated = $request->validated(); // safe to use
+}</pre>
+      </div>
+    </div>
+
+    <!-- Q12 -->
+    <div class="q-card" data-cat="core" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#12</span>
+        <span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How does Broadcasting work in Laravel for real-time features?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Laravel Broadcasting lets you broadcast server-side events to the client via WebSockets (Pusher, Ably, Laravel Reverb).</p>
+        <pre>// Event implements ShouldBroadcast
+class MessageSent implements ShouldBroadcast {
+    public function broadcastOn() {
+        return new PrivateChannel('chat.'.$this->conversation->id);
+    }
+    public function broadcastWith() {
+        return ['message' => $this->message->toArray()];
+    }
+    public function broadcastAs() { return 'message.sent'; }
+}
+
+// Frontend (Echo + Pusher)
+Echo.private(`chat.${conversationId}`)
+    .listen('.message.sent', (e) => {
+        this.messages.push(e.message);
+    });</pre>
+        <p>Channel types: <code>Channel</code> (public), <code>PrivateChannel</code> (authenticated), <code>PresenceChannel</code> (who's online).</p>
+      </div>
+    </div>
+
+    <!-- Q13 -->
+    <div class="q-card" data-cat="core" data-diff="basic">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#13</span>
+        <span class="diff-badge diff-basic">Basic</span>
+        <span class="q-title">What is the difference between <code>dd()</code>, <code>dump()</code>, and <code>ddd()</code>?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p><code>dump()</code> outputs the variable and continues execution. <code>dd()</code> (Dump and Die) outputs and halts execution. <code>ddd()</code> was available in older versions (Dump, Die, and Debug in Debugbar). In modern Laravel, use <code>ray()</code> (via Ray app) or <code>dump()</code> for non-blocking debug. Never leave <code>dd()</code> in production code.</p>
+      </div>
+    </div>
+
+    <!-- Q14 -->
+    <div class="q-card" data-cat="core" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#14</span>
+        <span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How do you implement multi-tenancy in Laravel?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Two main approaches:</p>
+        <ul>
+          <li><strong>Single Database (column-based):</strong> Add <code>tenant_id</code> to all tables. Use a global scope to automatically filter. Risk: data leakage if scope is forgotten.</li>
+          <li><strong>Multiple Databases:</strong> Each tenant has their own DB. Switch connection dynamically. Packages like <code>spatie/laravel-multitenancy</code> or <code>tenancy/tenancy</code> help manage this.</li>
+        </ul>
+        <pre>// Global scope approach
+class TenantScope implements Scope {
+    public function apply(Builder $builder, Model $model) {
+        $builder->where('tenant_id', tenant()->id);
+    }
+}
+// In Model
+protected static function booted() {
+    static::addGlobalScope(new TenantScope);
+}</pre>
+      </div>
+    </div>
+
+    <!-- Q15 -->
+    <div class="q-card" data-cat="core" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#15</span>
+        <span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">What are Macros in Laravel? Give a real-world example.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Macros let you add custom methods to Laravel's core classes (Collection, Request, Response, Builder) without extending them. The class must use the <code>Macroable</code> trait.</p>
+        <pre>// In a ServiceProvider boot()
+Collection::macro('toAssoc', function () {
+    return $this->reduce(function ($assoc, $item) {
+        $assoc[$item['key']] = $item['value'];
+        return $assoc;
+    }, []);
+});
+
+Response::macro('success', function ($data, $message = 'OK') {
+    return Response::json(['success' => true, 'data' => $data, 'message' => $message]);
+});
+
+// Usage
+collect($pairs)->toAssoc();
+return response()->success($user);</pre>
+      </div>
+    </div>
+
+    <!-- Q16 -->
+    <div class="q-card" data-cat="core" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#16</span>
+        <span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">Difference between <code>session()->flash()</code> and regular session storage.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Regular session data persists until explicitly removed. Flash data is available only for the NEXT request — perfect for success/error messages after redirects.</p>
+        <pre>// Flash — available on the very next request only
+session()->flash('success', 'Order placed successfully!');
+
+// Reflash — keep flash data for one more request
+session()->reflash();
+
+// Regular — persists
+session()->put('cart', $cartItems);
+session()->get('cart');
+session()->forget('cart');</pre>
+      </div>
+    </div>
+
+    <!-- Q17 -->
+    <div class="q-card" data-cat="core" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#17</span>
+        <span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How does Laravel's Collection class work? Name 10 useful collection methods.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Collections wrap arrays in an OOP interface with chainable, immutable methods. Eloquent results are always Collections.</p>
+        <ul>
+          <li><code>filter()</code> — remove items by condition</li>
+          <li><code>map()</code> — transform each item</li>
+          <li><code>flatMap()</code> — map then flatten</li>
+          <li><code>groupBy()</code> — group by key</li>
+          <li><code>keyBy()</code> — re-key by field</li>
+          <li><code>pluck()</code> — extract a column</li>
+          <li><code>chunk()</code> — split into groups</li>
+          <li><code>partition()</code> — split into two collections</li>
+          <li><code>reduce()</code> — fold into a single value</li>
+          <li><code>zip()</code> — merge with another collection</li>
+          <li><code>lazy()</code> — creates LazyCollection for huge datasets</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q18 -->
+    <div class="q-card" data-cat="core" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#18</span>
+        <span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">Explain Pipeline design pattern and how Laravel uses it internally.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Laravel's <code>Pipeline</code> class implements the Pipeline pattern where an object is passed through a series of stages. The HTTP Kernel uses it for middleware. You can use it in your own code:</p>
+        <pre>$result = app(Pipeline::class)
+    ->send($order)
+    ->through([
+        ValidateInventory::class,
+        ApplyDiscount::class,
+        CalculateTax::class,
+        ChargePayment::class,
+    ])
+    ->thenReturn();
+
+// Each stage:
+class ApplyDiscount {
+    public function handle(Order $order, Closure $next) {
+        $order->applyDiscount();
+        return $next($order);
+    }
+}</pre>
+      </div>
+    </div>
+
+    <!-- Q19 -->
+    <div class="q-card" data-cat="core" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#19</span>
+        <span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">What is the difference between <code>config()</code>, <code>env()</code>, and <code>.env</code>?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>The <code>.env</code> file stores environment-specific values (DB credentials, API keys). <code>env()</code> reads from it directly. <code>config()</code> reads from config files in <code>config/</code>.</p>
+        <p><strong>Best Practice:</strong> NEVER call <code>env()</code> outside of config files. When you run <code>php artisan config:cache</code>, the <code>.env</code> file is no longer read — only the cached config is used. Calling <code>env()</code> in code will return <code>null</code> in production if cache is active.</p>
+        <pre>// WRONG — breaks after config:cache
+$key = env('STRIPE_SECRET');
+
+// CORRECT — always works
+$key = config('services.stripe.secret'); // reads from config/services.php</pre>
+      </div>
+    </div>
+
+    <!-- Q20 -->
+    <div class="q-card" data-cat="core" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#20</span>
+        <span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How do you handle long-running processes and prevent timeouts in Laravel?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Never run long tasks in an HTTP request. Strategies include:</p>
+        <ul>
+          <li><strong>Queued Jobs:</strong> Push to queue, return immediately with a job ID for polling.</li>
+          <li><strong>Chunking:</strong> Process large datasets in chunks — <code>User::chunk(500, fn($users) => ...)</code> or <code>LazyCollection</code> with <code>cursor()</code>.</li>
+          <li><strong>Artisan Commands:</strong> Run via CLI with <code>set_time_limit(0)</code>.</li>
+          <li><strong>Horizon Dashboard:</strong> Monitor and manage queues with Laravel Horizon.</li>
+          <li><strong>PHP memory:</strong> Use <code>ini_set('memory_limit', '512M')</code> for heavy commands.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- end section 1 -->
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: ELOQUENT ORM -->
+<!-- ============================================================ -->
+<div class="cat-section mb-2" id="sec-eloquent">
+  <div class="flex items-center gap-3 py-5">
+    <div class="w-1 h-8 bg-gradient-to-b from-blue-500 to-cyan-400 rounded-full"></div>
+    <h2 class="text-xl font-bold text-white">Eloquent ORM & Database</h2>
+    <span class="text-xs font-mono text-gray-500 bg-[#1a1a1a] border border-[#333] px-3 py-1 rounded-full">20 Questions</span>
+  </div>
+  <div class="space-y-3">
+
+    <!-- Q21 -->
+    <div class="q-card" data-cat="eloquent" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#21</span>
+        <span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">Explain all Eloquent relationship types with examples.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <ul>
+          <li><strong>hasOne:</strong> User hasOne Profile</li>
+          <li><strong>belongsTo:</strong> Profile belongsTo User (foreign key on profiles table)</li>
+          <li><strong>hasMany:</strong> User hasMany Posts</li>
+          <li><strong>belongsToMany:</strong> Post belongsToMany Tags (pivot table: post_tag)</li>
+          <li><strong>hasManyThrough:</strong> Country hasManyThrough Posts, through Users</li>
+          <li><strong>hasOneThrough:</strong> Supplier hasOneThrough AccountHistory through Account</li>
+          <li><strong>morphTo / morphMany / morphOne / morphToMany:</strong> Polymorphic — a Comment can belong to a Post OR a Video.</li>
+        </ul>
+        <pre>// Polymorphic
+class Comment extends Model {
+    public function commentable() { return $this->morphTo(); }
+}
+class Post extends Model {
+    public function comments() { return $this->morphMany(Comment::class, 'commentable'); }
+}</pre>
+      </div>
+    </div>
+
+    <!-- Q22 -->
+    <div class="q-card" data-cat="eloquent" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#22</span>
+        <span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">What is the N+1 problem? How do you detect and solve it?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>N+1 happens when you load N records then fire 1 query per record for a relationship. 100 posts = 101 queries!</p>
+        <pre>// BAD — N+1
+$posts = Post::all(); // 1 query
+foreach ($posts as $post) {
+    echo $post->author->name; // 1 query per post = N queries
+}
+
+// GOOD — Eager loading (2 queries total)
+$posts = Post::with('author')->get();
+
+// Nested eager loading
+Post::with(['author', 'comments.user', 'tags'])->paginate(20);
+
+// Conditional eager loading
+Post::with(['comments' => function ($q) {
+    $q->where('approved', true)->latest()->limit(3);
+}])->get();</pre>
+        <p><strong>Detection:</strong> Use <code>DB::enableQueryLog()</code>, Laravel Debugbar, or Telescope. Install <code>barryvdh/laravel-debugbar</code> in dev.</p>
+      </div>
+    </div>
+
+    <!-- Q23 -->
+    <div class="q-card" data-cat="eloquent" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#23</span>
+        <span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">Explain Eloquent Scopes — local vs global scopes.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p><strong>Local Scope:</strong> Reusable query constraint, called manually. Method name prefixed with <code>scope</code>.</p>
+        <pre>// In model
+public function scopeActive($query) {
+    return $query->where('status', 'active');
+}
+public function scopeOfType($query, $type) {
+    return $query->where('type', $type);
+}
+// Usage
+Product::active()->ofType('digital')->get();</pre>
+        <p><strong>Global Scope:</strong> Automatically applied to ALL queries on the model (e.g., SoftDeletes adds <code>WHERE deleted_at IS NULL</code> everywhere). Implement the <code>Scope</code> interface.</p>
+        <pre>// Remove global scope when needed
+Product::withoutGlobalScope(ActiveScope::class)->get();
+Product::withTrashed()->get(); // SoftDeletes</pre>
+      </div>
+    </div>
+
+    <!-- Q24 -->
+    <div class="q-card" data-cat="eloquent" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#24</span>
+        <span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">Explain Accessors, Mutators, and Casts in Eloquent (Laravel 9+ syntax).</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>use Illuminate\Database\Eloquent\Casts\Attribute;
+
+class User extends Model {
+    // New syntax: accessor + mutator combined
+    protected function fullName(): Attribute {
+        return Attribute::make(
+            get: fn () => $this->first_name . ' ' . $this->last_name,
+            set: fn ($value) => ['first_name' => explode(' ', $value)[0],
+                                 'last_name'  => explode(' ', $value)[1] ?? ''],
+        );
+    }
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'settings'          => 'array',         // JSON column
+        'is_admin'          => 'boolean',
+        'balance'           => 'decimal:2',
+        'status'            => UserStatusEnum::class, // PHP 8.1 Enum cast
+    ];
+}</pre>
+      </div>
+    </div>
+
+    <!-- Q25 -->
+    <div class="q-card" data-cat="eloquent" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#25</span>
+        <span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How would you optimize a slow Eloquent query on a million-row table?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <ul>
+          <li><strong>Select only needed columns:</strong> <code>->select(['id', 'name', 'email'])</code> — avoid <code>SELECT *</code>.</li>
+          <li><strong>Add indexes:</strong> Index columns used in <code>WHERE</code>, <code>ORDER BY</code>, foreign keys.</li>
+          <li><strong>Eager load:</strong> Fix N+1 with <code>with()</code>.</li>
+          <li><strong>Use chunk/cursor:</strong> For large datasets, <code>chunk(500)</code> or <code>cursor()</code> (LazyCollection).</li>
+          <li><strong>Cache results:</strong> <code>Cache::remember('users.active', 3600, fn() => User::active()->get())</code></li>
+          <li><strong>DB Query Builder for complex queries:</strong> Raw SQL via <code>DB::select()</code> when Eloquent is slower.</li>
+          <li><strong>Use withCount instead of count on relation:</strong> <code>Post::withCount('comments')->get()</code></li>
+          <li><strong>Explain query:</strong> <code>DB::table('users')->where(...)->explain()</code> to check MySQL execution plan.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q26 -->
+    <div class="q-card" data-cat="eloquent" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#26</span>
+        <span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">Explain Model Observers and when to use them vs Events.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Observers group all model event listeners (created, updated, deleted, etc.) into a single class.</p>
+        <pre>class UserObserver {
+    public function created(User $user) {
+        SendWelcomeEmail::dispatch($user);
+    }
+    public function deleting(User $user) {
+        $user->profile()->delete(); // cleanup before delete
+    }
+}
+// Register in AppServiceProvider boot()
+User::observe(UserObserver::class);</pre>
+        <p><strong>Observers vs Events:</strong> Observers are model-specific and simpler. Events are more flexible, decoupled, and better for cross-domain reactions. Use Observers for simple model-level side effects; Events for complex business workflows.</p>
+      </div>
+    </div>
+
+    <!-- Q27 -->
+    <div class="q-card" data-cat="eloquent" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#27</span>
+        <span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How do database transactions work in Laravel? When must you use them?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Transactions ensure that multiple operations either ALL succeed or ALL rollback — maintaining data integrity.</p>
+        <pre>// Closure approach (auto rollback on exception)
+DB::transaction(function () use ($order, $payment) {
+    $order->update(['status' => 'paid']);
+    $payment->create([...]);
+    $this->reduceInventory($order->items);
+}, 3); // 3 retries on deadlock
+
+// Manual approach
+DB::beginTransaction();
+try {
+    $account->decrement('balance', $amount);
+    $recipient->increment('balance', $amount);
+    DB::commit();
+} catch (Exception $e) {
+    DB::rollBack();
+    throw $e;
+}</pre>
+        <p>Always use transactions for: financial operations, multi-table writes, order processing.</p>
+      </div>
+    </div>
+
+    <!-- Q28 -->
+    <div class="q-card" data-cat="eloquent" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#28</span>
+        <span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">Explain Eloquent's <code>upsert()</code>, <code>updateOrCreate()</code>, and <code>firstOrCreate()</code>.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>// firstOrCreate — find by attributes, or create
+$user = User::firstOrCreate(
+    ['email' => 'john@example.com'],
+    ['name' => 'John', 'role' => 'admin']
+);
+
+// updateOrCreate — find and update, or create
+$record = Subscription::updateOrCreate(
+    ['user_id' => $user->id],
+    ['plan' => 'pro', 'expires_at' => now()->addYear()]
+);
+
+// upsert — bulk operation (most efficient for many records)
+Product::upsert(
+    [['id' => 1, 'price' => 99.99], ['id' => 2, 'price' => 49.99]],
+    uniqueBy: ['id'],
+    update: ['price']
+);</pre>
+        <p><code>upsert()</code> is a single SQL statement (INSERT ... ON DUPLICATE KEY UPDATE) — ideal for syncing large datasets.</p>
+      </div>
+    </div>
+
+    <!-- Q29 -->
+    <div class="q-card" data-cat="eloquent" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#29</span>
+        <span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">What are database migrations best practices? How do you handle production migrations safely?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <ul>
+          <li>Never edit existing migrations that have been run in production — create new ones.</li>
+          <li>For large tables, adding an index can lock the table. Use <code>$table->index('column', algorithm: 'CONCURRENTLY')</code> in PostgreSQL or <code>pt-online-schema-change</code> in MySQL.</li>
+          <li>Run <code>php artisan migrate --pretend</code> to preview SQL before running.</li>
+          <li>Separate data migrations from schema migrations.</li>
+          <li>Always provide a <code>down()</code> method for rollback.</li>
+          <li>Use <code>DB::statement()</code> for raw SQL when needed.</li>
+          <li>Test migrations on a production copy before deploying.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q30 -->
+    <div class="q-card" data-cat="eloquent" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#30</span>
+        <span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How would you implement full-text search in Laravel?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Options ranked by capability:</p>
+        <ul>
+          <li><strong>MySQL FULLTEXT:</strong> <code>$table->fullText(['title', 'body'])</code>, then <code>whereFullText(['title','body'], $term)</code>. Good for simple needs.</li>
+          <li><strong>Laravel Scout:</strong> Official package that syncs models to search drivers (Algolia, Meilisearch, Typesense, DB). Model uses <code>Searchable</code> trait. <code>Product::search('query')->get()</code>.</li>
+          <li><strong>Meilisearch / Typesense:</strong> Self-hosted, blazing fast. Best for large, complex search requirements.</li>
+          <li><strong>Elasticsearch:</strong> Via Scout driver or raw client. Best for complex aggregations and log search.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Q31 -->
+    <div class="q-card" data-cat="eloquent" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#31</span>
+        <span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">What is the Repository Pattern and when should you use it with Laravel?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>The Repository Pattern abstracts the data layer — your business logic doesn't know if data comes from Eloquent, an API, or a CSV. Provides testability and separation of concerns.</p>
+        <pre>interface UserRepositoryInterface {
+    public function findById(int $id): User;
+    public function getActive(): Collection;
+}
+
+class EloquentUserRepository implements UserRepositoryInterface {
+    public function findById(int $id): User {
+        return User::findOrFail($id);
+    }
+    public function getActive(): Collection {
+        return User::active()->get();
+    }
+}
+
+// Bind in ServiceProvider
+$this->app->bind(UserRepositoryInterface::class, EloquentUserRepository::class);</pre>
+        <p><strong>When NOT to use it:</strong> Simple CRUD apps — it adds unnecessary complexity. Use it in domain-heavy applications or when you need to swap data sources.</p>
+      </div>
+    </div>
+
+    <!-- Q32-Q40 (condensed) -->
+    <div class="q-card" data-cat="eloquent" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#32</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">Explain <code>withCount</code>, <code>withSum</code>, <code>withAvg</code> — aggregate on relationships.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>$posts = Post::withCount('comments')     // adds comments_count
+             ->withSum('orders', 'total') // adds orders_sum_total
+             ->withAvg('reviews', 'rating') // adds reviews_avg_rating
+             ->withMin('prices', 'amount')
+             ->get();
+
+echo $posts->first()->comments_count; // no extra query!</pre>
+        <p>These use subqueries — much more efficient than loading relationships and using PHP to count.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="eloquent" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#33</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">Difference between <code>get()</code>, <code>first()</code>, <code>find()</code>, <code>findOrFail()</code>, <code>firstOrFail()</code>.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <ul>
+          <li><code>get()</code> — returns Collection of all matching records.</li>
+          <li><code>first()</code> — returns first matching model or <code>null</code>.</li>
+          <li><code>find($id)</code> — finds by primary key, returns null if not found.</li>
+          <li><code>findOrFail($id)</code> — finds by PK, throws <code>ModelNotFoundException</code> (→ 404) if not found.</li>
+          <li><code>firstOrFail()</code> — first match or throws ModelNotFoundException.</li>
+          <li><code>sole()</code> — new in Laravel 9: exactly one result or exception.</li>
+        </ul>
+        <p><strong>Senior tip:</strong> Prefer <code>findOrFail</code> in controllers so Laravel automatically returns 404 — no manual check needed.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="eloquent" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#34</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">What is the difference between <code>save()</code>, <code>push()</code>, and <code>touch()</code>?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p><code>save()</code> persists the model and its dirty attributes. <code>push()</code> saves the model AND all of its loaded relationships recursively. <code>touch()</code> updates the <code>updated_at</code> timestamp without a full save — useful for cache busting. You can also configure <code>$touches</code> on a model to auto-touch parent relationships when the child is saved.</p>
+        <pre>$post->comments->first()->content = 'Updated';
+$post->push(); // saves post + all modified comments
+
+class Comment extends Model {
+    protected $touches = ['post']; // updates post.updated_at when comment saved
+}</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="eloquent" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#35</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How do you implement Soft Deletes and what are the pitfalls?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>class Post extends Model {
+    use SoftDeletes;
+}
+
+// Migration
+$table->softDeletes(); // adds deleted_at column
+
+Post::find(1)->delete();         // soft delete
+Post::withTrashed()->get();      // include deleted
+Post::onlyTrashed()->get();      // only deleted
+Post::find(1)->restore();        // restore
+Post::find(1)->forceDelete();    // permanent delete</pre>
+        <p><strong>Pitfalls:</strong> Unique constraints break with soft deletes (multiple soft-deleted records with same email). Solution: include <code>deleted_at</code> in the unique index, or use <code>whereNull('deleted_at')</code>. Also, relationships on soft-deleted records won't automatically filter deleted related records — add <code>withTrashed()</code> explicitly where needed.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="eloquent" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#36</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">Explain Laravel's <code>when()</code> and <code>unless()</code> query builder conditionals.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>$query = Product::query()
+    ->when($request->category, fn($q, $cat) => $q->where('category_id', $cat))
+    ->when($request->min_price, fn($q, $min) => $q->where('price', '>=', $min))
+    ->when($request->search, fn($q, $term) =>
+        $q->where('name', 'like', "%{$term}%")
+    )
+    ->unless($request->show_all, fn($q) => $q->where('active', true))
+    ->paginate(20);</pre>
+        <p>This keeps query building clean and chainable without nested if-statements. The condition is evaluated — if falsy, the callback is skipped entirely.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="eloquent" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#37</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">What is the difference between <code>DB::table()</code> and Eloquent models?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p><code>DB::table()</code> is the Query Builder — returns plain stdClass objects, no model events, no relationships, no casting. It's faster for raw data operations. Eloquent returns Model instances with all ORM features (events, observers, casts, relationships, scopes).</p>
+        <p><strong>Use Query Builder when:</strong> bulk inserts/updates for performance, reporting queries where you don't need model features, complex raw SQL.</p>
+        <pre>// Query Builder - faster for bulk
+DB::table('events')->insert($largeArray); // bypasses model events
+
+// Eloquent - full featured
+Event::create($data); // triggers creating, created events</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="eloquent" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#38</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How does Laravel handle multiple database connections?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>// config/database.php — define multiple connections
+'connections' => [
+    'mysql'  => [...],
+    'pgsql'  => [...],
+    'reporting_db' => ['driver' => 'mysql', 'host' => env('REPORT_DB_HOST'), ...]
+]
+
+// Model
+class Report extends Model {
+    protected $connection = 'reporting_db';
+}
+
+// Query Builder
+DB::connection('reporting_db')->table('sales')->get();
+
+// Read/write split (for replicas)
+'mysql' => [
+    'read'  => ['host' => ['192.168.1.1', '192.168.1.2']],
+    'write' => ['host' => ['192.168.1.3']],
+]</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="eloquent" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#39</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How do you use <code>cursor()</code> vs <code>chunk()</code> for large datasets?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p><code>chunk()</code> fetches records in batches (e.g., 500 at a time) — multiple queries. Good for write operations within chunks.</p>
+        <p><code>cursor()</code> uses a single query with a PHP generator via PDO cursor — streams rows one at a time. Memory-efficient but holds the DB connection open. Returns a LazyCollection.</p>
+        <pre>// chunk — multiple queries, good for updates inside
+User::where('active', false)->chunk(500, function ($users) {
+    foreach ($users as $user) { $user->sendReactivation(); }
+});
+
+// cursor — single query, memory efficient for reading
+foreach (User::cursor() as $user) {
+    $this->export($user); // process one at a time
+}</pre>
+        <p><strong>Memory:</strong> <code>get()</code> loads ALL into RAM. <code>chunk()</code> loads 500 at a time. <code>cursor()</code> loads 1 at a time.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="eloquent" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#40</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">What is mass assignment? Explain <code>$fillable</code> vs <code>$guarded</code>.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Mass assignment fills multiple model attributes at once from an array (e.g., <code>User::create($request->all())</code>). Without protection, a malicious user could inject fields like <code>is_admin=1</code>.</p>
+        <ul>
+          <li><code>$fillable = ['name', 'email']</code> — whitelist: ONLY these can be mass-assigned.</li>
+          <li><code>$guarded = ['is_admin', 'role']</code> — blacklist: everything EXCEPT these can be assigned. <code>$guarded = []</code> allows all (dangerous!).</li>
+        </ul>
+        <p><strong>Best practice:</strong> Use <code>$fillable</code> (explicit whitelist) rather than <code>$guarded</code>. Always use <code>$request->validated()</code> from Form Requests before mass assigning.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: ARCHITECTURE -->
+<!-- ============================================================ -->
+<div class="cat-section mb-2" id="sec-arch">
+  <div class="flex items-center gap-3 py-5">
+    <div class="w-1 h-8 bg-gradient-to-b from-yellow-500 to-orange-400 rounded-full"></div>
+    <h2 class="text-xl font-bold text-white">Architecture & Design Patterns</h2>
+    <span class="text-xs font-mono text-gray-500 bg-[#1a1a1a] border border-[#333] px-3 py-1 rounded-full">12 Questions</span>
+  </div>
+  <div class="space-y-3">
+
+    <div class="q-card" data-cat="arch" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#41</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">Explain SOLID principles in the context of a Laravel application.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <ul>
+          <li><strong>S — Single Responsibility:</strong> A controller should only handle HTTP, not business logic. Move logic to Service classes.</li>
+          <li><strong>O — Open/Closed:</strong> Use Contracts/interfaces. Add new payment gateways without modifying existing code.</li>
+          <li><strong>L — Liskov Substitution:</strong> Any implementation of <code>PaymentGatewayInterface</code> should be swappable without breaking the app.</li>
+          <li><strong>I — Interface Segregation:</strong> Don't force a class to implement methods it doesn't need. Split large interfaces into smaller ones.</li>
+          <li><strong>D — Dependency Inversion:</strong> Inject interfaces, not concrete classes. Laravel's container enforces this elegantly.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="arch" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#42</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">What is CQRS and Event Sourcing? Would you implement this in Laravel?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p><strong>CQRS (Command Query Responsibility Segregation):</strong> Separate read models from write models. Commands change state (no return value), Queries return data (no state change). Useful when read and write loads differ dramatically.</p>
+        <p><strong>Event Sourcing:</strong> Store state changes as a sequence of events rather than the current state. You can replay events to rebuild state. The <code>spatie/laravel-event-sourcing</code> package implements this.</p>
+        <pre>// Command pattern in Laravel
+class TransferMoneyCommand {
+    public function __construct(
+        public readonly int $fromAccountId,
+        public readonly int $toAccountId,
+        public readonly float $amount,
+    ) {}
+}
+
+class TransferMoneyCommandHandler {
+    public function handle(TransferMoneyCommand $command): void { ... }
+}</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="arch" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#43</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How would you structure a large Laravel application? (DDD / Modular approach)</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>For large apps, the default Laravel structure doesn't scale well. Common approaches:</p>
+        <ul>
+          <li><strong>Modular (Domain-based):</strong> Group code by domain, not by technical layer. <code>app/Modules/Orders/{Models,Services,Controllers,Events}</code>.</li>
+          <li><strong>DDD layers:</strong> Domain (pure PHP, no framework), Application (use cases), Infrastructure (Laravel adapters), Presentation (controllers).</li>
+          <li><strong>Packages:</strong> Extract core domains into Composer packages.</li>
+        </ul>
+        <pre>app/
+  Modules/
+    Orders/
+      Commands/    PlaceOrder.php
+      Events/      OrderPlaced.php
+      Models/      Order.php, OrderItem.php
+      Services/    OrderService.php, InvoiceService.php
+      Repositories/OrderRepository.php
+      Http/
+        Controllers/ OrderController.php
+        Requests/    PlaceOrderRequest.php</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="arch" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#44</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">When would you use an Action class vs a Service class in Laravel?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p><strong>Service class:</strong> A class that groups related business operations. Can have multiple methods. E.g., <code>OrderService::create()</code>, <code>OrderService::cancel()</code>. Risk: grows too large over time.</p>
+        <p><strong>Action class (Single Action):</strong> One class, one purpose, one <code>execute()</code> or <code>__invoke()</code> method. More granular, easier to test, follows SRP strictly. Popularized by <code>lorisleiva/laravel-actions</code>.</p>
+        <pre>class PlaceOrder {
+    public function __construct(private InventoryService $inventory) {}
+
+    public function execute(Cart $cart, User $user): Order {
+        $this->inventory->reserve($cart->items);
+        $order = Order::create([...]);
+        event(new OrderPlaced($order));
+        return $order;
+    }
+}
+// Usage
+app(PlaceOrder::class)->execute($cart, $user);</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="arch" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#45</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">Explain the Decorator pattern and how to implement it in Laravel.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>interface Logger { public function log(string $msg): void; }
+
+class DatabaseLogger implements Logger {
+    public function log(string $msg): void { DB::table('logs')->insert(['msg' => $msg]); }
+}
+
+class CachingLogger implements Logger {
+    public function __construct(private Logger $logger) {}
+    public function log(string $msg): void {
+        if (!Cache::has($msg)) {
+            $this->logger->log($msg);
+            Cache::put($msg, true, 60);
+        }
+    }
+}
+
+// In ServiceProvider:
+$this->app->bind(Logger::class, function ($app) {
+    return new CachingLogger(new DatabaseLogger());
+});</pre>
+        <p>Decorators add behavior to objects without modifying them. Laravel's middleware stack IS a decorator chain.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="arch" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#46</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How do you handle API versioning in Laravel?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Three common approaches:</p>
+        <ul>
+          <li><strong>URL prefix:</strong> <code>/api/v1/users</code> vs <code>/api/v2/users</code> — separate route files, separate controllers.</li>
+          <li><strong>Header versioning:</strong> <code>Accept: application/vnd.api.v2+json</code> — middleware inspects header and routes accordingly.</li>
+          <li><strong>Query param:</strong> <code>?version=2</code> — less RESTful, avoid.</li>
+        </ul>
+        <pre>// routes/api_v1.php and api_v2.php
+Route::prefix('v1')->group(base_path('routes/api_v1.php'));
+Route::prefix('v2')->group(base_path('routes/api_v2.php'));</pre>
+        <p><strong>Best practice:</strong> Keep v1 stable, build v2 independently. Use API Resources to transform — change Resource output for v2 without touching models.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="arch" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#47</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How do you design a multi-role permission system in Laravel beyond Spatie's package?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Laravel Gates and Policies provide the foundation. For complex RBAC:</p>
+        <ul>
+          <li>Tables: <code>roles</code>, <code>permissions</code>, <code>role_user</code>, <code>permission_role</code></li>
+          <li>Gate defines ability: <code>Gate::define('edit-post', fn($user, $post) => $user->id === $post->user_id || $user->hasRole('admin'))</code></li>
+          <li>Policies group model gates into a class: <code>PostPolicy::update(User $user, Post $post)</code></li>
+          <li>Super admin: <code>Gate::before(fn($user) => $user->isSuperAdmin() ? true : null)</code></li>
+        </ul>
+        <p>Spatie's <code>laravel-permission</code> handles 90% of cases — know how to use it and when to extend it.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="arch" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#48</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">What is an API Resource and Resource Collection? Why not use <code>toArray()</code>?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>class UserResource extends JsonResource {
+    public function toArray($request): array {
+        return [
+            'id'     => $this->id,
+            'name'   => $this->name,
+            'email'  => $this->when(
+                $request->user()->isAdmin(), $this->email
+            ),
+            'posts'  => PostResource::collection($this->whenLoaded('posts')),
+            'links'  => ['self' => route('users.show', $this->id)],
+        ];
+    }
+}
+
+return new UserResource($user);         // single
+return UserResource::collection($users); // collection</pre>
+        <p><code>whenLoaded()</code> prevents eager-loading issues. <code>when()</code> conditionally includes fields. API Resources decouple your internal model from the API contract — change your DB schema without breaking API clients.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="arch" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#49</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How do you implement the Strategy pattern for interchangeable algorithms?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>interface ShippingCalculator {
+    public function calculate(Order $order): float;
+}
+
+class FedExCalculator implements ShippingCalculator { ... }
+class DHLCalculator   implements ShippingCalculator { ... }
+class FlatRateCalc    implements ShippingCalculator { ... }
+
+class ShippingService {
+    public function __construct(private ShippingCalculator $calc) {}
+    public function getRate(Order $order): float {
+        return $this->calc->calculate($order);
+    }
+}
+
+// Bind based on config or request
+$calc = match($carrier) {
+    'fedex' => new FedExCalculator(),
+    'dhl'   => new DHLCalculator(),
+    default => new FlatRateCalc(),
+};
+app(ShippingService::class, ['calc' => $calc])->getRate($order);</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="arch" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#50</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">What is thin controller, fat model (or service) — and what's the right balance?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>"Fat model" can lead to God Object antipattern. The ideal: <strong>thin controller, thin model, fat service</strong>.</p>
+        <ul>
+          <li><strong>Controller:</strong> Validate input → call service → return response. Nothing more.</li>
+          <li><strong>Model:</strong> Database schema, relationships, casts, scopes. NOT business logic.</li>
+          <li><strong>Service/Action:</strong> Business logic, orchestration, external calls.</li>
+          <li><strong>Repository:</strong> Data access abstraction (optional but useful at scale).</li>
+        </ul>
+        <p>A controller method should ideally be 5-10 lines. If it's 50 lines, you have a problem.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="arch" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#51</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">Explain hexagonal (ports & adapters) architecture and how Laravel fits in.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Hexagonal architecture places the business domain at the center, completely isolated from frameworks and infrastructure. Laravel becomes an "adapter" — a detail.</p>
+        <ul>
+          <li><strong>Domain core:</strong> Pure PHP classes — entities, value objects, domain services, repository interfaces.</li>
+          <li><strong>Ports:</strong> Interfaces the domain exposes or requires.</li>
+          <li><strong>Adapters:</strong> Eloquent (implements repository interfaces), HTTP controllers, Console commands, Queue jobs.</li>
+        </ul>
+        <p>The domain knows nothing about Laravel. This makes testing the domain fast (no framework booting) and makes the system easy to maintain.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="arch" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#52</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How do you implement webhooks in Laravel (receiving and sending)?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p><strong>Receiving:</strong> Create a route excluded from CSRF (<code>api</code> group). Verify the signature (HMAC), immediately return 200, process asynchronously via queue.</p>
+        <pre>Route::post('/webhooks/stripe', [StripeWebhookController::class, 'handle']);
+
+class StripeWebhookController extends Controller {
+    public function handle(Request $request) {
+        $sig = $request->header('Stripe-Signature');
+        $event = Webhook::constructEvent($request->getContent(), $sig, config('stripe.webhook_secret'));
+        ProcessStripeEvent::dispatch($event->toArray());
+        return response('', 200);
+    }
+}</pre>
+        <p><strong>Sending:</strong> Use queued jobs with retry logic, exponential backoff, and failure logging. <code>spatie/laravel-webhook-server</code> is excellent for this.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: SECURITY -->
+<!-- ============================================================ -->
+<div class="cat-section mb-2" id="sec-security">
+  <div class="flex items-center gap-3 py-5">
+    <div class="w-1 h-8 bg-gradient-to-b from-red-500 to-rose-400 rounded-full"></div>
+    <h2 class="text-xl font-bold text-white">Security & Authentication</h2>
+    <span class="text-xs font-mono text-gray-500 bg-[#1a1a1a] border border-[#333] px-3 py-1 rounded-full">12 Questions</span>
+  </div>
+  <div class="space-y-3">
+
+    <div class="q-card" data-cat="security" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#53</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How does Laravel protect against SQL injection, XSS, CSRF, and clickjacking?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <ul>
+          <li><strong>SQL Injection:</strong> PDO prepared statements via Eloquent/Query Builder. Avoid <code>DB::statement("... WHERE id = $id")</code>. Use bindings: <code>DB::select('WHERE id = ?', [$id])</code>.</li>
+          <li><strong>XSS:</strong> Blade's <code>{{ $var }}</code> auto-escapes HTML. Use <code>{!! $var !!}</code> only for trusted HTML.</li>
+          <li><strong>CSRF:</strong> <code>VerifyCsrfToken</code> middleware is global by default. <code>@csrf</code> Blade directive adds token. API routes use token-based auth (Sanctum/Passport) instead.</li>
+          <li><strong>Clickjacking:</strong> Add <code>X-Frame-Options: SAMEORIGIN</code> header in middleware or Nginx config.</li>
+          <li><strong>Mass Assignment:</strong> <code>$fillable</code> / <code>$guarded</code> on models.</li>
+          <li><strong>Rate Limiting:</strong> <code>throttle:60,1</code> middleware, or custom <code>RateLimiter::for()</code>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="security" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#54</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">Sanctum vs Passport — when to use which?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p><strong>Laravel Sanctum:</strong> Lightweight token-based auth for SPAs, mobile apps, and simple APIs. Tokens stored in DB. Also supports session-based auth for same-domain SPAs. Simple to set up.</p>
+        <p><strong>Laravel Passport:</strong> Full OAuth2 server implementation. Supports Authorization Code, Client Credentials, Password, Refresh Token grants. Use when you're building a public API that third-party apps will authenticate against (like GitHub OAuth).</p>
+        <p><strong>Rule of thumb:</strong> Your own frontend (SPA, mobile)? Use Sanctum. Third-party integrations with OAuth flows? Use Passport.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="security" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#55</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How do you implement two-factor authentication in Laravel?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Laravel Fortify (or Jetstream) provides 2FA out of the box using TOTP (Time-based One-Time Password via Google Authenticator).</p>
+        <ul>
+          <li>Enable 2FA in <code>config/fortify.php</code>: <code>Features::twoFactorAuthentication(['confirm' => true, 'confirmPassword' => true])</code></li>
+          <li>The user enables 2FA, scans a QR code (stored as encrypted secret in DB).</li>
+          <li>On login, after credentials pass, they're redirected to a challenge page to enter the OTP.</li>
+          <li>Recovery codes are generated for backup access.</li>
+          <li>For custom implementations: use <code>pragmarx/google2fa-laravel</code>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="security" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#56</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">Explain JWT authentication. How would you implement refresh token rotation?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>JWT (JSON Web Token) is stateless — no DB lookup per request. The token contains claims (user ID, expiry) signed with a secret.</p>
+        <p><strong>Refresh Token Rotation:</strong> Short-lived access token (15 min) + long-lived refresh token (7 days). On refresh: invalidate old refresh token, issue new access + refresh token pair. This limits the window if a token is stolen.</p>
+        <pre>// Using tymondesigns/jwt-auth
+$token = JWTAuth::attempt($credentials);
+$refresh = auth()->setTTL(10080)->tokenById($user->id);
+
+// Rotate on refresh
+$newToken = auth()->refresh(true, true); // blacklist old token</pre>
+        <p><strong>When NOT to use JWT:</strong> If you need immediate token revocation (e.g., logout from all devices), JWT is difficult — use DB-backed tokens (Sanctum) instead.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="security" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#57</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How do Laravel Gates and Policies differ? Give a real-world example.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p><strong>Gates:</strong> Closure-based, not model-specific. Good for simple checks.</p>
+        <pre>Gate::define('view-reports', fn(User $user) => $user->hasRole('manager'));
+// Usage
+if (Gate::allows('view-reports')) { ... }</pre>
+        <p><strong>Policies:</strong> Class-based, model-specific. Auto-discovered if naming follows convention.</p>
+        <pre>class PostPolicy {
+    public function update(User $user, Post $post): bool {
+        return $user->id === $post->user_id;
+    }
+    public function delete(User $user, Post $post): bool {
+        return $user->id === $post->user_id || $user->isAdmin();
+    }
+}
+// Controller
+$this->authorize('update', $post); // throws 403 if fails</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="security" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#58</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How do you securely store and handle sensitive data (encryption, hashing)?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <ul>
+          <li><strong>Passwords:</strong> NEVER store plain text. Use <code>Hash::make($password)</code> (bcrypt by default). Verify with <code>Hash::check()</code>.</li>
+          <li><strong>Sensitive data (PII):</strong> Use Eloquent casting with encryption: <code>'ssn' => 'encrypted'</code>. Internally uses <code>Crypt::encryptString()</code>.</li>
+          <li><strong>API keys/secrets:</strong> Store in <code>.env</code>, access via <code>config()</code>. Rotate regularly.</li>
+          <li><strong>Database encryption:</strong> Encrypt at rest (MySQL TDE, AWS RDS encryption).</li>
+          <li><strong>Signed URLs:</strong> <code>URL::signedRoute()</code> for expiring, tamper-proof links.</li>
+        </ul>
+        <pre>// Encrypted cast — transparent encryption/decryption
+protected $casts = ['bank_account' => 'encrypted'];
+$user->bank_account = '1234-5678'; // stored encrypted in DB</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="security" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#59</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How do you implement custom rate limiting beyond the default throttle middleware?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>// In RouteServiceProvider boot()
+RateLimiter::for('api', function (Request $request) {
+    return $request->user()
+        ? Limit::perMinute(120)->by($request->user()->id)
+        : Limit::perMinute(20)->by($request->ip());
+});
+
+RateLimiter::for('uploads', function (Request $request) {
+    return [
+        Limit::perMinute(5)->by($request->user()->id),
+        Limit::perDay(100)->by($request->user()->id),
+    ];
+});
+
+// Apply to route
+Route::middleware(['throttle:uploads'])->post('/upload', ...);</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="security" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#60</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How do you prevent and detect security vulnerabilities in a Laravel app?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <ul>
+          <li><strong>Dependency scanning:</strong> <code>composer audit</code> (built-in), <code>enlightn/enlightn</code> package for security audits.</li>
+          <li><strong>Static analysis:</strong> PHPStan, Psalm detect type issues and potential bugs.</li>
+          <li><strong>OWASP Top 10:</strong> Know them all — injection, broken auth, sensitive data exposure, XXE, broken access control, security misconfiguration, XSS, insecure deserialization.</li>
+          <li><strong>Security headers:</strong> CSP, HSTS, X-Content-Type-Options via middleware.</li>
+          <li><strong>File uploads:</strong> Validate MIME type by content (not extension), store outside web root, virus scan for high-risk apps.</li>
+          <li><strong>Logs:</strong> Never log passwords, tokens, or PII. Use Telescope/Sentry for monitoring.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="security" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#61</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">Explain Laravel Sanctum token abilities and how to scope API access.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>// Issue token with abilities (scopes)
+$token = $user->createToken('mobile-app', ['orders:read', 'orders:create']);
+
+// Check ability in middleware or controller
+if (!$request->user()->tokenCan('orders:create')) {
+    abort(403, 'Token lacks required ability');
+}
+
+// In route middleware
+Route::middleware(['auth:sanctum', 'ability:orders:create'])->post('/orders', ...);</pre>
+        <p>Abilities allow fine-grained control — a read-only token can't create resources even if the user has permission. Essential for mobile apps where you want to limit token scope.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="security" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#62</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How does Laravel's password reset mechanism work internally?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>When a user requests a reset: a cryptographically secure random token is hashed (bcrypt) and stored in <code>password_reset_tokens</code> table with the email and timestamp. The plain token is sent via email in a signed URL.</p>
+        <p>When the user submits the reset form: Laravel finds the record by email, verifies the token matches (using <code>Hash::check()</code>), checks it's not expired (default 60 min), resets the password, deletes the token, logs out all other sessions. This prevents token reuse.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="security" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#63</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How do you implement row-level security (tenant data isolation) in a SaaS app?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <ul>
+          <li>Global scopes on all tenant models automatically inject <code>WHERE tenant_id = ?</code>.</li>
+          <li>Middleware resolves the current tenant (from subdomain, header, or URL) and sets it on the context.</li>
+          <li>Policies double-check ownership: <code>$user->tenant_id === $resource->tenant_id</code>.</li>
+          <li>Database-level: PostgreSQL Row-Level Security (RLS) for ultimate protection.</li>
+          <li>Testing: Write tests that verify Tenant A cannot access Tenant B's data.</li>
+        </ul>
+        <pre>// In tests - critical security test
+$tenantB_order = Order::factory()->for($tenantB)->create();
+$this->actingAs($tenantAUser)
+     ->getJson("/api/orders/{$tenantB_order->id}")
+     ->assertForbidden(); // Must be 403, not 200!</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="security" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#64</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">What are signed routes and temporary signed URLs in Laravel?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>// Generate a signed URL (no expiry)
+$url = URL::signedRoute('unsubscribe', ['user' => $user->id]);
+
+// Temporary signed URL (expires in 30 mins)
+$url = URL::temporarySignedRoute(
+    'invoice.download',
+    now()->addMinutes(30),
+    ['invoice' => $invoice->id]
+);
+
+// Protect the route
+Route::get('/unsubscribe/{user}', [NewsletterController::class, 'unsubscribe'])
+     ->name('unsubscribe')
+     ->middleware('signed');</pre>
+        <p>Perfect for email verification links, password reset, one-click unsubscribe, and file download links that should expire.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 5: PERFORMANCE & CACHING -->
+<!-- ============================================================ -->
+<div class="cat-section mb-2" id="sec-perf">
+  <div class="flex items-center gap-3 py-5">
+    <div class="w-1 h-8 bg-gradient-to-b from-green-500 to-emerald-400 rounded-full"></div>
+    <h2 class="text-xl font-bold text-white">Performance & Caching</h2>
+    <span class="text-xs font-mono text-gray-500 bg-[#1a1a1a] border border-[#333] px-3 py-1 rounded-full">10 Questions</span>
+  </div>
+  <div class="space-y-3">
+
+    <div class="q-card" data-cat="perf" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#65</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">Explain all caching strategies in Laravel. When to use each?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>// Remember (cache-through)
+$users = Cache::remember('active-users', 3600, fn() => User::active()->get());
+
+// Remember Forever
+Cache::rememberForever('settings', fn() => Setting::all()->keyBy('key'));
+
+// Tags (Redis/Memcached only — invalidate groups)
+Cache::tags(['users', 'stats'])->remember('user-count', 3600, fn() => User::count());
+Cache::tags(['users'])->flush(); // invalidates all tagged
+
+// Put / Get / Forget
+Cache::put('key', $value, now()->addHours(2));
+Cache::get('key', 'default');
+Cache::forget('key');
+Cache::flush(); // clear all
+
+// Atomic lock (prevent race conditions)
+Cache::lock('process-payment-'.$orderId, 10)->block(5, function () { ... });</pre>
+        <p><strong>Drivers:</strong> <code>file</code> (dev), <code>redis</code> (production — supports tags, pub/sub), <code>memcached</code>, <code>dynamodb</code> (serverless).</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="perf" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#66</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">What are the key production performance optimizations for Laravel?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre># Config & route caching
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+php artisan event:cache
+
+# Optimized autoloader
+composer install --optimize-autoloader --no-dev
+
+# Queue workers (supervisor recommended)
+php artisan queue:work redis --sleep=3 --tries=3 --max-time=3600
+
+# OPcache enabled in php.ini
+opcache.enable=1
+opcache.memory_consumption=256
+opcache.max_accelerated_files=20000</pre>
+        <ul>
+          <li>Use Redis for sessions, cache, queues.</li>
+          <li>CDN for static assets.</li>
+          <li>Database query optimization (indexes, eager loading).</li>
+          <li>Horizon for queue monitoring.</li>
+          <li>Octane for maximum throughput.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="perf" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#67</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How do you implement HTTP response caching and cache invalidation strategies?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p><strong>Cache invalidation is one of the hardest problems in CS.</strong> Strategies:</p>
+        <ul>
+          <li><strong>TTL-based:</strong> Cache expires after N seconds. Stale data risk.</li>
+          <li><strong>Event-based:</strong> Clear cache when model is updated. Use Observers or Events.</li>
+          <li><strong>Cache tags:</strong> Tag related caches, flush all on update. Requires Redis.</li>
+          <li><strong>Key versioning:</strong> Append version to key — old key naturally expires.</li>
+        </ul>
+        <pre>class ProductObserver {
+    public function updated(Product $product) {
+        Cache::tags(['products', "product-{$product->id}"])->flush();
+    }
+}
+
+// HTTP cache headers
+return response($data)
+    ->header('Cache-Control', 'public, max-age=3600')
+    ->header('ETag', md5($data));</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="perf" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#68</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How would you profile and debug a slow Laravel application in production?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <ul>
+          <li><strong>Laravel Telescope:</strong> Request/response logging, DB queries, jobs, exceptions. Invaluable in staging.</li>
+          <li><strong>Clockwork / Debugbar:</strong> Browser-based profiling in dev.</li>
+          <li><strong>Slow query log:</strong> Enable in MySQL to catch queries over N ms.</li>
+          <li><strong>Sentry:</strong> Error tracking with stack traces and performance monitoring.</li>
+          <li><strong>Blackfire.io:</strong> Deep PHP profiler — call graphs, memory, I/O.</li>
+          <li><strong>New Relic / Datadog APM:</strong> Full-stack observability in production.</li>
+          <li><code>DB::listen()</code> temporarily in production with logging to trace slow queries.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="perf" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#69</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">Explain horizontal scaling for Laravel applications.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Multiple app servers behind a load balancer. Requirements:</p>
+        <ul>
+          <li><strong>Shared session storage:</strong> Redis or database sessions (not file).</li>
+          <li><strong>Shared cache:</strong> Redis cluster — not in-memory or file cache.</li>
+          <li><strong>Shared filesystem:</strong> S3 for user uploads, not local disk.</li>
+          <li><strong>Queue workers:</strong> Run Horizon on separate worker servers.</li>
+          <li><strong>Scheduler:</strong> Only one server runs scheduler (<code>onOneServer()</code> with Redis lock).</li>
+          <li><strong>Sticky sessions:</strong> Avoid if possible — prefer stateless architecture.</li>
+          <li><strong>APP_KEY:</strong> Must be identical on all servers.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="perf" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#70</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How do you paginate efficiently for very large datasets?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>// Standard pagination — COUNT(*) query, supports page numbers
+$users = User::paginate(20);
+$users = User::simplePaginate(20); // no total count query
+
+// Cursor pagination — no COUNT, uses cursor (sorted column)
+// Best for large tables, APIs, infinite scroll
+$users = User::orderBy('id')->cursorPaginate(20);
+// Returns: {data, next_cursor, prev_cursor} — no page numbers
+
+// Raw query with LIMIT/OFFSET (not recommended for deep pages)
+// Page 1000 with limit 20 = OFFSET 20000 — MySQL scans 20020 rows!</pre>
+        <p><strong>Use cursor pagination</strong> for large tables or APIs. Traditional OFFSET pagination degrades at high page numbers because MySQL must scan all skipped rows.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="perf" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#71</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How do you use Redis beyond caching in Laravel (Pub/Sub, Sorted Sets)?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>use Illuminate\Support\Facades\Redis;
+
+// Pub/Sub for real-time
+Redis::publish('chat', json_encode(['msg' => 'Hello']));
+Redis::subscribe(['chat'], function ($msg) { echo $msg; });
+
+// Sorted sets for leaderboards (score = rank)
+Redis::zadd('leaderboard', $score, $userId);
+Redis::zrevrange('leaderboard', 0, 9, 'WITHSCORES'); // top 10
+
+// Atomic increment (counters)
+Redis::incr('page_views:homepage');
+
+// Distributed lock
+$lock = Redis::throttle('key')->allow(10)->every(60)->then(
+    fn() => 'execute', fn() => 'throttled'
+);</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="perf" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#72</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How do you handle file storage at scale in Laravel (S3, CDN, signed URLs)?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>// Store to S3
+$path = Storage::disk('s3')->put('uploads', $request->file('photo'));
+
+// Temporary private URL (30 min)
+$url = Storage::disk('s3')->temporaryUrl($path, now()->addMinutes(30));
+
+// Stream large files without loading into memory
+return Storage::disk('s3')->download($path);
+
+// Direct client upload to S3 (bypass your server)
+$presignedPost = Storage::disk('s3')->temporaryUploadUrl(
+    'uploads/'. Str::uuid(), now()->addMinutes(5)
+);</pre>
+        <p><strong>Best practice:</strong> Use presigned POST for direct-to-S3 uploads from the browser. Your server only issues the presigned URL — the file goes directly to S3, bypassing your app server entirely.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="perf" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#73</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">What are the artisan optimize commands and what do they each do?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <ul>
+          <li><code>config:cache</code> — merges all config files into one cached file. Eliminates file I/O per request.</li>
+          <li><code>route:cache</code> — compiles all routes into a single cached file. Significant speedup with many routes.</li>
+          <li><code>view:cache</code> — compiles all Blade views to PHP. No compilation overhead on request.</li>
+          <li><code>event:cache</code> — caches event-listener mapping.</li>
+          <li><code>optimize</code> — runs config:cache + route:cache.</li>
+          <li><code>optimize:clear</code> — clears all caches. Run before re-caching after deployment.</li>
+        </ul>
+        <p><strong>Deployment order:</strong> optimize:clear → code deploy → composer install → migrate → optimize.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="perf" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#74</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">Explain database read replicas and how to configure them in Laravel.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>// config/database.php
+'mysql' => [
+    'read' => [
+        'host' => ['replica-1.db.com', 'replica-2.db.com'], // load balanced
+    ],
+    'write' => [
+        'host' => 'primary.db.com',
+    ],
+    'sticky' => true, // same request reads from write after writing
+    // ... other config
+],</pre>
+        <p>With <code>sticky => true</code>, if you write in a request, subsequent reads in the SAME request use the write connection — prevents reading stale data immediately after writing (replication lag).</p>
+        <p>Use <code>DB::connection('mysql::write')</code> to force a read on the write connection when needed.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6: API & AUTHENTICATION -->
+<!-- ============================================================ -->
+<div class="cat-section mb-2" id="sec-api">
+  <div class="flex items-center gap-3 py-5">
+    <div class="w-1 h-8 bg-gradient-to-b from-purple-500 to-violet-400 rounded-full"></div>
+    <h2 class="text-xl font-bold text-white">REST API & Integration</h2>
+    <span class="text-xs font-mono text-gray-500 bg-[#1a1a1a] border border-[#333] px-3 py-1 rounded-full">8 Questions</span>
+  </div>
+  <div class="space-y-3">
+
+    <div class="q-card" data-cat="api" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#75</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">What makes a truly RESTful API? Common mistakes Laravel developers make.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p><strong>RESTful principles:</strong> Stateless, uniform interface, resource-based URLs, correct HTTP verbs and status codes, HATEOAS (links in responses).</p>
+        <p><strong>Common mistakes:</strong></p>
+        <ul>
+          <li>Using verbs in URLs: <code>/getUser</code> ❌ → <code>/users/{id}</code> ✅</li>
+          <li>Wrong status codes: returning 200 for errors ❌, 422 for validation, 404 for not found, 401 unauthenticated, 403 unauthorized.</li>
+          <li>Not versioning the API from day 1.</li>
+          <li>Returning HTML instead of JSON on errors.</li>
+          <li>Inconsistent response format — always standardize: <code>{data, message, errors}</code>.</li>
+          <li>No pagination on collection endpoints.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="api" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#76</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How do you handle API errors consistently across a Laravel application?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>// app/Exceptions/Handler.php
+public function register(): void {
+    $this->renderable(function (ValidationException $e, $request) {
+        if ($request->expectsJson()) {
+            return response()->json([
+                'message' => 'Validation failed',
+                'errors'  => $e->errors(),
+            ], 422);
+        }
+    });
+
+    $this->renderable(function (ModelNotFoundException $e, $request) {
+        if ($request->expectsJson()) {
+            return response()->json(['message' => 'Resource not found'], 404);
+        }
+    });
+
+    $this->renderable(function (AuthorizationException $e) {
+        return response()->json(['message' => 'Forbidden'], 403);
+    });
+}</pre>
+        <p>Centralizing error handling ensures consistent JSON responses for API consumers regardless of where the exception originates.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="api" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#77</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How do you consume external APIs reliably using Laravel's HTTP client?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>use Illuminate\Support\Facades\Http;
+
+$response = Http::withToken($this->apiKey)
+    ->withHeaders(['X-Custom-Header' => 'value'])
+    ->timeout(30)
+    ->retry(3, 500, function ($e, $request) {
+        return $e instanceof ConnectionException;
+    })
+    ->post('https://api.example.com/orders', $data);
+
+if ($response->failed()) {
+    Log::error('API call failed', ['status' => $response->status(), 'body' => $response->body()]);
+    throw new ExternalApiException($response->json('message'));
+}
+
+$order = $response->json('data.order');
+
+// Fake in tests
+Http::fake([
+    'api.example.com/*' => Http::response(['data' => ['order' => [...]]], 200),
+]);</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="api" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#78</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How do you implement GraphQL in Laravel? Pros and cons vs REST.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Use the <code>rebing/graphql-laravel</code> or <code>lighthouse-php/lighthouse</code> package. Lighthouse uses schema-first approach with Eloquent auto-resolution.</p>
+        <pre># GraphQL schema (Lighthouse)
+type Query {
+    user(id: ID! @eq): User @find
+    users: [User!]! @paginate
+}
+type User {
+    id: ID!
+    name: String!
+    posts: [Post!]! @hasMany
+}</pre>
+        <p><strong>GraphQL pros:</strong> Client specifies exact data needs, reduces over/under-fetching, single endpoint, strongly typed.</p>
+        <p><strong>GraphQL cons:</strong> Complex caching (no URL-based cache), N+1 still possible (use DataLoader), harder rate limiting, steeper learning curve.</p>
+        <p><strong>Use REST for:</strong> Simple APIs, public APIs, when caching is critical. Use GraphQL for: complex frontends with varied data needs, BFF (Backend For Frontend) patterns.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="api" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#79</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">Explain how to build idempotent API endpoints in Laravel.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Idempotency: making the same request multiple times produces the same result (no duplicate orders). Critical for payment processing, order creation.</p>
+        <pre>// Client sends Idempotency-Key header
+class IdempotencyMiddleware {
+    public function handle($request, $next) {
+        $key = $request->header('Idempotency-Key');
+        if (!$key) return $next($request);
+
+        $cached = Cache::get("idempotency:{$key}");
+        if ($cached) return response()->json($cached);
+
+        $response = $next($request);
+        Cache::put("idempotency:{$key}", $response->getData(), now()->addHours(24));
+        return $response;
+    }
+}</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="api" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#80</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How do you design microservices with Laravel? How do they communicate?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <ul>
+          <li><strong>Synchronous (REST/HTTP):</strong> Service A calls Service B's API. Simple but creates coupling and cascading failures. Use circuit breakers.</li>
+          <li><strong>Asynchronous (Message queues):</strong> Services publish events to RabbitMQ/Kafka/SQS. Other services subscribe. Decoupled, resilient, eventually consistent.</li>
+          <li><strong>gRPC:</strong> Binary protocol, strongly typed (Protocol Buffers), 5-10x faster than REST. Use for high-throughput internal services.</li>
+        </ul>
+        <pre>// Publishing to message bus (using laravel-queue with SQS)
+dispatch(new OrderCreatedEvent($order));
+
+// Or direct HTTP with retry
+Http::retry(3, 100)->post('http://inventory-service/reserve', [
+    'order_id' => $order->id,
+    'items'    => $order->items->toArray(),
+]);</pre>
+        <p>Lumen (Laravel's micro-framework) is ideal for individual microservices needing lightweight footprint.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="api" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#81</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How do you document a Laravel API? (OpenAPI/Swagger)</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Options: <code>darkaonline/l5-swagger</code> (annotations), <code>knuckleswtf/scribe</code> (auto-generates from code), or <code>dedoc/scramble</code> (OpenAPI from code analysis, no annotations needed).</p>
+        <pre>// Scribe annotation approach
+/**
+ * @group Order Management
+ * @authenticated
+ * @response 200 {"data": {"id": 1, "status": "pending"}}
+ * @response 422 {"message": "Validation failed", "errors": {...}}
+ */
+public function store(StoreOrderRequest $request): OrderResource { ... }</pre>
+        <p><strong>Best practice:</strong> Auto-generate from code. Manual documentation gets out of sync. Scribe and Scramble analyze your routes, Form Requests, and Resources to generate accurate docs.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="api" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#82</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How do you handle API backward compatibility when evolving a public API?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <ul>
+          <li>Additive changes are safe: add new fields, new optional parameters.</li>
+          <li>Breaking changes require version bump: removing fields, changing field types, changing auth mechanisms.</li>
+          <li>Deprecation period: mark fields as deprecated in documentation, keep them for 6-12 months.</li>
+          <li>API Resources as a transformation layer: change internal model without changing API response.</li>
+          <li>Sunset headers: <code>Sunset: Sat, 01 Jan 2027 00:00:00 GMT</code> tells clients when v1 dies.</li>
+          <li>Changelogs and versioned documentation are essential.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 7: TESTING & DevOps -->
+<!-- ============================================================ -->
+<div class="cat-section mb-2" id="sec-testing">
+  <div class="flex items-center gap-3 py-5">
+    <div class="w-1 h-8 bg-gradient-to-b from-cyan-500 to-teal-400 rounded-full"></div>
+    <h2 class="text-xl font-bold text-white">Testing & DevOps / CI-CD</h2>
+    <span class="text-xs font-mono text-gray-500 bg-[#1a1a1a] border border-[#333] px-3 py-1 rounded-full">12 Questions</span>
+  </div>
+  <div class="space-y-3">
+
+    <div class="q-card" data-cat="testing" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#83</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">Explain the difference between Unit Tests, Feature Tests, and Integration Tests in Laravel.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <ul>
+          <li><strong>Unit Tests:</strong> Test a single class/method in isolation. No database, no HTTP. Fast. Mock dependencies.</li>
+          <li><strong>Feature Tests:</strong> Test full HTTP request/response cycle. Hits routes, controllers, DB (using SQLite in-memory or RefreshDatabase). The most valuable for APIs.</li>
+          <li><strong>Integration Tests:</strong> Test interactions between multiple real components. No mocks of internal classes.</li>
+        </ul>
+        <pre>// Feature Test
+class OrderApiTest extends TestCase {
+    use RefreshDatabase; // rollback after each test
+
+    public function test_can_place_order() {
+        $user = User::factory()->create();
+        $product = Product::factory()->inStock()->create();
+
+        $this->actingAs($user)
+             ->postJson('/api/orders', ['product_id' => $product->id, 'qty' => 2])
+             ->assertCreated()
+             ->assertJsonPath('data.status', 'pending');
+
+        $this->assertDatabaseHas('orders', ['user_id' => $user->id]);
+    }
+}</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="testing" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#84</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How do you use Factories and Seeders effectively for testing?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>class UserFactory extends Factory {
+    public function definition() {
+        return [
+            'name'     => $this->faker->name(),
+            'email'    => $this->faker->unique()->safeEmail(),
+            'password' => Hash::make('password'),
+        ];
+    }
+    // State methods
+    public function admin() {
+        return $this->state(['role' => 'admin']);
+    }
+    public function suspended() {
+        return $this->state(['status' => 'suspended']);
+    }
+}
+
+// In tests
+$admin = User::factory()->admin()->create();
+$users = User::factory()->count(10)->create();
+$order = Order::factory()
+    ->for(User::factory()->admin())
+    ->has(OrderItem::factory()->count(3))
+    ->create();</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="testing" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#85</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How do you mock external services (HTTP, Mail, Queue, Storage) in tests?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>// Fake mail — don't actually send
+Mail::fake();
+// ... trigger action that sends mail
+Mail::assertSent(OrderConfirmation::class, fn($mail) => $mail->hasTo($user->email));
+
+// Fake queue — don't actually process
+Queue::fake();
+// ... trigger action
+Queue::assertPushed(ProcessVideo::class);
+
+// Fake HTTP client
+Http::fake([
+    'api.stripe.com/*' => Http::response(['id' => 'ch_123'], 200),
+    'api.mailchimp.com/*' => Http::response([], 200),
+]);
+
+// Fake storage
+Storage::fake('s3');
+// ... upload file
+Storage::disk('s3')->assertExists('uploads/photo.jpg');</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="testing" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#86</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How do you test Laravel Jobs, Events, and Notifications?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>// Events
+Event::fake([OrderPlaced::class]);
+$this->postJson('/api/orders', $data);
+Event::assertDispatched(OrderPlaced::class, fn($e) => $e->order->user_id === $user->id);
+Event::assertNotDispatched(OrderCancelled::class);
+
+// Notifications
+Notification::fake();
+// trigger action
+Notification::assertSentTo($user, OrderShipped::class);
+Notification::assertNothingSent();
+
+// Test job directly (not via queue)
+$job = new SendInvoice($order);
+$job->handle($mailer); // inject dependencies</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="testing" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#87</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">Explain test-driven development (TDD) workflow in Laravel.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Red → Green → Refactor cycle:</p>
+        <ul>
+          <li><strong>Red:</strong> Write a failing test that describes the desired behavior.</li>
+          <li><strong>Green:</strong> Write minimum code to make the test pass.</li>
+          <li><strong>Refactor:</strong> Clean up the code while keeping tests green.</li>
+        </ul>
+        <pre>// 1. Write test first (RED)
+public function test_user_can_cancel_order_within_30_minutes() {
+    $order = Order::factory()->create(['created_at' => now()->subMinutes(20)]);
+    $this->actingAs($order->user)->deleteJson("/api/orders/{$order->id}")
+         ->assertOk();
+    expect($order->fresh()->status)->toBe('cancelled');
+}
+
+// 2. Implement the feature (GREEN)
+// 3. Refactor safely</pre>
+        <p><strong>Laravel Pest:</strong> Modern, expressive test framework. <code>expect($value)->toBe()</code> syntax. Strongly recommended for 2025+ projects.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="testing" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#88</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">Describe a complete CI/CD pipeline for a Laravel application.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre># .github/workflows/ci.yml
+steps:
+  - uses: actions/checkout@v4
+  - name: Setup PHP
+    uses: shivammathur/setup-php@v2
+    with: {php-version: '8.3'}
+  - run: composer install --no-dev --optimize-autoloader
+  - run: cp .env.testing .env && php artisan key:generate
+  - name: Run Tests
+    run: php artisan test --parallel
+  - name: Static Analysis
+    run: ./vendor/bin/phpstan analyse
+  - name: Deploy (on main branch)
+    if: github.ref == 'refs/heads/main'
+    run: |
+      php artisan down --allow=$DEPLOY_SERVER_IP
+      git pull origin main
+      composer install --no-dev
+      php artisan migrate --force
+      php artisan optimize
+      php artisan queue:restart
+      php artisan up</pre>
+        <p>Zero-downtime: use Laravel Envoyer, Deployer, or rolling deploy strategies. Blue-green deployments for critical systems.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="testing" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#89</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How do you Dockerize a Laravel application for production?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre># Dockerfile
+FROM php:8.3-fpm-alpine
+WORKDIR /app
+COPY --chown=www-data:www-data . .
+RUN composer install --no-dev --optimize-autoloader
+RUN php artisan config:cache route:cache view:cache
+
+# docker-compose.yml
+services:
+  app:     {build: ., volumes: ['.:/app']}
+  nginx:   {image: nginx, depends_on: [app]}
+  mysql:   {image: mysql:8}
+  redis:   {image: redis:alpine}
+  queue:   {build: ., command: 'php artisan queue:work redis'}
+  horizon: {build: ., command: 'php artisan horizon'}</pre>
+        <p>Use <strong>Laravel Sail</strong> for local development (official Docker environment). For production, use multi-stage Docker builds to keep images small.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="testing" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#90</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How do you handle zero-downtime deployments for Laravel?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <ul>
+          <li><strong>Atomic deploys (symlink strategy):</strong> New release in a new directory. Swap symlink atomically when ready. Envoyer/Deployer do this.</li>
+          <li><strong>Database migrations:</strong> Must be backward compatible. Deploy code that works with OLD schema, then run migration, then remove old compatibility code in next deploy.</li>
+          <li><strong>Queue restart:</strong> <code>php artisan queue:restart</code> gracefully finishes current job then reloads worker.</li>
+          <li><strong>Maintenance mode with <code>--secret</code>:</strong> <code>php artisan down --secret=token</code> lets you bypass with <code>?secret=token</code>.</li>
+          <li><strong>Blue-green deployment:</strong> Two identical environments. Route traffic to the new one after deploy succeeds.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="testing" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#91</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">What is Laravel Telescope and Horizon? When to use each?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p><strong>Laravel Telescope:</strong> Debug assistant. Monitors requests, jobs, queries, cache, mail, notifications, exceptions, log messages. Web dashboard at <code>/telescope</code>. Use in staging/development — too much overhead for production (use sampling or disable).</p>
+        <p><strong>Laravel Horizon:</strong> Redis queue management dashboard. Monitors throughput, wait times, failed jobs, job counts. Configure supervisor-like queue workers in code. Use in production — lightweight, built for production monitoring.</p>
+        <pre>// horizon.php — define worker pools
+'production' => [
+    'supervisor-1' => [
+        'connection' => 'redis',
+        'queue'      => ['high', 'default', 'low'],
+        'balance'    => 'auto',
+        'minProcesses' => 2,
+        'maxProcesses' => 10,
+    ],
+],</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="testing" data-diff="adv">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#92</span><span class="diff-badge diff-adv">Advanced</span>
+        <span class="q-title">How do you perform load testing and benchmark a Laravel API?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <ul>
+          <li><strong>k6:</strong> JavaScript-based load testing tool. Define scenarios, virtual users, thresholds.</li>
+          <li><strong>Apache Bench (ab):</strong> Quick: <code>ab -n 1000 -c 50 http://api.example.com/users</code></li>
+          <li><strong>Artillery:</strong> YAML-based, good for complex scenarios.</li>
+          <li><strong>Gatling:</strong> JVM-based, excellent reports.</li>
+        </ul>
+        <pre>// k6 test
+import http from 'k6/http';
+export let options = {
+  stages: [
+    { duration: '1m', target: 50 },  // ramp up
+    { duration: '3m', target: 50 },  // sustain
+    { duration: '1m', target: 0 },   // ramp down
+  ],
+  thresholds: { http_req_duration: ['p(95)<500'] }, // 95% under 500ms
+};
+export default function() {
+  http.get('https://api.example.com/products');
+}</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="testing" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#93</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How do you write Pest tests vs PHPUnit for Laravel? When to use Pest?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>// PHPUnit style
+class UserTest extends TestCase {
+    public function test_user_can_login() {
+        $user = User::factory()->create();
+        $response = $this->postJson('/api/login', [
+            'email' => $user->email, 'password' => 'password'
+        ]);
+        $response->assertOk()->assertJsonStructure(['token']);
+    }
+}
+
+// Pest style (more expressive)
+it('can login with valid credentials', function () {
+    $user = User::factory()->create();
+    postJson('/api/login', ['email' => $user->email, 'password' => 'password'])
+        ->assertOk()
+        ->assertJsonStructure(['token']);
+});
+
+test('admin can delete any post', function () {
+    $admin = User::factory()->admin()->create();
+    $post  = Post::factory()->create();
+    actingAs($admin)->deleteJson("/api/posts/{$post->id}")->assertNoContent();
+    expect(Post::find($post->id))->toBeNull();
+});</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="testing" data-diff="mid">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#94</span><span class="diff-badge diff-mid">Mid</span>
+        <span class="q-title">How do you configure environment-specific settings for testing?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre># .env.testing
+APP_ENV=testing
+DB_CONNECTION=sqlite
+DB_DATABASE=:memory:
+CACHE_DRIVER=array
+QUEUE_CONNECTION=sync  # Run jobs synchronously in tests
+MAIL_MAILER=array      # Capture mail in array
+SESSION_DRIVER=array</pre>
+        <p>SQLite in-memory is blazing fast for tests. <code>QUEUE_CONNECTION=sync</code> runs jobs immediately without needing workers. <code>RefreshDatabase</code> trait migrates fresh DB before each test class, <code>DatabaseTransactions</code> wraps each test in a transaction and rolls back.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 8: DSA Questions -->
+<!-- ============================================================ -->
+<div class="cat-section mb-2" id="sec-dsa">
+  <div class="flex items-center gap-3 py-5">
+    <div class="w-1 h-8 bg-gradient-to-b from-purple-500 to-pink-400 rounded-full"></div>
+    <h2 class="text-xl font-bold text-white">Data Structures & Algorithms (DSA)</h2>
+    <span class="text-xs font-mono text-gray-500 bg-[#1a1a1a] border border-[#333] px-3 py-1 rounded-full">16 Questions</span>
+  </div>
+  <div class="space-y-3">
+
+    <div class="q-card" data-cat="dsa" data-diff="dsa">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#95</span><span class="diff-badge diff-dsa">DSA</span>
+        <span class="q-title">What is Big O notation? Give the complexity of common operations.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>Big O describes the worst-case time/space complexity as input size grows.</p>
+        <ul>
+          <li><strong>O(1)</strong> — Constant: array access by index, hash table lookup</li>
+          <li><strong>O(log n)</strong> — Logarithmic: binary search, balanced BST operations</li>
+          <li><strong>O(n)</strong> — Linear: linear search, traversing array/linked list</li>
+          <li><strong>O(n log n)</strong> — Merge sort, quick sort (avg), heap sort</li>
+          <li><strong>O(n²)</strong> — Bubble sort, insertion sort, nested loops over same data</li>
+          <li><strong>O(2ⁿ)</strong> — Exponential: naive Fibonacci, power set</li>
+          <li><strong>O(n!)</strong> — Factorial: permutations, travelling salesman brute force</li>
+        </ul>
+        <pre>// PHP practical example
+$arr = [1, 2, 3, 4, 5];
+$arr[2];           // O(1)
+in_array(5, $arr); // O(n) — searches linearly
+sort($arr);        // O(n log n)</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="dsa" data-diff="dsa">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#96</span><span class="diff-badge diff-dsa">DSA</span>
+        <span class="q-title">Implement a binary search in PHP. What's its time complexity?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>function binarySearch(array $arr, int $target): int {
+    $low  = 0;
+    $high = count($arr) - 1;
+
+    while ($low <= $high) {
+        $mid = intdiv($low + $high, 2);
+        if ($arr[$mid] === $target) return $mid;
+        if ($arr[$mid] < $target) $low  = $mid + 1;
+        else                      $high = $mid - 1;
+    }
+    return -1; // not found
+}
+
+$arr = [1, 3, 5, 7, 9, 11, 15, 20];
+echo binarySearch($arr, 7);  // returns 3
+echo binarySearch($arr, 6);  // returns -1</pre>
+        <p><strong>Time:</strong> O(log n) — halves search space each iteration. <strong>Space:</strong> O(1) iterative, O(log n) recursive (call stack). <strong>Requirement:</strong> Array MUST be sorted.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="dsa" data-diff="dsa">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#97</span><span class="diff-badge diff-dsa">DSA</span>
+        <span class="q-title">Implement a Stack and Queue in PHP. Where are they used in Laravel?</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>// Stack (LIFO)
+class Stack {
+    private array $items = [];
+    public function push($item): void { $this->items[] = $item; }
+    public function pop() { return array_pop($this->items); }
+    public function peek() { return end($this->items); }
+    public function isEmpty(): bool { return empty($this->items); }
+}
+
+// Queue (FIFO)
+class Queue {
+    private array $items = [];
+    public function enqueue($item): void { $this->items[] = $item; }
+    public function dequeue() { return array_shift($this->items); }
+    public function isEmpty(): bool { return empty($this->items); }
+}</pre>
+        <p><strong>Stack in Laravel:</strong> Middleware pipeline processes inward as a stack. Call stack for exception handling.</p>
+        <p><strong>Queue in Laravel:</strong> Job queue system (Redis queues are FIFO). Request pipeline is queue-like.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="dsa" data-diff="dsa">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#98</span><span class="diff-badge diff-dsa">DSA</span>
+        <span class="q-title">Find the Two Sum problem — find two numbers that add to a target.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>// Brute force — O(n²)
+function twoSumBrute(array $nums, int $target): array {
+    for ($i = 0; $i < count($nums); $i++) {
+        for ($j = $i + 1; $j < count($nums); $j++) {
+            if ($nums[$i] + $nums[$j] === $target) return [$i, $j];
+        }
+    }
+    return [];
+}
+
+// Optimal — O(n) using hash map
+function twoSum(array $nums, int $target): array {
+    $seen = []; // value => index
+    foreach ($nums as $i => $num) {
+        $complement = $target - $num;
+        if (isset($seen[$complement])) {
+            return [$seen[$complement], $i];
+        }
+        $seen[$num] = $i;
+    }
+    return [];
+}
+
+twoSum([2, 7, 11, 15], 9); // [0, 1] — 2+7=9</pre>
+        <p><strong>Real-world application:</strong> Finding discount combinations, matching payment amounts.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="dsa" data-diff="dsa">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#99</span><span class="diff-badge diff-dsa">DSA</span>
+        <span class="q-title">Implement a Linked List in PHP and explain when to use it vs arrays.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>class ListNode {
+    public function __construct(
+        public int $val = 0,
+        public ?ListNode $next = null
+    ) {}
+}
+
+class LinkedList {
+    private ?ListNode $head = null;
+
+    public function prepend(int $val): void {
+        $this->head = new ListNode($val, $this->head);
+    }
+
+    public function toArray(): array {
+        $result = [];
+        $current = $this->head;
+        while ($current !== null) {
+            $result[] = $current->val;
+            $current = $current->next;
+        }
+        return $result;
+    }
+}
+
+// Reverse a linked list — classic interview question
+function reverseList(?ListNode $head): ?ListNode {
+    $prev = null;
+    $current = $head;
+    while ($current !== null) {
+        $next = $current->next;
+        $current->next = $prev;
+        $prev = $current;
+        $current = $next;
+    }
+    return $prev;
+}</pre>
+        <p><strong>Linked List vs Array:</strong> LL: O(1) insert/delete at head, O(n) random access. Array: O(1) random access, O(n) insert/delete at start. In PHP, arrays handle most use cases. LL useful for queues and when frequent insertion at head is needed.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="dsa" data-diff="dsa">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#100</span><span class="diff-badge diff-dsa">DSA</span>
+        <span class="q-title">Explain recursion vs iteration. Implement Fibonacci with memoization in PHP.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>// Naive recursion — O(2^n) — extremely slow
+function fib(int $n): int {
+    if ($n <= 1) return $n;
+    return fib($n - 1) + fib($n - 2);
+}
+
+// With memoization — O(n) time, O(n) space
+function fibMemo(int $n, array &$memo = []): int {
+    if ($n <= 1) return $n;
+    if (isset($memo[$n])) return $memo[$n];
+    return $memo[$n] = fibMemo($n-1, $memo) + fibMemo($n-2, $memo);
+}
+
+// Bottom-up DP — O(n) time, O(1) space (best)
+function fibDP(int $n): int {
+    if ($n <= 1) return $n;
+    [$prev, $curr] = [0, 1];
+    for ($i = 2; $i <= $n; $i++) {
+        [$prev, $curr] = [$curr, $prev + $curr];
+    }
+    return $curr;
+}
+
+echo fibDP(50); // instant!</pre>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="dsa" data-diff="dsa">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#101</span><span class="diff-badge diff-dsa">DSA</span>
+        <span class="q-title">Implement QuickSort in PHP and explain its best/worst/average complexity.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>function quickSort(array $arr): array {
+    if (count($arr) <= 1) return $arr;
+
+    $pivot = $arr[array_key_first($arr)];
+    $left  = $right = [];
+
+    for ($i = 1; $i < count($arr); $i++) {
+        if ($arr[$i] <= $pivot) $left[]  = $arr[$i];
+        else                    $right[] = $arr[$i];
+    }
+
+    return array_merge(quickSort($left), [$pivot], quickSort($right));
+}
+
+print_r(quickSort([3, 6, 8, 10, 1, 2, 1]));</pre>
+        <ul>
+          <li><strong>Best case:</strong> O(n log n) — pivot always splits array evenly</li>
+          <li><strong>Average:</strong> O(n log n)</li>
+          <li><strong>Worst case:</strong> O(n²) — pivot is always smallest/largest (sorted array + first element pivot)</li>
+          <li><strong>Space:</strong> O(log n) call stack</li>
+          <li>PHP's native <code>sort()</code> uses a combination of QuickSort, HeapSort, InsertionSort (IntroSort).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="dsa" data-diff="dsa">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#102</span><span class="diff-badge diff-dsa">DSA</span>
+        <span class="q-title">Implement a Hash Map (dictionary) and explain collision resolution.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>// PHP arrays ARE hash maps — O(1) average lookup
+$cache = [];
+$cache['user:1'] = ['name' => 'Alice', 'role' => 'admin'];
+$cache['user:2'] = ['name' => 'Bob',   'role' => 'user'];
+
+// Practical: frequency counter
+function findDuplicates(array $arr): array {
+    $freq = [];
+    foreach ($arr as $item) {
+        $freq[$item] = ($freq[$item] ?? 0) + 1;
+    }
+    return array_keys(array_filter($freq, fn($count) => $count > 1));
+}
+
+findDuplicates([1, 2, 3, 2, 4, 3]); // [2, 3]</pre>
+        <p><strong>Collision resolution:</strong> Chaining (each bucket is a linked list) vs Open addressing (probe to next slot). PHP uses a combination with hash tables that store doubly-linked lists per bucket.</p>
+        <p><strong>Real-world in Laravel:</strong> Cache keys, route lookup table, Collection <code>keyBy()</code>, config array.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="dsa" data-diff="dsa">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#103</span><span class="diff-badge diff-dsa">DSA</span>
+        <span class="q-title">Find the maximum subarray sum (Kadane's Algorithm) in PHP.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>function maxSubarraySum(array $nums): int {
+    $maxSum     = $nums[0];
+    $currentSum = $nums[0];
+
+    for ($i = 1; $i < count($nums); $i++) {
+        // Either extend previous subarray or start fresh
+        $currentSum = max($nums[$i], $currentSum + $nums[$i]);
+        $maxSum     = max($maxSum, $currentSum);
+    }
+
+    return $maxSum;
+}
+
+maxSubarraySum([-2, 1, -3, 4, -1, 2, 1, -5, 4]); // 6 (subarray: [4,-1,2,1])</pre>
+        <p><strong>Time:</strong> O(n), <strong>Space:</strong> O(1). Classic dynamic programming problem. Real-world: finding best time window for sales data, max profit period.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="dsa" data-diff="dsa">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#104</span><span class="diff-badge diff-dsa">DSA</span>
+        <span class="q-title">Implement a valid parentheses checker using a Stack in PHP.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>function isValid(string $s): bool {
+    $stack = [];
+    $map = [')' => '(', ']' => '[', '}' => '{'];
+
+    foreach (str_split($s) as $char) {
+        if (in_array($char, ['(', '[', '{'])) {
+            $stack[] = $char;           // push opening bracket
+        } elseif (isset($map[$char])) {
+            if (empty($stack) || array_pop($stack) !== $map[$char]) {
+                return false;           // mismatched closing bracket
+            }
+        }
+    }
+
+    return empty($stack);               // stack should be empty if valid
+}
+
+isValid("()[]{}");   // true
+isValid("([{}])");   // true
+isValid("(]");       // false
+isValid("{[}]");     // false</pre>
+        <p><strong>Complexity:</strong> O(n) time, O(n) space. Directly applicable in: JSON/XML parsing, code linting, template engine validation.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="dsa" data-diff="dsa">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#105</span><span class="diff-badge diff-dsa">DSA</span>
+        <span class="q-title">Find the first non-repeating character in a string — O(n) solution.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>function firstNonRepeating(string $s): string {
+    $freq = [];
+    // Pass 1: count frequencies
+    foreach (str_split($s) as $char) {
+        $freq[$char] = ($freq[$char] ?? 0) + 1;
+    }
+    // Pass 2: find first with count = 1
+    foreach (str_split($s) as $char) {
+        if ($freq[$char] === 1) return $char;
+    }
+    return '';
+}
+
+firstNonRepeating("leetcode");     // "l"
+firstNonRepeating("aabb");         // ""
+firstNonRepeating("abcabc");       // ""
+firstNonRepeating("aababc");       // "c"</pre>
+        <p><strong>Time:</strong> O(n), <strong>Space:</strong> O(k) where k is alphabet size. Real-world: de-duplication, log analysis, user input parsing.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="dsa" data-diff="dsa">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#106</span><span class="diff-badge diff-dsa">DSA</span>
+        <span class="q-title">Detect a cycle in a linked list (Floyd's algorithm) — applicable to Laravel queue loops.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>function hasCycle(?ListNode $head): bool {
+    $slow = $head;
+    $fast = $head;
+
+    while ($fast !== null && $fast->next !== null) {
+        $slow = $slow->next;           // moves 1 step
+        $fast = $fast->next->next;     // moves 2 steps
+
+        if ($slow === $fast) return true; // cycle detected
+    }
+
+    return false; // no cycle
+}
+</pre>
+        <p><strong>Floyd's Tortoise & Hare:</strong> Two pointers at different speeds. If cycle exists, fast will lap slow. O(n) time, O(1) space (no extra data structures).</p>
+        <p><strong>Real-world relevance:</strong> Detecting circular dependencies in service containers, infinite redirect loops detection, circular references in data structures.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="dsa" data-diff="dsa">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#107</span><span class="diff-badge diff-dsa">DSA</span>
+        <span class="q-title">Implement BFS and DFS for a graph. Real-world applications in web dev.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>// BFS — Level by level (uses Queue)
+function bfs(array $graph, int $start): array {
+    $visited = [];
+    $queue   = [$start];
+    while (!empty($queue)) {
+        $node = array_shift($queue);    // dequeue
+        if (in_array($node, $visited)) continue;
+        $visited[] = $node;
+        foreach ($graph[$node] ?? [] as $neighbor) {
+            $queue[] = $neighbor;       // enqueue neighbors
+        }
+    }
+    return $visited;
+}
+
+// DFS — Depth first (uses Stack / recursion)
+function dfs(array $graph, int $node, array &$visited = []): array {
+    $visited[] = $node;
+    foreach ($graph[$node] ?? [] as $neighbor) {
+        if (!in_array($neighbor, $visited)) {
+            dfs($graph, $neighbor, $visited);
+        }
+    }
+    return $visited;
+}</pre>
+        <p><strong>BFS uses:</strong> Shortest path (fewer hops), social network friend suggestions, web crawler level-by-level. <strong>DFS uses:</strong> Detecting cycles, topological sort, solving mazes, category tree traversal.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="dsa" data-diff="dsa">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#108</span><span class="diff-badge diff-dsa">DSA</span>
+        <span class="q-title">Implement merge sort and explain why it's preferred over quicksort in some cases.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>function mergeSort(array $arr): array {
+    $n = count($arr);
+    if ($n <= 1) return $arr;
+
+    $mid   = intdiv($n, 2);
+    $left  = mergeSort(array_slice($arr, 0, $mid));
+    $right = mergeSort(array_slice($arr, $mid));
+
+    return merge($left, $right);
+}
+
+function merge(array $left, array $right): array {
+    $result = [];
+    $i = $j = 0;
+    while ($i < count($left) && $j < count($right)) {
+        if ($left[$i] <= $right[$j]) $result[] = $left[$i++];
+        else                          $result[] = $right[$j++];
+    }
+    return array_merge($result, array_slice($left, $i), array_slice($right, $j));
+}</pre>
+        <p><strong>Merge Sort:</strong> Always O(n log n) — stable, predictable. Better for linked lists and external sorting (huge files that don't fit in RAM). QuickSort is usually faster in practice for in-memory arrays but has O(n²) worst case.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="dsa" data-diff="dsa">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#109</span><span class="diff-badge diff-dsa">DSA</span>
+        <span class="q-title">Implement LRU Cache (Least Recently Used) — used in Laravel's cache strategies.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <pre>class LRUCache {
+    private array $cache = [];
+    private int $capacity;
+
+    public function __construct(int $capacity) {
+        $this->capacity = $capacity;
+    }
+
+    public function get(int $key): int {
+        if (!isset($this->cache[$key])) return -1;
+        // Move to end (most recently used)
+        $value = $this->cache[$key];
+        unset($this->cache[$key]);
+        $this->cache[$key] = $value;
+        return $value;
+    }
+
+    public function put(int $key, int $value): void {
+        if (isset($this->cache[$key])) unset($this->cache[$key]);
+        elseif (count($this->cache) >= $this->capacity) {
+            // Remove least recently used (first element)
+            reset($this->cache);
+            unset($this->cache[key($this->cache)]);
+        }
+        $this->cache[$key] = $value;
+    }
+}
+
+$lru = new LRUCache(3);
+$lru->put(1, 1); $lru->put(2, 2); $lru->put(3, 3);
+$lru->get(1);    // access 1, now LRU order: [2,3,1]
+$lru->put(4, 4); // evicts 2 (LRU)
+$lru->get(2);    // returns -1 (evicted)</pre>
+        <p>Redis implements LRU eviction natively. This is exactly how <code>CACHE_MAX_SIZE</code> and Redis <code>maxmemory-policy allkeys-lru</code> works.</p>
+      </div>
+    </div>
+
+    <div class="q-card" data-cat="dsa" data-diff="dsa">
+      <div class="q-header" onclick="toggle(this)">
+        <span class="q-num">#110</span><span class="diff-badge diff-dsa">DSA</span>
+        <span class="q-title">What is dynamic programming? Solve the "Climbing Stairs" problem.</span>
+        <svg class="q-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="q-body">
+        <p>DP solves optimization problems by breaking them into overlapping subproblems and storing results (memoization or tabulation) to avoid redundant computation.</p>
+        <pre>// Problem: n stairs, can climb 1 or 2 steps. How many ways to reach top?
+// Same as Fibonacci!
+
+function climbStairs(int $n): int {
+    if ($n <= 2) return $n;
+    $dp = array_fill(0, $n + 1, 0);
+    $dp[1] = 1; // 1 way to climb 1 stair
+    $dp[2] = 2; // 2 ways to climb 2 stairs (1+1 or 2)
+    for ($i = 3; $i <= $n; $i++) {
+        $dp[$i] = $dp[$i-1] + $dp[$i-2];
+    }
+    return $dp[$n];
+}
+// O(n) time, O(n) space
+// Can reduce to O(1) space same as Fibonacci DP
+
+climbStairs(5);  // 8 ways</pre>
+        <p><strong>DP patterns:</strong> Optimal substructure + overlapping subproblems. Real-world: route optimization, pricing algorithms, text diff (git), sequence alignment.</p>
+      </div>
+    </div>
+
+  </div>
+</div><!-- end DSA section -->
+
+<!-- No results message -->
+<div class="no-results text-center py-20 text-gray-500" id="no-results">
+  <div class="text-4xl mb-3">🔍</div>
+  <p class="font-mono text-sm">No questions match your search.</p>
+</div>
+
+</div><!-- end questions-container -->
+
+<!-- FOOTER -->
+<footer class="border-t border-[#2a2a2a] py-10 text-center px-4">
+  <div class="max-w-2xl mx-auto">
+    <p class="text-gray-500 text-sm font-mono mb-2">Laravel Interview Kit — 5-6 Years Experience</p>
+    <p class="text-gray-600 text-xs">Curated by a 15+ year interviewer perspective. 110+ questions across 8 categories.</p>
+  </div>
+</footer>
+
+<script>
+  let openedCards = new Set();
+  let totalCards = document.querySelectorAll('.q-card').length;
+
+  function toggle(header) {
+    const card = header.closest('.q-card');
+    const wasOpen = card.classList.contains('open');
+    card.classList.toggle('open', !wasOpen);
+    const num = card.querySelector('.q-num').textContent;
+    if (!wasOpen) openedCards.add(num); else openedCards.delete(num);
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const visible = [...document.querySelectorAll('.q-card')].filter(c => c.style.display !== 'none').length;
+    const pct = visible > 0 ? Math.round((openedCards.size / totalCards) * 100) : 0;
+    document.getElementById('progress-bar').style.width = pct + '%';
+    document.getElementById('progress-text').textContent = `${openedCards.size} / ${totalCards} reviewed`;
+  }
+
+  let currentCat = 'all';
+
+  function filterCat(cat) {
+    currentCat = cat;
+    document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
+    document.getElementById('pill-' + cat).classList.add('active');
+    applyFilters();
+  }
+
+  function filterQuestions() {
+    applyFilters();
+  }
+
+  function applyFilters() {
+    const term = document.getElementById('search-input').value.toLowerCase().trim();
+    const cards = document.querySelectorAll('.q-card');
+    let visible = 0;
+    cards.forEach(card => {
+      const cat  = card.dataset.cat;
+      const text = card.textContent.toLowerCase();
+      const catMatch  = currentCat === 'all' || cat === currentCat;
+      const termMatch = !term || text.includes(term);
+      const show = catMatch && termMatch;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    // Show/hide section headers
+    document.querySelectorAll('.cat-section').forEach(section => {
+      const anyVisible = [...section.querySelectorAll('.q-card')].some(c => c.style.display !== 'none');
+      section.style.display = anyVisible ? '' : 'none';
+    });
+
+    document.getElementById('count-label').textContent = `${visible} shown`;
+    document.getElementById('no-results').style.display = visible === 0 ? 'block' : 'none';
+  }
+</script>
+</body>
+</html>
