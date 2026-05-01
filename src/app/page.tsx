@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import type { IconType } from "react-icons";
-import { FaJava } from "react-icons/fa6";
 import {
   FiArrowUpRight,
   FiBriefcase,
@@ -21,7 +20,7 @@ import {
   FiZap
 } from "react-icons/fi";
 import { HiOutlineSparkles } from "react-icons/hi2";
-import { SiLaravel, SiNextdotjs, SiSpringboot, SiVuedotjs } from "react-icons/si";
+import { SiMongodb, SiNextdotjs, SiNodedotjs, SiReact, SiTypescript } from "react-icons/si";
 
 type NavItem = {
   id: string;
@@ -106,83 +105,83 @@ const topLinks: ContactLink[] = contactLinks.slice(0, 3);
 const sidebarLinks: ContactLink[] = contactLinks.slice(0, 2);
 
 const techPills: TechPill[] = [
-  { label: "Java", className: "tp-j", icon: FaJava },
-  { label: "Spring Boot", className: "tp-s", icon: SiSpringboot },
-  { label: "Laravel", className: "tp-l", icon: SiLaravel },
-  { label: "Vue.js", className: "tp-v", icon: SiVuedotjs },
-  { label: "Next.js", className: "tp-n", icon: SiNextdotjs },
-  { label: "GenAI Developer", className: "tp-a", icon: HiOutlineSparkles },
-  { label: "Reverb / WS", className: "tp-r", icon: FiZap }
+  { label: "React.js", className: "tp-react", icon: SiReact },
+  { label: "Node.js", className: "tp-node", icon: SiNodedotjs },
+  { label: "TypeScript", className: "tp-ts", icon: SiTypescript },
+  { label: "Next.js", className: "tp-next", icon: SiNextdotjs },
+  { label: "MongoDB", className: "tp-db", icon: SiMongodb },
+  { label: "AI Integrations", className: "tp-ai", icon: HiOutlineSparkles },
+  { label: "WebSockets", className: "tp-ws", icon: FiZap }
 ];
 
 const contributionProjects: ContributionProject[] = [
   {
     title: "Bagisto",
-    period: "25 Dec 2022 - Present",
+    period: "2023 - Present",
     repoLabel: "bagisto/bagisto",
     href: "https://github.com/bagisto/bagisto",
     summary:
-      "Contributed to the Laravel-based commerce platform across feature delivery, platform maintenance, and production-grade bug resolution.",
+      "Merged production-facing work across commerce admin flows, customer storefront behavior, and data tooling for a large open-source platform.",
     impact: [
-      "Worked inside a large open-source product used for commerce implementations.",
-      "Shipped contribution work within the existing Bagisto architecture rather than as a standalone owned product.",
-      "Supported framework-level delivery that aligned with client and ecosystem needs."
+      "Shipped UI and workflow improvements used by thousands of stores worldwide.",
+      "Extended contributor tooling with a data-generation library for broader attribute and product coverage.",
+      "Worked inside an established public codebase with release maintenance, issue resolution, and production-grade review standards."
     ],
-    meta: ["Public repo", "Default branch: 2.4", "Organization: bagisto"]
+    meta: ["26K+ GitHub stars", "Open source", "Commerce platform"]
   },
   {
     title: "Krayin CRM",
-    period: "25 Dec 2022 - Present",
-    repoLabel: "krayin/laravel-crm",
-    href: "https://github.com/krayin/laravel-crm",
+    period: "2023 - Present",
+    repoLabel: "Open-source CRM platform",
     summary:
-      "Contributed to the Laravel CRM codebase with product-level engineering work across CRM workflows, module delivery, and platform upkeep.",
+      "Contributed merged fixes and workflow improvements across CRM UI, migration flows, and release upkeep for a long-running open-source CRM product.",
     impact: [
-      "Worked on an established CRM product with an existing contributor and release model.",
-      "Delivered contributions into the Krayin ecosystem as part of the engineering team.",
-      "Focused on maintainable additions inside the product instead of presenting it as a personal build."
+      "Improved CRM workflow surfaces and bug resolution paths across live public releases.",
+      "Supported migration-oriented tooling and maintenance tasks that reduced friction for adopters.",
+      "Handled public issue follow-through and community-facing engineering work inside the shared repository."
     ],
-    meta: ["Public repo", "Default branch: 2.2", "Organization: krayin"]
+    meta: ["21K+ GitHub stars", "Open source", "CRM workflows"]
   },
   {
-    title: "AureusERP",
-    period: "2024 - Present",
-    repoLabel: "AureusERP · public repository",
+    title: "OpenCRM",
+    period: "2025 - Present",
+    repoLabel: "suraj-kashyap-dev/open-crm",
+    href: "https://github.com/suraj-kashyap-dev/open-crm",
     summary:
-      "Contributed to AureusERP product work inside the Webkul ecosystem, covering enterprise workflows, integration-heavy modules, and ongoing product engineering.",
+      "Built a CRM from scratch around Next.js, TypeScript, Node.js, and MongoDB with JWT authentication, RBAC, custom fields, data grids, and pipeline views.",
     impact: [
-      "Worked as part of the core engineering team shipping ERP product functionality into the shared codebase.",
-      "Kept ownership language explicit: contributor and core team member, not founder or repository owner.",
-      "Positioned as company ecosystem engineering rather than an independently owned portfolio product."
+      "Owned the stack end to end, from schema design and API contracts to frontend architecture.",
+      "Implemented JWT auth, role-based access control, Kanban workflows, and admin-friendly CRM surfaces.",
+      "Demonstrated complete delivery in a MERN-adjacent architecture with production-style boundaries."
     ],
-    meta: ["Public repo", "Company product work", "Enterprise domain"]
+    meta: ["Public repo", "Full-stack CRM", "Next.js + Node.js"]
   }
 ];
 
 const contributionTimeline: ContributionTimelineItem[] = [
   {
-    period: "25 Dec 2022 - Present",
+    period: "2023 - Present",
     title: "Bagisto Core Team Contributor",
     repo: "bagisto/bagisto",
     summary:
-      "Open-source commerce platform contribution work through Webkul engineering delivery, focused on product maintenance, implementation support, and platform evolution.",
-    stack: ["Laravel", "PHP", "Commerce", "Open Source"]
+      "Merged frontend and workflow contributions into a commerce platform used globally, while supporting public issues and release maintenance.",
+    stack: ["Commerce", "Open Source", "Frontend Systems", "26K+ Stars"]
   },
   {
-    period: "25 Dec 2022 - Present",
+    period: "2023 - Present",
     title: "Krayin CRM Core Team Contributor",
-    repo: "krayin/laravel-crm",
+    repo: "Krayin CRM",
     summary:
-      "CRM product contribution work within the Krayin ecosystem, helping ship features and refinements into an existing public repository maintained by the company.",
-    stack: ["Laravel", "CRM", "Modules", "Open Source"]
+      "Shipped CRM workflow improvements, migration support, and maintenance changes inside an established public product repository.",
+    stack: ["CRM Workflows", "Public Repo", "Issue Resolution", "21K+ Stars"]
   },
   {
-    period: "2024 - Present",
-    title: "AureusERP Core Team Contributor",
-    repo: "AureusERP",
+    period: "2025 - Present",
+    title: "OpenCRM Builder",
+    repo: "suraj-kashyap-dev/open-crm",
     summary:
-      "Public ERP product contribution work delivered as part of the Webkul engineering team, focused on enterprise workflows, integrations, and ongoing product evolution.",
-    stack: ["ERP", "Enterprise Workflows", "Integrations", "Public Repo"]
+      "Designed and implemented a CRM with JWT auth, RBAC, custom field management, pipeline views, and typed frontend-backend contracts.",
+    stack: ["Next.js", "Node.js", "MongoDB", "JWT / RBAC"]
   }
 ];
 
@@ -467,7 +466,7 @@ export default function Home() {
             <div className="ping" />
             Open to Opportunities
           </div>
-          <p className="sidebar-note">Ghaziabad, India</p>
+          <p className="sidebar-note">Delhi NCR, India</p>
           <div className="sidebar-utilityLinks">
             <a className="sidebar-utilityLink" href="#contact" onClick={closeMobileNav}>
               <FiArrowUpRight />
@@ -546,14 +545,14 @@ export default function Home() {
               </h1>
 
               <div className="hero-role">
-                Spring Boot<span className="sep">|</span>Laravel &middot; Vue.js
-                <span className="sep">|</span>Next.js<span className="sep">|</span>GenAI
+                MERN Stack<span className="sep">|</span>React.js &middot; Node.js
+                <span className="sep">|</span>Next.js<span className="sep">|</span>AI Integrations
               </div>
 
               <p className="hero-sub">
-                <strong>4.5+ years</strong> shipping production web applications. Expert in{" "}
-                <em>Spring Boot, Laravel, Vue.js, Next.js</em> and deeply embedded in{" "}
-                <em>Generative AI</em>: LLM APIs, RAG pipelines, NLP &amp; AI-first engineering.
+                <strong>4.5+ years</strong> building production-grade MERN products with{" "}
+                <em>React.js, Next.js, Node.js, TypeScript, and MongoDB</em>, plus AI-assisted
+                workflows powered by <em>OpenAI API, OCR, and real-time integrations</em>.
               </p>
 
               <div className="tech-row">
@@ -574,7 +573,7 @@ export default function Home() {
                   <div className="cr">@suraj-webkul</div>
                   <div className="cl">
                     <FiMapPin />
-                    <span>Ghaziabad, UP</span>
+                    <span>Delhi NCR, India</span>
                     <span className="cl-divider" />
                     <FiPhone />
                     <span>+91 93159 81404</span>
@@ -623,23 +622,23 @@ export default function Home() {
                     <span className="c">cat expertise.txt</span>
                   </div>
                   <div>
-                    <span className="o">&#8594; Java &middot; Spring Boot &middot; Laravel</span>
+                    <span className="o">&#8594; React.js &middot; Next.js &middot; TypeScript</span>
                   </div>
                   <div>
-                    <span className="o">&#8594; Vue.js &middot; Next.js &middot; FilamentPHP</span>
+                    <span className="o">&#8594; Node.js &middot; MongoDB &middot; REST APIs</span>
                   </div>
                   <div>
-                    <span className="vi">&#8594; LLM APIs &middot; RAG &middot; NLP &middot; OCR</span>
+                    <span className="vi">&#8594; OpenAI API &middot; WebSockets &middot; OCR &middot; NLP</span>
                   </div>
                   <div>
                     <span className="p">&#10095; </span>
                     <span className="c">git log --oneline -2</span>
                   </div>
                   <div>
-                    <span className="g">a3f9c1e feat: AI doc pipeline (RAG)</span>
+                    <span className="g">a3f9c1e feat: OCR document pipeline</span>
                   </div>
                   <div>
-                    <span className="g">7b2d440 feat: ML lead scoring CRM</span>
+                    <span className="g">7b2d440 perf: Socket delivery under 200ms</span>
                   </div>
                   <div>
                     <span className="p">&#10095; </span>
@@ -655,7 +654,7 @@ export default function Home() {
                 <div className="ait">
                   <strong>AI-First Engineer</strong>
                   <br />
-                  Claude AI &middot; Copilot &middot; Cursor &middot; Prompt Eng.
+                  Claude AI &middot; Copilot &middot; Cursor &middot; OpenAI API
                 </div>
               </div>
             </div>
@@ -676,65 +675,65 @@ export default function Home() {
 
                 <div className="at">
                   <p>
-                    I&apos;m an <strong>Full-Stack Engineer</strong> with 4.5+ years
-                    shipping production web applications using <em>Java, Spring Boot, Laravel,
-                    Vue.js</em>, and <em>Next.js</em>.
+                    I&apos;m a <strong>Full-Stack Engineer</strong> with 4.5+ years building
+                    production-ready products across <em>React.js, Next.js, Node.js, TypeScript,
+                    and MongoDB</em>.
                   </p>
                   <p>
-                    I build layered, maintainable backend systems &mdash;{" "}
+                    I design maintainable application systems &mdash;{" "}
                     <strong>
-                      REST APIs, DTO patterns, service-repository architecture, JWT &amp; RBAC
-                      security
+                      REST APIs, typed contracts, JWT/RBAC access control, and reusable React
+                      component libraries
                     </strong>{" "}
-                    &mdash; paired with reactive, polished frontends.
+                    &mdash; paired with performant, product-grade frontends.
                   </p>
                   <p>
-                    Beyond the stack, I integrate <strong>AI and ML</strong> directly into
-                    enterprise products: LLM APIs, RAG pipelines, NLP, collaborative filtering,
-                    sentiment analysis, OCR and predictive analytics. I use <em>Claude AI, GitHub
-                    Copilot, and Cursor</em> as engineering force-multipliers every day.
+                    I also ship <strong>AI-assisted product workflows</strong> into real systems:
+                    OpenAI API integrations, OCR pipelines, NLP-assisted interfaces, and
+                    document-processing automation. Open-source contribution work spans platforms
+                    with <em>47K+ combined GitHub stars</em>.
                   </p>
                 </div>
               </div>
 
               <div className="ec reveal" style={{ transitionDelay: revealDelays.aboutCards }}>
                 <div className="ecard">
-                  <div className="ei ja">
-                    <FaJava />
+                  <div className="ei re">
+                    <SiReact />
                   </div>
                   <div>
-                    <div className="etit">Java / Spring Boot</div>
-                    <div className="esub">Spring MVC &middot; Security &middot; Data JPA &middot; REST</div>
+                    <div className="etit">React / Next.js</div>
+                    <div className="esub">App Router &middot; Data grids &middot; Component systems</div>
                   </div>
                 </div>
 
-                <div className="ecard la">
-                  <div className="ei la">
-                    <SiLaravel />
+                <div className="ecard nd">
+                  <div className="ei nd">
+                    <SiNodedotjs />
                   </div>
                   <div>
-                    <div className="etit">Laravel / PHP</div>
-                    <div className="esub">Eloquent &middot; Sanctum &middot; Octane &middot; Reverb</div>
+                    <div className="etit">Node.js / Express</div>
+                    <div className="esub">REST APIs &middot; Auth flows &middot; Service boundaries</div>
                   </div>
                 </div>
 
-                <div className="ecard vc">
-                  <div className="ei vu">
-                    <SiVuedotjs />
+                <div className="ecard ts">
+                  <div className="ei ts">
+                    <SiTypescript />
                   </div>
                   <div>
-                    <div className="etit">Vue.js / Nuxt</div>
-                    <div className="esub">Composition API &middot; Pinia &middot; FilamentPHP</div>
+                    <div className="etit">TypeScript / Contracts</div>
+                    <div className="esub">Typed schemas &middot; Safer refactors &middot; API clarity</div>
                   </div>
                 </div>
 
-                <div className="ecard nx">
-                  <div className="ei nx">
-                    <SiNextdotjs />
+                <div className="ecard db">
+                  <div className="ei db">
+                    <SiMongodb />
                   </div>
                   <div>
-                    <div className="etit">Next.js / React</div>
-                    <div className="esub">App Router &middot; Server Components &middot; SSR</div>
+                    <div className="etit">MongoDB / Infra</div>
+                    <div className="esub">Redis &middot; Queues &middot; Operational data flows</div>
                   </div>
                 </div>
 
@@ -743,8 +742,8 @@ export default function Home() {
                     <HiOutlineSparkles />
                   </div>
                   <div>
-                    <div className="etit">Generative AI</div>
-                    <div className="esub">LLM APIs &middot; RAG &middot; NLP &middot; OCR &middot; Forecasting</div>
+                    <div className="etit">AI Integrations</div>
+                    <div className="esub">OpenAI API &middot; OCR &middot; NLP &middot; Document automation</div>
                   </div>
                 </div>
               </div>
@@ -767,26 +766,23 @@ export default function Home() {
             <div className="tl">
               <div className="tli reveal">
                 <div className="tld" />
-                <div className="tlp">2025 &ndash; Present</div>
+                <div className="tlp">Dec 2022 &ndash; Mar 2026</div>
                 <div className="tlco">Webkul Software Pvt. Ltd.</div>
-                <div className="tlr">
-                  Team Lead &mdash; Full-Stack Engineering (Spring Boot &middot; Laravel
-                  &middot; Vue.js &middot; AI)
-                </div>
+                <div className="tlr">Full Stack Engineer &mdash; MERN &amp; Frontend Product Engineering</div>
                 <div className="tllo">
                   <FiMapPin />
                   <span>Noida, India</span>
                 </div>
                 <div className="tlcard">
                   <div className="tltags">
-                    <span className="ptag pt-j">Java</span>
-                    <span className="ptag pt-s">Spring Boot</span>
-                    <span className="ptag pt-l">Laravel</span>
-                    <span className="ptag pt-v">Vue.js</span>
-                    <span className="ptag pt-n">Next.js</span>
-                    <span className="ptag pt-a">AI/ML</span>
-                    <span className="ptag">Team Lead</span>
-                    <span className="ptag">Code Review</span>
+                    <span className="ptag pt-react">React.js</span>
+                    <span className="ptag pt-next">Next.js</span>
+                    <span className="ptag pt-node">Node.js</span>
+                    <span className="ptag pt-ts">TypeScript</span>
+                    <span className="ptag pt-db">MongoDB</span>
+                    <span className="ptag pt-ai">OpenAI API</span>
+                    <span className="ptag">Docker</span>
+                    <span className="ptag">GitHub Actions</span>
                   </div>
                 </div>
               </div>
@@ -796,46 +792,22 @@ export default function Home() {
                   className="tld"
                   style={{ background: "var(--blue)", boxShadow: "0 0 12px var(--blue)" }}
                 />
-                <div className="tlp">Dec 2022 &ndash; 2024</div>
-                <div className="tlco">Webkul Software Pvt. Ltd.</div>
-                <div className="tlr">
-                  Software Engineer &mdash; Full-Stack (Spring Boot &middot; Laravel &middot;
-                  Vue.js &middot; AI)
-                </div>
-                <div className="tllo">
-                  <FiMapPin />
-                  <span>Noida, India</span>
-                </div>
-                <div className="tlcard">
-                  <div className="tltags">
-                    <span className="ptag pt-j">Java</span>
-                    <span className="ptag pt-s">Spring Boot</span>
-                    <span className="ptag pt-l">Laravel</span>
-                    <span className="ptag pt-v">Vue.js</span>
-                    <span className="ptag pt-n">Next.js</span>
-                    <span className="ptag pt-a">AI/ML</span>
-                    <span className="ptag">Docker</span>
-                    <span className="ptag">GitHub Actions</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="tli reveal" style={{ transitionDelay: revealDelays.experienceThird }}>
-                <div className="tld vio" />
                 <div className="tlp">Jan 2022 &ndash; Dec 2022</div>
                 <div className="tlco">Opmac</div>
-                <div className="tlr">Software Developer &mdash; Full-Stack (Laravel &middot; React.js)</div>
+                <div className="tlr">Full Stack Developer &mdash; React &amp; Node.js</div>
                 <div className="tllo">
                   <FiMapPin />
                   <span>Ghaziabad, India</span>
                 </div>
                 <div className="tlcard">
                   <div className="tltags">
-                    <span className="ptag pt-l">Laravel</span>
-                    <span className="ptag pt-r">React.js</span>
+                    <span className="ptag pt-react">React.js</span>
+                    <span className="ptag pt-node">Node.js</span>
+                    <span className="ptag pt-ts">TypeScript</span>
+                    <span className="ptag">REST APIs</span>
+                    <span className="ptag pt-db">MongoDB</span>
                     <span className="ptag">MySQL</span>
-                    <span className="ptag pt-a">NLP</span>
-                    <span className="ptag pt-a">Predictive Analytics</span>
+                    <span className="ptag pt-ai">NLP Integration</span>
                   </div>
                 </div>
               </div>
@@ -860,114 +832,34 @@ export default function Home() {
                 <div className="sctit">Backend</div>
                 <div className="ski">
                   <div className="skt">
-                    <span className="skn">Java / Spring Boot</span>
-                    <span className="skp">95%</span>
-                  </div>
-                  <div className="sktr">
-                    <div className="skf fw" data-w="95" />
-                  </div>
-                </div>
-                <div className="ski">
-                  <div className="skt">
-                    <span className="skn">Laravel / PHP</span>
-                    <span className="skp">96%</span>
-                  </div>
-                  <div className="sktr">
-                    <div className="skf fw" data-w="96" />
-                  </div>
-                </div>
-                <div className="ski">
-                  <div className="skt">
-                    <span className="skn">Spring Security &middot; JWT</span>
-                    <span className="skp">90%</span>
-                  </div>
-                  <div className="sktr">
-                    <div className="skf fc" data-w="90" />
-                  </div>
-                </div>
-                <div className="ski">
-                  <div className="skt">
                     <span className="skn">Node.js / Express</span>
-                    <span className="skp">80%</span>
+                    <span className="skp">92%</span>
                   </div>
                   <div className="sktr">
-                    <div className="skf fc" data-w="80" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="skcat reveal" style={{ transitionDelay: revealDelays.frontendSkills }}>
-                <div className="sctit">Frontend</div>
-                <div className="ski">
-                  <div className="skt">
-                    <span className="skn">Vue.js / Nuxt</span>
-                    <span className="skp">96%</span>
-                  </div>
-                  <div className="sktr">
-                    <div className="skf fg" data-w="96" />
+                    <div className="skf fw" data-w="92" />
                   </div>
                 </div>
                 <div className="ski">
                   <div className="skt">
-                    <span className="skn">Next.js / React.js</span>
-                    <span className="skp">90%</span>
-                  </div>
-                  <div className="sktr">
-                    <div className="skf fc" data-w="90" />
-                  </div>
-                </div>
-                <div className="ski">
-                  <div className="skt">
-                    <span className="skn">FilamentPHP &middot; Alpine.js</span>
-                    <span className="skp">88%</span>
-                  </div>
-                  <div className="sktr">
-                    <div className="skf fg" data-w="88" />
-                  </div>
-                </div>
-                <div className="ski">
-                  <div className="skt">
-                    <span className="skn">Tailwind CSS</span>
+                    <span className="skn">REST API Design</span>
                     <span className="skp">93%</span>
                   </div>
                   <div className="sktr">
-                    <div className="skf fg" data-w="93" />
+                    <div className="skf fw" data-w="93" />
                   </div>
                 </div>
-              </div>
-
-              <div className="skcat reveal" style={{ transitionDelay: revealDelays.infraSkills }}>
-                <div className="sctit">Database &amp; Infra</div>
                 <div className="ski">
                   <div className="skt">
-                    <span className="skn">PostgreSQL &middot; MySQL</span>
-                    <span className="skp">91%</span>
+                    <span className="skn">JWT &middot; OAuth 2.0 &middot; RBAC</span>
+                    <span className="skp">90%</span>
                   </div>
                   <div className="sktr">
-                    <div className="skf fc" data-w="91" />
+                    <div className="skf fc" data-w="90" />
                   </div>
                 </div>
                 <div className="ski">
                   <div className="skt">
-                    <span className="skn">Redis &middot; MongoDB</span>
-                    <span className="skp">86%</span>
-                  </div>
-                  <div className="sktr">
-                    <div className="skf fc" data-w="86" />
-                  </div>
-                </div>
-                <div className="ski">
-                  <div className="skt">
-                    <span className="skn">Docker &middot; CI/CD &middot; Jenkins</span>
-                    <span className="skp">85%</span>
-                  </div>
-                  <div className="sktr">
-                    <div className="skf fc" data-w="85" />
-                  </div>
-                </div>
-                <div className="ski">
-                  <div className="skt">
-                    <span className="skn">WebSockets &middot; Reverb &middot; Octane</span>
+                    <span className="skn">WebSockets &middot; Socket.io</span>
                     <span className="skp">88%</span>
                   </div>
                   <div className="sktr">
@@ -976,11 +868,91 @@ export default function Home() {
                 </div>
               </div>
 
+              <div className="skcat reveal" style={{ transitionDelay: revealDelays.frontendSkills }}>
+                <div className="sctit">Frontend</div>
+                <div className="ski">
+                  <div className="skt">
+                    <span className="skn">React.js / Next.js</span>
+                    <span className="skp">95%</span>
+                  </div>
+                  <div className="sktr">
+                    <div className="skf fg" data-w="95" />
+                  </div>
+                </div>
+                <div className="ski">
+                  <div className="skt">
+                    <span className="skn">TypeScript / JavaScript (ES6+)</span>
+                    <span className="skp">93%</span>
+                  </div>
+                  <div className="sktr">
+                    <div className="skf fc" data-w="93" />
+                  </div>
+                </div>
+                <div className="ski">
+                  <div className="skt">
+                    <span className="skn">HTML5 &middot; CSS3/SCSS &middot; Tailwind</span>
+                    <span className="skp">91%</span>
+                  </div>
+                  <div className="sktr">
+                    <div className="skf fg" data-w="91" />
+                  </div>
+                </div>
+                <div className="ski">
+                  <div className="skt">
+                    <span className="skn">Redux &middot; Component Systems</span>
+                    <span className="skp">89%</span>
+                  </div>
+                  <div className="sktr">
+                    <div className="skf fg" data-w="89" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="skcat reveal" style={{ transitionDelay: revealDelays.infraSkills }}>
+                <div className="sctit">Database &amp; Infra</div>
+                <div className="ski">
+                  <div className="skt">
+                    <span className="skn">MongoDB &middot; PostgreSQL</span>
+                    <span className="skp">90%</span>
+                  </div>
+                  <div className="sktr">
+                    <div className="skf fc" data-w="90" />
+                  </div>
+                </div>
+                <div className="ski">
+                  <div className="skt">
+                    <span className="skn">MySQL &middot; Redis</span>
+                    <span className="skp">86%</span>
+                  </div>
+                  <div className="sktr">
+                    <div className="skf fc" data-w="86" />
+                  </div>
+                </div>
+                <div className="ski">
+                  <div className="skt">
+                    <span className="skn">Docker &middot; GitHub Actions CI/CD</span>
+                    <span className="skp">88%</span>
+                  </div>
+                  <div className="sktr">
+                    <div className="skf fc" data-w="88" />
+                  </div>
+                </div>
+                <div className="ski">
+                  <div className="skt">
+                    <span className="skn">Kafka &middot; RabbitMQ</span>
+                    <span className="skp">80%</span>
+                  </div>
+                  <div className="sktr">
+                    <div className="skf fc" data-w="80" />
+                  </div>
+                </div>
+              </div>
+
               <div className="skcat reveal" style={{ transitionDelay: revealDelays.aiSkills }}>
                 <div className="sctit">Generative AI</div>
                 <div className="ski">
                   <div className="skt">
-                    <span className="skn">LLM APIs (Claude, OpenAI)</span>
+                    <span className="skn">OpenAI API &middot; AI Tooling</span>
                     <span className="skp">93%</span>
                   </div>
                   <div className="sktr">
@@ -989,7 +961,7 @@ export default function Home() {
                 </div>
                 <div className="ski">
                   <div className="skt">
-                    <span className="skn">RAG Pipelines &middot; NLP</span>
+                    <span className="skn">RAG Pipelines &middot; OCR &middot; NLP</span>
                     <span className="skp">89%</span>
                   </div>
                   <div className="sktr">
@@ -1007,11 +979,11 @@ export default function Home() {
                 </div>
                 <div className="ski">
                   <div className="skt">
-                    <span className="skn">Sentiment Analysis &middot; OCR</span>
-                    <span className="skp">85%</span>
+                    <span className="skn">AI-Assisted Product Workflows</span>
+                    <span className="skp">90%</span>
                   </div>
                   <div className="sktr">
-                    <div className="skf fv" data-w="85" />
+                    <div className="skf fv" data-w="90" />
                   </div>
                 </div>
               </div>
@@ -1024,25 +996,23 @@ export default function Home() {
               </div>
               <p>
                 I bring a genuine AI-first mindset to every layer of the stack. From integrating
-                LLM APIs into production Laravel and Spring Boot apps, building RAG document
-                pipelines with OCR and NLP, to deploying collaborative filtering recommendation
-                engines &mdash; I treat AI as infrastructure, not a feature. Daily tools:{" "}
+                OpenAI API and OCR into production React and Node.js workflows, to building
+                document pipelines and AI-assisted product features, I treat AI as infrastructure,
+                not a feature. Daily tools:{" "}
                 <strong>Claude AI, GitHub Copilot + Codex agents, and Cursor AI</strong> for code
                 generation, debugging, architecture review, and automated documentation.
               </p>
               <div className="gtags">
                 <span className="gtag">Claude AI</span>
-                <span className="gtag">OpenAI GPT-4o</span>
+                <span className="gtag">OpenAI API</span>
                 <span className="gtag">GitHub Copilot</span>
                 <span className="gtag">Cursor AI</span>
                 <span className="gtag">RAG Pipelines</span>
                 <span className="gtag">NLP</span>
-                <span className="gtag">Sentiment Analysis</span>
-                <span className="gtag">Collaborative Filtering</span>
                 <span className="gtag">OCR</span>
-                <span className="gtag">Predictive Analytics</span>
+                <span className="gtag">WebSockets</span>
+                <span className="gtag">REST APIs</span>
                 <span className="gtag">Prompt Engineering</span>
-                <span className="gtag">TensorFlow.js</span>
                 <span className="gtag">Custom Instruction Eng.</span>
                 <span className="gtag">AI Code Review</span>
               </div>
@@ -1057,7 +1027,7 @@ export default function Home() {
             <div className="reveal">
               <div className="sn">04</div>
               <h2 className="st">
-                Product <span>Contributions</span>
+                Selected <span>Work</span>
               </h2>
               <div className="sl" />
             </div>
@@ -1072,13 +1042,13 @@ export default function Home() {
                           <FiLayers />
                         </span>
                         <div>
-                          <p className="contrib-kicker">Webkul Core Team</p>
+                          <p className="contrib-kicker">Selected Highlight</p>
                           <h3 className="contrib-title">{project.title}</h3>
                         </div>
                       </div>
                       <div className="contrib-cardBadges">
                         <span className="contrib-period">{project.period}</span>
-                        <span className="contrib-badge">Core Team Member</span>
+                        <span className="contrib-badge">Public Work</span>
                       </div>
                     </div>
 
@@ -1130,7 +1100,7 @@ export default function Home() {
               >
                 <div className="contrib-panelHeader">
                   <div>
-                    <h3 className="contrib-panelTitle">Contribution History</h3>
+                    <h3 className="contrib-panelTitle">Work Stream</h3>
                   </div>
                   <span className="contrib-panelBadge">
                     <FiGitBranch />
@@ -1139,8 +1109,8 @@ export default function Home() {
                 </div>
 
                 <p className="contrib-panelLead">
-                  I contributed to these products as part of the Webkul engineering core team.
-                  This is contribution history, not personal ownership history.
+                  This section mixes open-source contribution work and self-owned product builds,
+                  with the distinction made explicit in the copy rather than implied.
                 </p>
 
                 <div className="contrib-timeline">
@@ -1199,11 +1169,12 @@ export default function Home() {
                 <div className="ct">
                   <p>
                     Open to full-time roles, freelance projects, and consulting &mdash; especially
-                    at the intersection of modern web development and AI. Java/Spring Boot, Laravel
-                    SaaS, Vue/Next frontend, or AI-powered product &mdash; let&apos;s talk.
+                    at the intersection of modern web development and AI. MERN products, React /
+                    Next.js frontends, Node.js APIs, or AI-enhanced workflows &mdash;
+                    let&apos;s talk.
                   </p>
                   <p>
-                    Based in <strong>Ghaziabad, Uttar Pradesh, India</strong>. Available for
+                    Based in <strong>Delhi NCR, India</strong>. Available to join immediately for
                     remote and on-site opportunities.
                   </p>
                 </div>
@@ -1242,8 +1213,8 @@ export default function Home() {
 
       <footer>
         <span>&copy; 2026 Suraj Kashyap &mdash; Full-Stack Engineer</span>
-        <span>Java &middot; Laravel &middot; Vue.js &middot; Next.js &middot; GenAI</span>
-        <span>Ghaziabad, India</span>
+        <span>React.js &middot; Node.js &middot; TypeScript &middot; Next.js &middot; GenAI</span>
+        <span>Delhi NCR, India</span>
       </footer>
     </>
   );

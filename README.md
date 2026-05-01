@@ -4,9 +4,9 @@ Personal portfolio built with Next.js App Router, React, and TypeScript, then ex
 
 ## About Me
 
-I am Suraj Kashyap, a Full-Stack Engineer with 4.5+ years of experience building production web applications across Java, Spring Boot, Laravel, Vue.js, and Next.js.
+I am Suraj Kashyap, a Full-Stack Engineer with 4.5+ years of experience building production-grade MERN products across React.js, Next.js, Node.js, TypeScript, and MongoDB.
 
-My work focuses on maintainable backend architecture, polished frontend systems, and AI-first product engineering. I build REST APIs, service-based application layers, secure business workflows, and modern interfaces, and I also integrate LLM APIs, RAG pipelines, NLP, OCR, and predictive features into real products.
+My work focuses on maintainable backend architecture, polished frontend systems, and AI-first product engineering. I build REST APIs, typed application layers, secure business workflows, and modern interfaces, and I also integrate OpenAI API workflows, RAG pipelines, NLP, OCR, and real-time product features into production systems.
 
 This portfolio highlights my engineering profile, technology depth, professional experience, GitHub contribution work, and contact channels in a single responsive Next.js application.
 

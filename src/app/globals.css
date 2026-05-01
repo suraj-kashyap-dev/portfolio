@@ -11,9 +11,10 @@
   --pink: #f472b6;
   --green: #10b981;
   --orange: #f97316;
-  --vue: #42b883;
-  --java: #f89820;
-  --laravel: #ff2d20;
+  --react: #61dafb;
+  --node: #68a063;
+  --ts: #3178c6;
+  --mongo: #00ed64;
   --text: #dce9f8;
   --muted: #92a9c6;
   --muted2: #bfd1e7;
@@ -804,44 +805,44 @@ h1.ht .grad {
   filter: brightness(1.3);
 }
 
-.tp-j {
-  color: var(--java);
-  border-color: rgba(248, 152, 32, 0.3);
-  background: rgba(248, 152, 32, 0.07);
+.tp-react {
+  color: var(--react);
+  border-color: rgba(97, 218, 251, 0.28);
+  background: rgba(97, 218, 251, 0.07);
 }
 
-.tp-l {
-  color: var(--laravel);
-  border-color: rgba(255, 45, 32, 0.28);
-  background: rgba(255, 45, 32, 0.07);
+.tp-node {
+  color: var(--node);
+  border-color: rgba(104, 160, 99, 0.3);
+  background: rgba(104, 160, 99, 0.07);
 }
 
-.tp-v {
-  color: var(--vue);
-  border-color: rgba(66, 184, 131, 0.3);
-  background: rgba(66, 184, 131, 0.07);
+.tp-ts {
+  color: var(--ts);
+  border-color: rgba(49, 120, 198, 0.28);
+  background: rgba(49, 120, 198, 0.07);
 }
 
-.tp-n {
+.tp-next {
   color: var(--text);
   border-color: rgba(220, 233, 248, 0.18);
   background: rgba(220, 233, 248, 0.05);
 }
 
-.tp-s {
-  color: #6db33f;
-  border-color: rgba(109, 179, 63, 0.3);
-  background: rgba(109, 179, 63, 0.07);
+.tp-db {
+  color: var(--mongo);
+  border-color: rgba(0, 237, 100, 0.28);
+  background: rgba(0, 237, 100, 0.07);
 }
 
-.tp-a {
+.tp-ai {
   color: var(--violet);
   border-color: rgba(168, 85, 247, 0.3);
   background: rgba(168, 85, 247, 0.1);
   box-shadow: 0 0 14px rgba(168, 85, 247, 0.15);
 }
 
-.tp-r {
+.tp-ws {
   color: #fb923c;
   border-color: rgba(251, 146, 60, 0.28);
   background: rgba(251, 146, 60, 0.07);
@@ -1208,16 +1209,16 @@ h1.ht .grad {
   transform: translateX(5px);
 }
 
-.ecard.la::before {
-  background: var(--laravel);
+.ecard.nd::before {
+  background: var(--node);
 }
 
-.ecard.vc::before {
-  background: var(--vue);
+.ecard.ts::before {
+  background: var(--ts);
 }
 
-.ecard.nx::before {
-  background: var(--blue);
+.ecard.db::before {
+  background: var(--mongo);
 }
 
 .ecard.ac::before {
@@ -1235,20 +1236,20 @@ h1.ht .grad {
   font-size: 1.1rem;
 }
 
-.ei.ja {
-  background: rgba(248, 152, 32, 0.13);
+.ei.re {
+  background: rgba(97, 218, 251, 0.12);
 }
 
-.ei.la {
-  background: rgba(255, 45, 32, 0.12);
+.ei.nd {
+  background: rgba(104, 160, 99, 0.12);
 }
 
-.ei.vu {
-  background: rgba(66, 184, 131, 0.12);
+.ei.ts {
+  background: rgba(49, 120, 198, 0.12);
 }
 
-.ei.nx {
-  background: rgba(255, 255, 255, 0.06);
+.ei.db {
+  background: rgba(0, 237, 100, 0.12);
 }
 
 .ei.ai {
@@ -1376,46 +1377,40 @@ h1.ht .grad {
   color: var(--muted2);
 }
 
-.pt-j {
-  color: var(--java);
-  border-color: rgba(248, 152, 32, 0.3);
-  background: rgba(248, 152, 32, 0.08);
+.pt-react {
+  color: var(--react);
+  border-color: rgba(97, 218, 251, 0.28);
+  background: rgba(97, 218, 251, 0.08);
 }
 
-.pt-l {
-  color: var(--laravel);
-  border-color: rgba(255, 45, 32, 0.28);
-  background: rgba(255, 45, 32, 0.08);
+.pt-node {
+  color: var(--node);
+  border-color: rgba(104, 160, 99, 0.28);
+  background: rgba(104, 160, 99, 0.08);
 }
 
-.pt-v {
-  color: var(--vue);
-  border-color: rgba(66, 184, 131, 0.3);
-  background: rgba(66, 184, 131, 0.08);
+.pt-ts {
+  color: var(--ts);
+  border-color: rgba(49, 120, 198, 0.28);
+  background: rgba(49, 120, 198, 0.08);
 }
 
-.pt-n {
+.pt-next {
   color: var(--text);
   border-color: rgba(255, 255, 255, 0.15);
   background: rgba(255, 255, 255, 0.04);
 }
 
-.pt-a {
+.pt-ai {
   color: var(--violet);
   border-color: rgba(168, 85, 247, 0.3);
   background: rgba(168, 85, 247, 0.1);
 }
 
-.pt-s {
-  color: #6db33f;
-  border-color: rgba(109, 179, 63, 0.3);
-  background: rgba(109, 179, 63, 0.08);
-}
-
-.pt-r {
-  color: #61dafb;
-  border-color: rgba(97, 218, 251, 0.28);
-  background: rgba(97, 218, 251, 0.07);
+.pt-db {
+  color: var(--mongo);
+  border-color: rgba(0, 237, 100, 0.28);
+  background: rgba(0, 237, 100, 0.07);
 }
 
 .skg {
@@ -1498,11 +1493,11 @@ h1.ht .grad {
 }
 
 .fw {
-  background: linear-gradient(90deg, var(--java), var(--laravel));
+  background: linear-gradient(90deg, var(--react), var(--node));
 }
 
 .fg {
-  background: linear-gradient(90deg, var(--vue), var(--green));
+  background: linear-gradient(90deg, var(--ts), var(--mongo));
 }
 
 .fv {

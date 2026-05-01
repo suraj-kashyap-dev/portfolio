@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Suraj Kashyap - Full-Stack Engineer",
   description:
-    "Personal portfolio of Suraj Kashyap, an Full-stack engineer working across Spring Boot, Laravel, Vue.js, Next.js, and Generative AI systems."
+    "Personal portfolio of Suraj Kashyap, a full-stack engineer focused on MERN product engineering, Next.js frontends, Node.js APIs, and AI-assisted workflows."
 };
 
 export const viewport: Viewport = {

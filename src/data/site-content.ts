@@ -211,7 +211,7 @@ export const experiences: Experience[] = [
       "Improved storefront performance and mobile conversion paths.",
       "Delivered custom workflows aligned with sales operations."
     ],
-    stack: ["WordPress", "WooCommerce", "PHP", "MySQL", "JavaScript"],
+    stack: ["WordPress", "WooCommerce", "Custom Themes", "MySQL", "JavaScript"],
     systemStatus: "Runtime stability maintained"
   }
 ];
@@ -222,7 +222,7 @@ export const projects: Project[] = [
     category: "Commerce",
     summary:
       "A high-speed commerce experience for regional delivery operations, tuned for mobile conversion and custom business logic.",
-    stack: ["WordPress", "WooCommerce", "PHP", "MySQL", "JavaScript"],
+    stack: ["WordPress", "WooCommerce", "Custom Themes", "MySQL", "JavaScript"],
     featured: true,
     href: "https://example.com/fuel-commerce",
     accent: "#6366f1"
@@ -285,7 +285,7 @@ export const services: Service[] = [
       "WooCommerce implementations",
       "Performance cleanup"
     ],
-    stack: ["WordPress", "PHP", "MySQL"]
+    stack: ["WordPress", "WooCommerce", "MySQL"]
   },
   {
     title: "E-commerce Systems",
