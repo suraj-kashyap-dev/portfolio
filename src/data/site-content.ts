@@ -1,21 +1,47 @@
-export type NavigationItem = {
-  label: string;
+import type { IconType } from "react-icons";
+import {
+  FiGithub,
+  FiLinkedin,
+  FiMail,
+  FiPhone
+} from "react-icons/fi";
+import { HiOutlineSparkles } from "react-icons/hi2";
+import {
+  SiExpress,
+  SiMongodb,
+  SiNestjs,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPrisma,
+  SiReact,
+  SiRedis,
+  SiSocketdotio,
+  SiTailwindcss,
+  SiTypescript
+} from "react-icons/si";
+
+export type NavItem = { id: string; label: string };
+
+export type ContactLink = {
   href: string;
-};
-
-export type Stat = {
-  value: string;
   label: string;
+  value: string;
+  icon: IconType;
+  external?: boolean;
 };
 
-export type Skill = {
-  name: string;
-  group: "Frontend" | "Backend" | "Database";
-  level: number;
-  note: string;
+export type TechPill = { label: string; icon: IconType };
+
+export type StatItem = { value: string; label: string };
+
+export type SkillGroup = {
+  title: string;
+  icon: IconType;
+  items: { name: string; level: number }[];
 };
 
-export type Experience = {
+export type ExperienceItem = {
   company: string;
   role: string;
   period: string;
@@ -24,359 +50,237 @@ export type Experience = {
   summary: string;
   highlights: string[];
   stack: string[];
-  systemStatus: string;
 };
 
-export type Project = {
-  name: string;
-  category: "Commerce" | "SaaS" | "Corporate" | "Portal" | "Realtime";
-  summary: string;
-  stack: string[];
-  featured: boolean;
-  href: string;
-  accent: string;
-};
-
-export type Service = {
+export type ProjectItem = {
   title: string;
-  duration: string;
-  summary: string;
-  bullets: string[];
+  tagline: string;
+  description: string;
   stack: string[];
+  href?: string;
+  repoLabel: string;
+  metrics: string[];
+  category: "Self-built Product" | "Open Source Contributor";
   featured?: boolean;
 };
 
-export type Testimonial = {
-  quote: string;
-  name: string;
-  role: string;
-  initial: string;
+export const profile = {
+  name: "Suraj Kashyap",
+  handle: "@suraj-webkul",
+  role: "Full-Stack Engineer",
+  tagline: "MERN · React · Next.js · Node.js · TypeScript · AI Integrations",
+  locations: ["Noida", "Delhi NCR", "Gurgaon"],
+  status: "Open to Opportunities",
+  email: "surajkashyap9911@gmail.com",
+  phone: "+91 93159 81404",
+  pitch:
+    "Full-Stack Engineer with 4.5+ years building production-grade MERN products with React, Next.js, Node.js, TypeScript, and MongoDB. I ship typed APIs, polished UI systems, and AI-assisted workflows powered by the OpenAI API, OCR, NLP, and real-time integrations."
 };
 
-export const navigation: NavigationItem[] = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Services", href: "#services" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact", href: "#contact" }
+export const navItems: NavItem[] = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "experience", label: "Experience" },
+  { id: "work", label: "Work" },
+  { id: "contact", label: "Contact" }
 ];
 
-export const hero = {
-  availability: "Available for select product builds in 2026",
-  eyebrow: "Engineering premium digital experiences",
-  title: "Suraj.Dev",
-  summary:
-    "A MERN-focused full stack engineer building resilient React and Next.js frontends, typed Node.js APIs, and real-time JavaScript and TypeScript products for ambitious teams.",
-  primaryAction: {
-    label: "Let's Architect Together",
-    href: "#contact"
-  },
-  secondaryAction: {
-    label: "Request CV",
-    href: "#contact"
-  },
-  focusAreas: ["Next.js", "React", "Node.js", "TypeScript", "MongoDB"],
-  runtimeTokens: ["JS", "TS", "React", "Node"]
-};
-
-export const heroStats: Stat[] = [
-  { value: "3+", label: "Years of experience" },
-  { value: "10+", label: "Global product launches" },
-  { value: "A+", label: "Code review quality" },
-  { value: "100%", label: "Delivery ownership" }
-];
-
-export const about = {
-  eyebrow: "The Engineering Mindset",
-  title: "Design for clarity. Build for scale. Ship with discipline.",
-  paragraphs: [
-    "This recreation mirrors the structure of the reference portfolio while keeping the implementation original and reusable. The emphasis is on a sharp technical voice, bold presentation, and modular Next.js code.",
-    "The layout is designed around high-signal sections: proof of work, stack depth, role progression, service packaging, and direct contact routes."
-  ],
-  location: "Gwalior, India",
-  remote: "Open to remote collaborations across SaaS, commerce, and internal tooling.",
-  interests: ["Open Source", "UI Systems", "Cloud Architecture", "AI Workflows"],
-  collaboration:
-    "Have a complex brief? Turn it into a production-ready roadmap, component system, and delivery plan."
-};
-
-export const aboutMetrics: Stat[] = [
-  { value: "10+", label: "Projects completed" },
-  { value: "3+", label: "Years in production teams" },
-  { value: "100%", label: "Client retention focus" }
-];
-
-export const skills: Skill[] = [
+export const contactLinks: ContactLink[] = [
   {
-    name: "React",
-    group: "Frontend",
-    level: 95,
-    note: "Design systems, app shells, component patterns"
+    href: "mailto:surajkashyap9911@gmail.com",
+    label: "Email",
+    value: "surajkashyap9911@gmail.com",
+    icon: FiMail
   },
   {
-    name: "Next.js",
-    group: "Frontend",
-    level: 92,
-    note: "App Router, SSR strategy, content architecture"
+    href: "tel:+919315981404",
+    label: "Phone",
+    value: "+91 93159 81404",
+    icon: FiPhone
   },
   {
-    name: "TypeScript",
-    group: "Frontend",
-    level: 88,
-    note: "Contracts, typed UI state, safer refactors"
+    href: "https://github.com/suraj-webkul",
+    label: "GitHub",
+    value: "github.com/suraj-webkul",
+    icon: FiGithub,
+    external: true
   },
   {
-    name: "Tailwind / CSS",
-    group: "Frontend",
-    level: 90,
-    note: "Rapid UI delivery and design token translation"
-  },
-  {
-    name: "Node.js",
-    group: "Backend",
-    level: 86,
-    note: "APIs, automation, integrations, deployment glue"
-  },
-  {
-    name: "MongoDB",
-    group: "Database",
-    level: 88,
-    note: "Schema design, aggregation pipelines, indexing"
-  },
-  {
-    name: "Express / NestJS",
-    group: "Backend",
-    level: 85,
-    note: "REST APIs, auth flows, modular service layers"
+    href: "https://linkedin.com/in/kashyap-suraj",
+    label: "LinkedIn",
+    value: "linkedin.com/in/kashyap-suraj",
+    icon: FiLinkedin,
+    external: true
   }
 ];
 
-export const experiences: Experience[] = [
+export const techPills: TechPill[] = [
+  { label: "React", icon: SiReact },
+  { label: "Next.js", icon: SiNextdotjs },
+  { label: "TypeScript", icon: SiTypescript },
+  { label: "Node.js", icon: SiNodedotjs },
+  { label: "NestJS", icon: SiNestjs },
+  { label: "MongoDB", icon: SiMongodb },
+  { label: "PostgreSQL", icon: SiPostgresql },
+  { label: "Socket.IO", icon: SiSocketdotio },
+  { label: "AI Integrations", icon: HiOutlineSparkles }
+];
+
+export const stats: StatItem[] = [
+  { value: "4.5+", label: "Years Experience" },
+  { value: "6+", label: "Major Products" },
+  { value: "47K+", label: "OSS GitHub Stars" },
+  { value: "8.8/10", label: "BCA CGPA" }
+];
+
+export const skillGroups: SkillGroup[] = [
   {
-    company: "Coregenic Software",
-    role: "Senior Full Stack Developer",
-    period: "2024 - Present",
-    location: "Remote / India",
-    type: "Full-time",
-    summary:
-      "Leading architecture and frontend delivery for multi-team product work, with emphasis on performance, reliability, and maintainable component systems.",
-    highlights: [
-      "Reduced perceived load time through lazy UI segmentation and asset discipline.",
-      "Supported high-concurrency traffic patterns across product surfaces.",
-      "Introduced cleaner release routines for faster, lower-risk deployments.",
-      "Set implementation standards for scalable JavaScript and TypeScript work."
-    ],
-    stack: ["React", "Next.js", "Node.js", "AWS", "Docker", "MongoDB"],
-    systemStatus: "0 critical vulnerabilities"
+    title: "Frontend",
+    icon: SiReact,
+    items: [
+      { name: "React.js / Next.js", level: 95 },
+      { name: "TypeScript / JavaScript (ES6+)", level: 93 },
+      { name: "Tailwind CSS / SCSS", level: 91 },
+      { name: "Redux / Component Systems", level: 89 }
+    ]
   },
   {
-    company: "Freelance / Global",
-    role: "Independent Product Engineer",
-    period: "2024 - 2025",
-    location: "Remote",
-    type: "Contract",
-    summary:
-      "Delivered marketing websites, internal dashboards, and commerce systems with a bias toward fast iteration and measurable business outcomes.",
-    highlights: [
-      "Built brand-forward landing pages tied to lead generation goals.",
-      "Shipped custom CMS and admin experiences for non-technical teams.",
-      "Optimized frontend bundles and cross-device UX for client launches."
-    ],
-    stack: ["Next.js", "React", "Supabase", "Tailwind CSS"],
-    systemStatus: "Lead time trimmed release-over-release"
+    title: "Backend",
+    icon: SiNodedotjs,
+    items: [
+      { name: "Node.js / Express", level: 92 },
+      { name: "NestJS / REST API Design", level: 90 },
+      { name: "JWT · OAuth 2.0 · RBAC", level: 90 },
+      { name: "WebSockets / Socket.IO", level: 88 }
+    ]
   },
   {
-    company: "CoreTech Solutions",
-    role: "Frontend Developer",
-    period: "2023 - 2024",
-    location: "India",
-    type: "Full-time",
-    summary:
-      "Focused on modernizing client-facing websites and improving engineering quality inside a service-heavy delivery environment.",
-    highlights: [
-      "Translated visual direction into production-grade responsive interfaces.",
-      "Created reusable sections to speed up future client delivery.",
-      "Improved stakeholder review cycles with clearer staging workflows."
-    ],
-    stack: ["React", "Next.js", "TypeScript", "CSS"],
-    systemStatus: "UI patterns standardized"
+    title: "Data & Infra",
+    icon: SiMongodb,
+    items: [
+      { name: "MongoDB / PostgreSQL", level: 90 },
+      { name: "Prisma · Redis", level: 86 },
+      { name: "Docker · GitHub Actions", level: 88 },
+      { name: "Kafka · RabbitMQ", level: 80 }
+    ]
   },
   {
-    company: "Early Career",
-    role: "JavaScript Developer",
-    period: "2022 - 2023",
-    location: "India",
-    type: "Product Engineering",
-    summary:
-      "Built and maintained JavaScript-driven web products tuned for conversion, clarity, and operational simplicity.",
-    highlights: [
-      "Shipped customer-facing flows with React and modern JavaScript tooling.",
-      "Improved storefront performance and mobile conversion paths.",
-      "Delivered admin workflows aligned with sales operations."
-    ],
-    stack: ["React", "Node.js", "JavaScript", "Express", "MongoDB"],
-    systemStatus: "Runtime stability maintained"
+    title: "AI & Tooling",
+    icon: HiOutlineSparkles,
+    items: [
+      { name: "OpenAI API · AI Tooling", level: 93 },
+      { name: "RAG Pipelines · OCR · NLP", level: 89 },
+      { name: "Prompt Engineering", level: 91 },
+      { name: "Claude · Cursor · Copilot", level: 92 }
+    ]
   }
 ];
 
-export const projects: Project[] = [
+export const experiences: ExperienceItem[] = [
   {
-    name: "OpenMeet",
-    category: "Realtime",
+    company: "Webkul Software Pvt. Ltd.",
+    role: "Full-Stack Engineer — MERN & Frontend Product Engineering",
+    period: "Dec 2022 – Mar 2026",
+    location: "Noida, India",
+    type: "Full-time",
     summary:
-      "Self-hostable video conferencing platform with pre-join lobby, real-time chat, reactions, hand-raise, and horizontally scalable Socket.IO via Redis adapter.",
-    stack: ["Next.js", "NestJS", "TypeScript", "Socket.IO", "LiveKit", "PostgreSQL", "Redis"],
-    featured: true,
+      "Owned end-to-end delivery of MERN products across multiple commerce and CRM surfaces, focusing on performance, typed contracts, and shipping AI-assisted workflows.",
+    highlights: [
+      "Shipped React/Next.js + Node.js features into production for a large open-source commerce platform.",
+      "Drove typed frontend-backend contracts and reusable component systems used across teams.",
+      "Integrated OpenAI API, OCR, and NLP into product workflows with measurable latency targets.",
+      "Set review standards for scalable JavaScript and TypeScript work across squads."
+    ],
+    stack: [
+      "React.js",
+      "Next.js",
+      "Node.js",
+      "TypeScript",
+      "MongoDB",
+      "OpenAI API",
+      "Docker",
+      "GitHub Actions"
+    ]
+  },
+  {
+    company: "Opmac",
+    role: "Full-Stack Developer — React & Node.js",
+    period: "Jan 2022 – Dec 2022",
+    location: "Ghaziabad, India",
+    type: "Full-time",
+    summary:
+      "Delivered customer-facing React applications and Node.js services with a bias toward fast iteration and clean delivery.",
+    highlights: [
+      "Built React UIs with typed contracts against Node.js APIs.",
+      "Shipped NLP-assisted product features into production flows.",
+      "Improved stakeholder review cycles with cleaner staging workflows."
+    ],
+    stack: ["React.js", "Node.js", "TypeScript", "REST APIs", "MongoDB", "PostgreSQL", "NLP Integration"]
+  }
+];
+
+export const projects: ProjectItem[] = [
+  {
+    title: "OpenMeet",
+    tagline: "Self-hostable real-time video conferencing",
+    description:
+      "Full TypeScript meeting platform: pre-join lobby with device preview, instant rooms, real-time chat, reactions, hand-raise, and Argon2-hardened sessions. Built on Next.js, NestJS, Socket.IO with a Redis adapter, LiveKit SFU, PostgreSQL + Prisma, inside a Turbo monorepo with Vitest and Playwright coverage.",
+    stack: ["Next.js", "NestJS", "TypeScript", "Socket.IO", "LiveKit", "PostgreSQL", "Redis", "Prisma"],
     href: "https://github.com/suraj-kashyap-dev/open-meet",
-    accent: "#22d3ee"
-  },
-  {
-    name: "OpenCRM",
-    category: "SaaS",
-    summary:
-      "A full-stack CRM built around Next.js, Node.js, and MongoDB with JWT auth, RBAC, custom fields, data grids, and Kanban pipeline views.",
-    stack: ["Next.js", "Node.js", "TypeScript", "MongoDB", "JWT / RBAC"],
-    featured: true,
-    href: "https://github.com/suraj-kashyap-dev/open-crm",
-    accent: "#a855f7"
-  },
-  {
-    name: "Software Studio Website",
-    category: "Corporate",
-    summary:
-      "A premium company site built to communicate technical depth, trust, and conversion-focused storytelling.",
-    stack: ["React", "Next.js", "Tailwind CSS", "TypeScript"],
-    featured: true,
-    href: "https://example.com/software-studio",
-    accent: "#3b82f6"
-  },
-  {
-    name: "Public Jobs Discovery Portal",
-    category: "Portal",
-    summary:
-      "A search-heavy content portal designed to keep large information sets easy to browse and maintain.",
-    stack: ["Next.js", "Node.js", "TypeScript", "Search UX"],
-    featured: false,
-    href: "https://example.com/jobs-portal",
-    accent: "#10b981"
-  }
-];
-
-export const services: Service[] = [
-  {
-    title: "Full Stack Development",
-    duration: "4-8 weeks",
-    summary:
-      "Delivery of robust web products from interface architecture to backend integration and deployment setup.",
-    bullets: [
-      "Custom application development",
-      "Database and API planning",
-      "Responsive frontend implementation",
-      "Launch-ready production setup"
-    ],
-    stack: ["React", "Next.js", "Node.js"],
+    repoLabel: "suraj-kashyap-dev/open-meet",
+    metrics: ["Public repo", "Real-time video", "Turbo monorepo"],
+    category: "Self-built Product",
     featured: true
   },
   {
-    title: "Realtime Product Features",
-    duration: "2-4 weeks",
-    summary:
-      "WebSocket-driven experiences such as chat, presence, live dashboards, and collaborative interfaces built on a typed Node.js stack.",
-    bullets: [
-      "Socket.IO architecture",
-      "Presence and pub/sub flows",
-      "Redis-backed scale-out",
-      "Latency and reconnection handling"
-    ],
-    stack: ["Node.js", "Socket.IO", "Redis"]
+    title: "OpenCRM",
+    tagline: "Typed full-stack CRM from scratch",
+    description:
+      "CRM built around Next.js, TypeScript, Node.js, and MongoDB with JWT auth, RBAC, custom fields, data grids, and Kanban pipeline views. End-to-end ownership: schema design, API contracts, frontend architecture, and admin-friendly CRM surfaces.",
+    stack: ["Next.js", "Node.js", "TypeScript", "MongoDB", "JWT / RBAC"],
+    href: "https://github.com/suraj-kashyap-dev/open-crm",
+    repoLabel: "suraj-kashyap-dev/open-crm",
+    metrics: ["Public repo", "Full-stack CRM", "Next.js + Node.js"],
+    category: "Self-built Product",
+    featured: true
   },
   {
-    title: "E-commerce Systems",
-    duration: "6-10 weeks",
-    summary:
-      "Storefronts and admin tools built around scale, checkout clarity, and operations efficiency.",
-    bullets: [
-      "Custom storefront builds",
-      "Payment integration",
-      "Inventory workflows",
-      "Order tracking experiences"
-    ],
-    stack: ["Next.js", "Stripe", "TypeScript"]
+    title: "Bagisto",
+    tagline: "Open-source commerce platform contributor",
+    description:
+      "Merged production-facing work across commerce admin flows, customer storefront behavior, and data tooling for a large open-source platform used by thousands of stores worldwide.",
+    stack: ["Commerce", "Open Source", "Frontend Systems"],
+    href: "https://github.com/bagisto/bagisto",
+    repoLabel: "bagisto/bagisto",
+    metrics: ["26K+ GitHub stars", "Open source", "Commerce platform"],
+    category: "Open Source Contributor"
   },
   {
-    title: "API Development",
-    duration: "2-3 weeks",
-    summary:
-      "Structured backend endpoints and third-party integrations with attention to security and maintainability.",
-    bullets: [
-      "REST API design",
-      "Third-party integration",
-      "Auth and permissions",
-      "Clear implementation docs"
-    ],
-    stack: ["Node.js", "Express", "MongoDB"]
-  },
-  {
-    title: "Performance Optimization",
-    duration: "1-2 weeks",
-    summary:
-      "Targeted improvements for Core Web Vitals, bundle health, and frontend responsiveness.",
-    bullets: [
-      "Speed audits",
-      "Render-path cleanup",
-      "Bundle review",
-      "SEO and metadata fixes"
-    ],
-    stack: ["Lighthouse", "WebPageTest", "Analytics"]
-  },
-  {
-    title: "Maintenance & Support",
-    duration: "Ongoing",
-    summary:
-      "Release support, bug resolution, and stability work for teams that need dependable post-launch delivery.",
-    bullets: [
-      "Security updates",
-      "Backups and restore paths",
-      "Monitoring and triage",
-      "Ongoing feature support"
-    ],
-    stack: ["Monitoring", "Incident Response", "Ops"]
+    title: "Krayin CRM",
+    tagline: "Open-source CRM platform contributor",
+    description:
+      "Contributed merged fixes and workflow improvements across CRM UI, migration flows, and release upkeep for a long-running open-source CRM product.",
+    stack: ["CRM Workflows", "Public Repo", "Issue Resolution"],
+    href: "https://github.com/krayin/laravel-crm",
+    repoLabel: "krayin/laravel-crm",
+    metrics: ["21K+ GitHub stars", "Open source", "CRM workflows"],
+    category: "Open Source Contributor"
   }
 ];
 
-export const testimonials: Testimonial[] = [
-  {
-    quote:
-      "The build quality stood out immediately. The product shipped faster, felt cleaner, and gave our team confidence when traffic started climbing.",
-    name: "Vishal G.",
-    role: "Founder, commerce brand",
-    initial: "V"
-  },
-  {
-    quote:
-      "From planning to implementation, every decision was grounded in usability. The system made daily operations noticeably easier for our staff.",
-    name: "Ankeash K.",
-    role: "Founder, fitness SaaS",
-    initial: "A"
-  },
-  {
-    quote:
-      "Strong frontend judgment, clear technical communication, and reliable delivery. The final result felt polished and production-ready.",
-    name: "Anushk K.",
-    role: "CTO, software company",
-    initial: "A"
-  }
-];
-
-export const contact = {
-  eyebrow: "Ready to initialize?",
-  title: "Open for product work, performance audits, and premium website builds.",
-  summary:
-    "If you want a portfolio that feels close to the reference while staying maintainable in Next.js, this codebase gives you a clean starting point.",
-  email: "hello@yourdomain.com",
-  phone: "+91 90000 00000",
-  availability: "Currently accepting remote collaborations."
+export const techIcons: Record<string, IconType> = {
+  React: SiReact,
+  "React.js": SiReact,
+  "Next.js": SiNextdotjs,
+  TypeScript: SiTypescript,
+  "Node.js": SiNodedotjs,
+  NestJS: SiNestjs,
+  Express: SiExpress,
+  MongoDB: SiMongodb,
+  PostgreSQL: SiPostgresql,
+  "Socket.IO": SiSocketdotio,
+  Redis: SiRedis,
+  Prisma: SiPrisma,
+  "Tailwind CSS": SiTailwindcss
 };
