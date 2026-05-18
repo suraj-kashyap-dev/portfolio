@@ -66,7 +66,7 @@ export type ProjectItem = {
 
 export const profile = {
   name: "Suraj Kashyap",
-  handle: "@suraj-webkul",
+  handle: "@suraj-kashyap-dev",
   role: "Full-Stack Engineer",
   tagline: "MERN · React · Next.js · Node.js · TypeScript · AI Integrations",
   locations: ["Noida", "Delhi NCR", "Gurgaon"],
@@ -100,9 +100,9 @@ export const contactLinks: ContactLink[] = [
     icon: FiPhone
   },
   {
-    href: "https://github.com/suraj-webkul",
+    href: "https://github.com/suraj-kashyap-dev",
     label: "GitHub",
-    value: "github.com/suraj-webkul",
+    value: "github.com/suraj-kashyap-dev",
     icon: FiGithub,
     external: true
   },
@@ -129,9 +129,9 @@ export const techPills: TechPill[] = [
 
 export const stats: StatItem[] = [
   { value: "4.5+", label: "Years Experience" },
-  { value: "6+", label: "Major Products" },
+  { value: "15+", label: "Major Products" },
   { value: "47K+", label: "OSS GitHub Stars" },
-  { value: "8.8/10", label: "BCA CGPA" }
+  { value: "9.5/10", label: "BCA CGPA" }
 ];
 
 export const skillGroups: SkillGroup[] = [

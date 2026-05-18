@@ -1,12 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FiArrowUpRight, FiGithub } from "react-icons/fi";
+import { FiArrowUpRight, FiGithub, FiStar } from "react-icons/fi";
 import { projects } from "@/data/site-content";
-import { Stagger, StaggerItem } from "./motion";
+import { FadeIn, Stagger, StaggerItem } from "./motion";
 import { SectionHeader } from "./SectionHeader";
 
 export function Projects() {
+  const [featured, ...rest] = projects;
+
   return (
     <section id="work" className="section section-alt">
       <div className="container">
@@ -18,8 +20,95 @@ export function Projects() {
           description="Self-built products and merged contributions across large open-source platforms."
         />
 
+        <FadeIn>
+          <motion.article
+            whileHover={{ y: -4 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="feature-card"
+          >
+            <div className="feature-card-aura" aria-hidden="true" />
+            <div className="feature-card-body">
+              <div className="feature-card-head">
+                <span className="feature-card-badge">
+                  <FiStar /> Featured Build
+                </span>
+                <span className="feature-card-kind">{featured.category}</span>
+              </div>
+
+              <h3 className="feature-card-title">{featured.title}</h3>
+              <p className="feature-card-tagline">{featured.tagline}</p>
+              <p className="feature-card-desc">{featured.description}</p>
+
+              <div className="tag-row">
+                {featured.stack.map((tag) => (
+                  <span key={tag} className="tag tag-strong">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="feature-card-foot">
+                <span className="feature-card-repo">
+                  <FiGithub />
+                  {featured.href ? (
+                    <a href={featured.href} target="_blank" rel="noreferrer">
+                      {featured.repoLabel}
+                    </a>
+                  ) : (
+                    <span>{featured.repoLabel}</span>
+                  )}
+                </span>
+
+                {featured.href ? (
+                  <a
+                    href={featured.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn-primary btn-sm"
+                  >
+                    View on GitHub <FiArrowUpRight />
+                  </a>
+                ) : null}
+              </div>
+            </div>
+
+            <div className="feature-card-visual" aria-hidden="true">
+              <div className="fv-window">
+                <div className="fv-bar">
+                  <span className="fv-dot" />
+                  <span className="fv-dot" />
+                  <span className="fv-dot" />
+                </div>
+                <div className="fv-meta">
+                  <span className="fv-tag">live</span>
+                  <span>room: meet-9k2-3xa</span>
+                </div>
+                <div className="fv-stage">
+                  <div className="fv-tile fv-tile-1">
+                    <span className="fv-name">Suraj</span>
+                  </div>
+                  <div className="fv-tile fv-tile-2">
+                    <span className="fv-name">Aanya</span>
+                  </div>
+                  <div className="fv-tile fv-tile-3">
+                    <span className="fv-name">Vihaan</span>
+                  </div>
+                  <div className="fv-tile fv-tile-4">
+                    <span className="fv-name">Riya</span>
+                  </div>
+                </div>
+                <div className="fv-bottom">
+                  <span className="fv-pill">Socket.IO</span>
+                  <span className="fv-pill">LiveKit</span>
+                  <span className="fv-pill">NestJS</span>
+                </div>
+              </div>
+            </div>
+          </motion.article>
+        </FadeIn>
+
         <Stagger className="proj-grid">
-          {projects.map((project) => (
+          {rest.map((project) => (
             <StaggerItem key={project.title} className="proj-card-wrap">
               <motion.article
                 whileHover={{ y: -4 }}
