@@ -116,6 +116,20 @@ const techPills: TechPill[] = [
 
 const contributionProjects: ContributionProject[] = [
   {
+    title: "OpenMeet",
+    period: "2025 - Present",
+    repoLabel: "suraj-kashyap-dev/open-meet",
+    href: "https://github.com/suraj-kashyap-dev/open-meet",
+    summary:
+      "Self-hostable, real-time video conferencing platform built on a full TypeScript stack with Next.js, NestJS, Socket.IO, LiveKit SFU, PostgreSQL, and Redis inside a Turbo monorepo.",
+    impact: [
+      "Designed end-to-end real-time meeting flows: pre-join lobby with device preview, instant rooms, in-call chat, reactions, and hand-raise.",
+      "Built a horizontally scalable Socket.IO layer with a Redis adapter, plus secure session auth using Argon2 hashing and httpOnly cookies.",
+      "Shared a typed contract across frontend and backend via an @open-meet/types package, with Vitest unit tests and Playwright E2E coverage."
+    ],
+    meta: ["Public repo", "Real-time video", "Next.js + NestJS + LiveKit"]
+  },
+  {
     title: "Bagisto",
     period: "2023 - Present",
     repoLabel: "bagisto/bagisto",
@@ -159,6 +173,14 @@ const contributionProjects: ContributionProject[] = [
 ];
 
 const contributionTimeline: ContributionTimelineItem[] = [
+  {
+    period: "2025 - Present",
+    title: "OpenMeet Builder",
+    repo: "suraj-kashyap-dev/open-meet",
+    summary:
+      "Built a self-hostable video conferencing platform with Next.js, NestJS, Socket.IO, LiveKit, PostgreSQL, and Redis inside a TypeScript-first Turbo monorepo.",
+    stack: ["Next.js", "NestJS", "Socket.IO", "LiveKit", "PostgreSQL", "Redis"]
+  },
   {
     period: "2023 - Present",
     title: "Bagisto Core Team Contributor",
@@ -466,7 +488,7 @@ export default function Home() {
             <div className="ping" />
             Open to Opportunities
           </div>
-          <p className="sidebar-note">Delhi NCR, India</p>
+          <p className="sidebar-note">Noida &middot; Delhi NCR &middot; Gurgaon, India</p>
           <div className="sidebar-utilityLinks">
             <a className="sidebar-utilityLink" href="#contact" onClick={closeMobileNav}>
               <FiArrowUpRight />
@@ -806,7 +828,7 @@ export default function Home() {
                     <span className="ptag pt-ts">TypeScript</span>
                     <span className="ptag">REST APIs</span>
                     <span className="ptag pt-db">MongoDB</span>
-                    <span className="ptag">MySQL</span>
+                    <span className="ptag pt-db">PostgreSQL</span>
                     <span className="ptag pt-ai">NLP Integration</span>
                   </div>
                 </div>
@@ -921,7 +943,7 @@ export default function Home() {
                 </div>
                 <div className="ski">
                   <div className="skt">
-                    <span className="skn">MySQL &middot; Redis</span>
+                    <span className="skn">Prisma &middot; Redis</span>
                     <span className="skp">86%</span>
                   </div>
                   <div className="sktr">

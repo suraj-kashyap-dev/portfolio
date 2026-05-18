@@ -10,7 +10,7 @@ export type Stat = {
 
 export type Skill = {
   name: string;
-  group: "Frontend" | "Backend" | "Ecosystem";
+  group: "Frontend" | "Backend" | "Database";
   level: number;
   note: string;
 };
@@ -29,7 +29,7 @@ export type Experience = {
 
 export type Project = {
   name: string;
-  category: "Commerce" | "SaaS" | "Corporate" | "Portal";
+  category: "Commerce" | "SaaS" | "Corporate" | "Portal" | "Realtime";
   summary: string;
   stack: string[];
   featured: boolean;
@@ -69,7 +69,7 @@ export const hero = {
   eyebrow: "Engineering premium digital experiences",
   title: "Suraj.Dev",
   summary:
-    "A full stack developer building resilient frontend systems, performance-focused web products, and maintainable WordPress ecosystems for ambitious teams.",
+    "A MERN-focused full stack engineer building resilient React and Next.js frontends, typed Node.js APIs, and real-time JavaScript and TypeScript products for ambitious teams.",
   primaryAction: {
     label: "Let's Architect Together",
     href: "#contact"
@@ -78,7 +78,7 @@ export const hero = {
     label: "Request CV",
     href: "#contact"
   },
-  focusAreas: ["Next.js", "React", "Node.js", "WordPress", "Supabase"],
+  focusAreas: ["Next.js", "React", "Node.js", "TypeScript", "MongoDB"],
   runtimeTokens: ["JS", "TS", "React", "Node"]
 };
 
@@ -141,10 +141,16 @@ export const skills: Skill[] = [
     note: "APIs, automation, integrations, deployment glue"
   },
   {
-    name: "WordPress",
-    group: "Ecosystem",
-    level: 91,
-    note: "Custom themes, WooCommerce builds, plugin work"
+    name: "MongoDB",
+    group: "Database",
+    level: 88,
+    note: "Schema design, aggregation pipelines, indexing"
+  },
+  {
+    name: "Express / NestJS",
+    group: "Backend",
+    level: 85,
+    note: "REST APIs, auth flows, modular service layers"
   }
 ];
 
@@ -199,42 +205,42 @@ export const experiences: Experience[] = [
     systemStatus: "UI patterns standardized"
   },
   {
-    company: "PowerFuel",
-    role: "Web Developer",
+    company: "Early Career",
+    role: "JavaScript Developer",
     period: "2022 - 2023",
     location: "India",
-    type: "Growth Commerce",
+    type: "Product Engineering",
     summary:
-      "Built and maintained an e-commerce stack tuned for conversion, order clarity, and operational simplicity.",
+      "Built and maintained JavaScript-driven web products tuned for conversion, clarity, and operational simplicity.",
     highlights: [
-      "Extended WooCommerce flows for business-specific order handling.",
+      "Shipped customer-facing flows with React and modern JavaScript tooling.",
       "Improved storefront performance and mobile conversion paths.",
-      "Delivered custom workflows aligned with sales operations."
+      "Delivered admin workflows aligned with sales operations."
     ],
-    stack: ["WordPress", "WooCommerce", "Custom Themes", "MySQL", "JavaScript"],
+    stack: ["React", "Node.js", "JavaScript", "Express", "MongoDB"],
     systemStatus: "Runtime stability maintained"
   }
 ];
 
 export const projects: Project[] = [
   {
-    name: "Fuel Commerce Platform",
-    category: "Commerce",
+    name: "OpenMeet",
+    category: "Realtime",
     summary:
-      "A high-speed commerce experience for regional delivery operations, tuned for mobile conversion and custom business logic.",
-    stack: ["WordPress", "WooCommerce", "Custom Themes", "MySQL", "JavaScript"],
+      "Self-hostable video conferencing platform with pre-join lobby, real-time chat, reactions, hand-raise, and horizontally scalable Socket.IO via Redis adapter.",
+    stack: ["Next.js", "NestJS", "TypeScript", "Socket.IO", "LiveKit", "PostgreSQL", "Redis"],
     featured: true,
-    href: "https://example.com/fuel-commerce",
-    accent: "#6366f1"
+    href: "https://github.com/suraj-kashyap-dev/open-meet",
+    accent: "#22d3ee"
   },
   {
-    name: "Club Operations SaaS",
+    name: "OpenCRM",
     category: "SaaS",
     summary:
-      "A subscription product for fitness businesses with dashboards, access control, and growth-ready onboarding flows.",
-    stack: ["React", "Next.js", "Node.js", "Supabase", "TypeScript"],
+      "A full-stack CRM built around Next.js, Node.js, and MongoDB with JWT auth, RBAC, custom fields, data grids, and Kanban pipeline views.",
+    stack: ["Next.js", "Node.js", "TypeScript", "MongoDB", "JWT / RBAC"],
     featured: true,
-    href: "https://example.com/club-ops",
+    href: "https://github.com/suraj-kashyap-dev/open-crm",
     accent: "#a855f7"
   },
   {
@@ -275,17 +281,17 @@ export const services: Service[] = [
     featured: true
   },
   {
-    title: "WordPress Development",
+    title: "Realtime Product Features",
     duration: "2-4 weeks",
     summary:
-      "Custom themes, WooCommerce workflows, and plugin tailoring for teams that need speed without losing flexibility.",
+      "WebSocket-driven experiences such as chat, presence, live dashboards, and collaborative interfaces built on a typed Node.js stack.",
     bullets: [
-      "Theme customization",
-      "Plugin development",
-      "WooCommerce implementations",
-      "Performance cleanup"
+      "Socket.IO architecture",
+      "Presence and pub/sub flows",
+      "Redis-backed scale-out",
+      "Latency and reconnection handling"
     ],
-    stack: ["WordPress", "WooCommerce", "MySQL"]
+    stack: ["Node.js", "Socket.IO", "Redis"]
   },
   {
     title: "E-commerce Systems",
@@ -298,7 +304,7 @@ export const services: Service[] = [
       "Inventory workflows",
       "Order tracking experiences"
     ],
-    stack: ["Next.js", "Stripe", "Commerce Ops"]
+    stack: ["Next.js", "Stripe", "TypeScript"]
   },
   {
     title: "API Development",
