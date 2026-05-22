@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { FiArrowUpRight, FiMenu, FiX } from "react-icons/fi";
 import { contactLinks, navItems, profile } from "@/data/site-content";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -73,9 +74,12 @@ export function Navbar() {
             ))}
           </nav>
 
-          <a href="#contact" className="nav-cta">
-            Let&apos;s Talk
-          </a>
+          <div className="nav-actions">
+            <ThemeToggle />
+            <a href="#contact" className="nav-cta">
+              Let&apos;s Talk
+            </a>
+          </div>
 
           <button
             type="button"
@@ -147,19 +151,35 @@ export function Navbar() {
             </nav>
 
             <div className="mobile-drawer-foot">
-              <a
-                href="#contact"
-                onClick={() => setOpen(false)}
-                className="btn btn-primary mobile-drawer-cta"
-              >
-                Hire me
-              </a>
-
-              <div className="mobile-drawer-meta">
-                <span className="mobile-drawer-meta-label">Based in</span>
-                <span className="mobile-drawer-meta-value">
+              <div className="mobile-drawer-statusRow">
+                <span className="mobile-drawer-status">
+                  <span className="ping" />
+                  <span>Open to work</span>
+                </span>
+                <span className="mobile-drawer-loc">
                   {profile.locations.join(" · ")}
                 </span>
+              </div>
+
+              <div className="mobile-drawer-contacts">
+                {contactLinks.slice(0, 2).map(({ href, icon: Icon, label, value, external }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    onClick={() => setOpen(false)}
+                    target={external ? "_blank" : undefined}
+                    rel={external ? "noreferrer" : undefined}
+                    className="mobile-drawer-contact"
+                  >
+                    <span className="mobile-drawer-contact-icon">
+                      <Icon />
+                    </span>
+                    <span className="mobile-drawer-contact-text">
+                      <span className="mobile-drawer-contact-label">{label}</span>
+                      <span className="mobile-drawer-contact-value">{value}</span>
+                    </span>
+                  </a>
+                ))}
               </div>
 
               <div className="mobile-drawer-socials">
@@ -173,9 +193,19 @@ export function Navbar() {
                     className="mobile-drawer-social"
                   >
                     <Icon />
+                    <span>{label}</span>
                   </a>
                 ))}
               </div>
+
+              <a
+                href="#contact"
+                onClick={() => setOpen(false)}
+                className="mobile-drawer-cta"
+              >
+                <FiArrowUpRight />
+                <span>Hire me</span>
+              </a>
             </div>
           </motion.aside>
         ) : null}

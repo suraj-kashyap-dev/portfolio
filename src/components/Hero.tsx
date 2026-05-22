@@ -17,12 +17,14 @@ export function Hero() {
           variants={staggerContainer}
         >
           <div className="hero-col-left">
-            <motion.div className="hero-status" variants={fadeUpVariants}>
-              <span className="ping" />
-              <span>{profile.status}</span>
-              <span className="hero-status-divider" />
-              <span className="hero-status-loc">
-                <FiMapPin /> {profile.locations.join(" · ")}
+            <motion.div className="hero-status-row" variants={fadeUpVariants}>
+              <span className="hero-chip hero-chip-status">
+                <span className="ping" />
+                <span>{profile.status}</span>
+              </span>
+              <span className="hero-chip hero-chip-loc">
+                <FiMapPin />
+                <span>{profile.locations.join(" · ")}</span>
               </span>
             </motion.div>
 
